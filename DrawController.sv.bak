@@ -1,0 +1,10 @@
+module DrawController(
+	input logic DrawWait,
+	input logic 
+	
+
+)
+begin
+
+
+end
