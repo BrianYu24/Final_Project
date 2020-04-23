@@ -47,4 +47,15 @@ always_ff @ (posedge Clk) begin
 	data_Out<= mem[read_address];
 end
 
+
+/*
+module Draw_Frame_Buffer(
+	input CLK,
+	input [9:0] DrawX, DrawY,
+	input [6:0] SpriteX, SpriteY,
+	input size
+	
+)
+*/
+
 endmodule
