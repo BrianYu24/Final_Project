@@ -23,38 +23,41 @@ module  color_mapper ( input              Clk,            // Whether current pix
     logic [7:0] Red, Green, Blue;
     
 	 
-	 logic [13:0] read_address;
+	 logic [14:0] read_address;
 	 logic isBlack;
 	 logic [4:0] palette;
 	 
 	 always_comb
 	 begin
-		if (DrawX < 96 && DrawY < 120)
+		if ((DrawX<10'd68) || (DrawX>10'd571) || (DrawY < 10'd84) || (DrawY > 10'd395))
 		begin
-			read_address = DrawY*96+DrawX;
-			isBlack = 1'b0;
+			isBlack = 1'b1;
+			read_address = 14'b0;
 		end
 		else
 		begin
-			read_address = 14'b0;
-			isBlack = 1'b1;
+			read_address = (DrawX-10'd68)/10'd3+((DrawY-10'd84)/10'd3)*10'd168;
+			isBlack = 1'b0;
 		end
 	 end
 	 
-	 SpriteSheet(.read_address,.Clk,.data_Out(palette));
-	 Palette(.VGA_R(Red),.VGA_G(Green),.VGA_B(Blue),.color(palette));
+	 //SpriteSheet(.read_address,.Clk,.data_Out(palette));
+	 FrameBuffer FB(.read_address,.Clk,.data_Out(palette),.we(1'b0));
+	 Palette PL (.VGA_R(Red),.VGA_G(Green),.VGA_B(Blue),.color(palette));
 	 
-	 always_ff @ (posedge Clk) begin
+	 
+	 always_comb
+	 begin
 		if(isBlack)
 		begin
-			VGA_R = 8'b0;
-			VGA_G = 8'b0;
-			VGA_B = 8'b0;
+			VGA_R = 8'hFF;
+			VGA_G = 8'h00;
+			VGA_B = 8'hFF;
 		end
 		else
 		begin
 			VGA_R = Red;
-			VGA_G = Green
+			VGA_G = Green;
 			VGA_B = Blue;
 		end
 	 end

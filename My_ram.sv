@@ -6,17 +6,19 @@
 
 module  SpriteSheet
 (
-		input [13:0] read_address,
+		input [14:0] read_address,
 		input  Clk,
-		output logic [4:0] data_Out,
+		output logic [4:0] data_Out
 );
 
 // mem has width of 3 bits and a total of 400 addresses
+//logic [4:0] mem [0:17471];
 logic [4:0] mem [0:11519];
 
 initial
 begin
-	 $readmemh("sprite_bytes/tetris_I.txt", mem);
+	 //$readmemh("sprite_bytes/DungeonMockup.txt", mem);
+	 $readmemh("sprite_bytes/CompleteSpriteSheet.txt", mem);
 end
 
 

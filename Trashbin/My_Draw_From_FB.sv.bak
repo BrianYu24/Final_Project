@@ -1,0 +1,14 @@
+module Draw_from_Frame_Buffer(
+	input[9:0] DrawX, DrawY,
+	input VGA_CLK,
+	output[7:0] VGA_R, VGA_G, VGA_B
+);
+	logic[4:0] pallet;
+	
+	FrameBuffer FB (
+		.data_In(5'b0), .write_address(19'b0), .read_address(), .we(1'b1), .clk(VGA_CLK),.data_Out(pallet)
+	);
+	
+	Pallet p(
+		
+	);

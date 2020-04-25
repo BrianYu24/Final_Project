@@ -26,14 +26,14 @@ module lab8( input               CLOCK_50,
                                  VGA_VS,       //VGA virtical sync signal
                                  VGA_HS,       //VGA horizontal sync signal
              // CY7C67200 Interface
-             inout  wire  [15:0] OTG_DATA,     //CY7C67200 Data bus 16 Bits
-             output logic [1:0]  OTG_ADDR,     //CY7C67200 Address 2 Bits 
-				 
-             output logic        OTG_CS_N,     //CY7C67200 Chip Select
-                                 OTG_RD_N,     //CY7C67200 Write
-                                 OTG_WR_N,     //CY7C67200 Read
-                                 OTG_RST_N,    //CY7C67200 Reset
-             input               OTG_INT,      //CY7C67200 Interrupt
+//             inout  wire  [15:0] OTG_DATA,     //CY7C67200 Data bus 16 Bits
+//             output logic [1:0]  OTG_ADDR,     //CY7C67200 Address 2 Bits 
+//				 
+//             output logic        OTG_CS_N,     //CY7C67200 Chip Select
+//                                 OTG_RD_N,     //CY7C67200 Write
+//                                 OTG_WR_N,     //CY7C67200 Read
+//                                 OTG_RST_N,    //CY7C67200 Reset
+//             input               OTG_INT,      //CY7C67200 Interrupt
              // SDRAM Interface for Nios II Software
              output logic [12:0] DRAM_ADDR,    //SDRAM Address 13 Bits
              inout  wire  [31:0] DRAM_DQ,      //SDRAM Data 32 Bits
@@ -47,13 +47,14 @@ module lab8( input               CLOCK_50,
                                  DRAM_CLK      //SDRAM Clock
                     );
     
-    logic Reset_h, Clk, Reset_s;
+    logic Reset_h, Clk, Reset_s, Start_s;
     logic [7:0] keycode;
     
     assign Clk = CLOCK_50;
     always_ff @ (posedge Clk) begin
         Reset_h <= ~(KEY[0]);        // The push buttons are active low
 		  Reset_s <= ~(KEY[1]);
+		  Start_s <= ~(KEY[2]);
     end
     
     logic [1:0] hpi_addr;
@@ -62,27 +63,32 @@ module lab8( input               CLOCK_50,
 	 
 	 logic [9:0] DrawX, DrawY;
 	 logic is_ball;
+	 
+//	 logic Player_Draw_EN, Enemy_Draw_EN, Room_Draw_EN, Title_Draw_EN, Hud_Draw_EN, Transition_Draw_EN;
+	 logic Done;
+	 
+	 
     
     // Interface between NIOS II and EZ-OTG chip
-    hpi_io_intf hpi_io_inst(
-                            .Clk(Clk),
-                            .Reset(Reset_h),
-                            // signals connected to NIOS II
-                            .from_sw_address(hpi_addr),
-                            .from_sw_data_in(hpi_data_in),
-                            .from_sw_data_out(hpi_data_out),
-                            .from_sw_r(hpi_r),
-                            .from_sw_w(hpi_w),
-                            .from_sw_cs(hpi_cs),
-                            .from_sw_reset(hpi_reset),
-                            // signals connected to EZ-OTG chip
-                            .OTG_DATA(OTG_DATA),    
-                            .OTG_ADDR(OTG_ADDR),    
-                            .OTG_RD_N(OTG_RD_N),    
-                            .OTG_WR_N(OTG_WR_N),    
-                            .OTG_CS_N(OTG_CS_N),
-                            .OTG_RST_N(OTG_RST_N)
-    );
+//    hpi_io_intf hpi_io_inst(
+//                            .Clk(Clk),
+//                            .Reset(Reset_h),
+//                            // signals connected to NIOS II
+//                            .from_sw_address(hpi_addr),
+//                            .from_sw_data_in(hpi_data_in),
+//                            .from_sw_data_out(hpi_data_out),
+//                            .from_sw_r(hpi_r),
+//                            .from_sw_w(hpi_w),
+//                            .from_sw_cs(hpi_cs),
+//                            .from_sw_reset(hpi_reset),
+//                            // signals connected to EZ-OTG chip
+//                            .OTG_DATA(OTG_DATA),    
+//                            .OTG_ADDR(OTG_ADDR),    
+//                            .OTG_RD_N(OTG_RD_N),    
+//                            .OTG_WR_N(OTG_WR_N),    
+//                            .OTG_CS_N(OTG_CS_N),
+//                            .OTG_RST_N(OTG_RST_N)
+//    );
      
      // You need to make sure that the port names here match the ports in Qsys-generated codes.
      lab7_soc nios_system(
@@ -117,10 +123,22 @@ module lab8( input               CLOCK_50,
     VGA_controller vga_controller_instance(.*,.Reset(Reset_h));
 	 
     // Which signal should be frame_clk?
-    ball ball_instance(.*,.Reset((Reset_s | Reset_h)),.frame_clk(VGA_VS));
+    //ball ball_instance(.*,.Reset((Reset_s | Reset_h)),.frame_clk(VGA_VS));
 	 
     
     color_mapper color_instance(.*);
+	 
+//	 DrawController ISDU (.*, .CLK(Clk), .RESET(Reset_s), .DrawWait(1'b0),.Start(Start_s), .NextRoom(1'b0));
+//	 
+//	 DrawRoom DR (.Draw_EN(Room_Draw_EN), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0));
+//	
+
+	 Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(8'd0), .DrawY(8'd0),
+			.SpriteX(7'd1), .SpriteY(7'd4), .is_8(1'b1), .Draw_EN(1'b1), .Done);
+		
+
+	
+	
 	 
 	 
     // Display keycode on hex display
