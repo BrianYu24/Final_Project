@@ -65,10 +65,12 @@ module lab8( input               CLOCK_50,
 	 logic is_ball;
 	 
 //	 logic Player_Draw_EN, Enemy_Draw_EN, Room_Draw_EN, Title_Draw_EN, Hud_Draw_EN, Transition_Draw_EN;
-	 logic Done, isBlack, we;
+	 logic Done, isBlack, we, is_8, Draw_EN, Draw_Room_Done;
 	 logic [4:0] data_Out, data_In, palette, FB_Data_In;
 	 logic [14:0] read_address, FB_write_address;
 	 logic [7:0] Red, Blue, Green;
+	 logic [7:0] NewDrawX, NewDrawY;
+	 logic [6:0] NewSpriteX, NewSpriteY;
 	 
 	 
     
@@ -133,15 +135,16 @@ module lab8( input               CLOCK_50,
 	 
 //	 DrawController ISDU (.*, .CLK(Clk), .RESET(Reset_s), .DrawWait(1'b0),.Start(Start_s), .NextRoom(1'b0));
 //	 
-//	 DrawRoom DR (.Draw_EN(Room_Draw_EN), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0));
-//	
-
-	 Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(8'd0), .DrawY(8'd0),
-			.SpriteX(7'd1), .SpriteY(7'd4), .is_8(1'b1), .Draw_EN(1'b1), .Done, .we, .palette(FB_Data_In),.write_address(FB_write_address) );
 
 
+	 Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(NewDrawX), .DrawY(NewDrawY),
+			.SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8, .Draw_EN, .Done, .we, .palette(FB_Data_In),.write_address(FB_write_address) );
 
-
+			
+	 DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), .NewDrawX(NewDrawX), .NewDrawY(NewDrawY),
+		.NewSpriteX(NewSpriteX), .NewSpriteY(NewSpriteY), .is_8, .Draw_FB_EN(Draw_EN), .ALLDone(Draw_Room_Done) 
+		);
+	
 
 
 //	 FrameBuffer FB(.data_In(5'd19), .write_address(15'd1), .read_address(15'd0), .we(1'b1), .Clk, .data_Out);

@@ -1,7 +1,7 @@
 module Draw_Frame_Buffer(
 	input CLK,RESET,
-	input [7:0] DrawX, DrawY,   ///0-168, 0-104
-	input [6:0] SpriteX, SpriteY,    ///0-96, 0-120
+	input [7:0] DrawX, DrawY,   		///0-168, 0-104	actual coordinates
+	input [6:0] SpriteX, SpriteY,    ///0-96, 0-120		actual coordinates
 	input is_8,
 	input Draw_EN,
 	
@@ -32,17 +32,17 @@ module Draw_Frame_Buffer(
 	//FrameBuffer FB(.data_In(5'd19), .read_address(15'b0),.write_address, .we, .Clk(CLK), .data_Out(out));
 
 
-	enum logic [4:0] {Halted, Drawing, DoneDrawing} State, Next_state;
+	enum logic [4:0] {Halted, Drawing, First_Drawing, Last_Drawing, DoneDrawing} State, Next_state;
 
 	always_ff @ (posedge CLK)
 	begin
 		if(RESET)
 		begin
 			State <= Halted;
-			count <= 7'b0;
+			count <= -7'b1;
 		end
-		else if (State == DoneDrawing)
-			count <= 7'b0;
+		else if (State == Halted)
+			count <= -7'b1;
 		else
 		begin
 			State <= Next_state;
@@ -65,19 +65,23 @@ module Draw_Frame_Buffer(
 			Halted:
 			begin
 				if(Draw_EN)
-					Next_state = Drawing;
+					Next_state = First_Drawing;
 				else
 					Next_state = Halted;
 			end
+			First_Drawing:
+				Next_state = Drawing;
 			Drawing:
 			begin
 				if(count == 7'd63 && is_8)
-					Next_state = DoneDrawing;
+					Next_state = Last_Drawing;
 				else if(count == 7'd143 && ~is_8)
-					Next_state = DoneDrawing;
+					Next_state = Last_Drawing;
 				else
 					Next_state = Drawing;
 			end
+			Last_Drawing:
+				Next_state = DoneDrawing;
 			DoneDrawing:
 				Next_state = Halted;
 		endcase
@@ -85,27 +89,56 @@ module Draw_Frame_Buffer(
 		case(State)
 			Halted:
 				Done = 1'b0;
-				
+			
+			First_Drawing:
+			begin
+				Done = 1'b0;
+				we = 1'b0;
+				if(is_8)
+				begin
+					NewSpriteX = SpriteX + (count%8);
+					NewSpriteY = SpriteY + (count/8);
+				end
+				else
+				begin
+					NewSpriteX = SpriteX + (count%12);
+					NewSpriteY = SpriteY + (count/12);
+				end
+			end
 			Drawing:
 			begin
 				Done = 1'b0;
 				we = 1'b1;
 				if(is_8)
 				begin
-					NewDrawX = DrawX + (count%8);
-					NewDrawY = DrawY + (count/8);
+					NewDrawX = DrawX + ((count-1)%8);
+					NewDrawY = DrawY + ((count-1)/8);
 					NewSpriteX = SpriteX + (count%8);
 					NewSpriteY = SpriteY + (count/8);
 				end
 				else
 				begin
-					NewDrawX = DrawX + (count%12);
-					NewDrawY = DrawY + (count/12);
+					NewDrawX = DrawX + ((count-1)%12);
+					NewDrawY = DrawY + ((count-1)/12);
 					NewSpriteX = SpriteX + (count%12);
 					NewSpriteY = SpriteY + (count/12);
 				end
 			end
-			
+			Last_Drawing:
+			begin
+				Done = 1'b0;
+				we = 1'b1;
+				if(is_8)
+				begin
+					NewDrawX = DrawX + ((count-1)%8);
+					NewDrawY = DrawY + ((count-1)/8);
+				end
+				else
+				begin
+					NewDrawX = DrawX + ((count-1)%12);
+					NewDrawY = DrawY + ((count-1)/12);
+				end
+			end
 			DoneDrawing:
 			begin
 				Done = 1'b1;
