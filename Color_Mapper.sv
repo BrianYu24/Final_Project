@@ -17,15 +17,18 @@
 module  color_mapper ( input              Clk,            // Whether current pixel belongs to ball 
                                                               //   or background (computed in ball.sv)
                        input        [9:0] DrawX, DrawY,       // Current pixel coordinates
-                       output logic [7:0] VGA_R, VGA_G, VGA_B // VGA RGB output
+                      // output logic [7:0] VGA_R, VGA_G, VGA_B // VGA RGB output
+							  
+							  output logic isBlack,
+							  output logic [14:0] read_address
                      );
     
     logic [7:0] Red, Green, Blue;
     
 	 
-	 logic [14:0] read_address;
-	 logic isBlack;
-	 logic [4:0] palette;
+//	 logic [14:0] read_address;
+//	 logic isBlack;
+//	 logic [4:0] palette;
 	 
 	 always_comb
 	 begin
@@ -42,24 +45,25 @@ module  color_mapper ( input              Clk,            // Whether current pix
 	 end
 	 
 	 //SpriteSheet(.read_address,.Clk,.data_Out(palette));
-	 FrameBuffer FB(.read_address,.Clk,.data_Out(palette),.we(1'b0));
-	 Palette PL (.VGA_R(Red),.VGA_G(Green),.VGA_B(Blue),.color(palette));
+//	 FrameBuffer FB(.data_In(5'd0),.write_address(15'd0), .read_address,.Clk,.data_Out(palette),.we(1'b0));
+//	 Palette PL (.VGA_R(Red),.VGA_G(Green),.VGA_B(Blue),.color(palette));
+
 	 
 	 
-	 always_comb
-	 begin
-		if(isBlack)
-		begin
-			VGA_R = 8'hFF;
-			VGA_G = 8'h00;
-			VGA_B = 8'hFF;
-		end
-		else
-		begin
-			VGA_R = Red;
-			VGA_G = Green;
-			VGA_B = Blue;
-		end
-	 end
+//	 always_comb
+//	 begin
+//		if(isBlack)
+//		begin
+//			VGA_R = 8'hFF;
+//			VGA_G = 8'h00;
+//			VGA_B = 8'hFF;
+//		end
+//		else
+//		begin
+//			VGA_R = Red;
+//			VGA_G = Green;
+//			VGA_B = Blue;
+//		end
+//	 end
     
 endmodule

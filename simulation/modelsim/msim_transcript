@@ -651,3 +651,19 @@
 #    Time: 0 ps  Iteration: 0  Instance: /testbench2/tp/FB
 add wave -position end  sim:/testbench2/tp/FB/mem
 add wave -position 9  sim:/testbench2/tp/FB/data_In
+restart
+run
+# GetModuleFileName: 找不到指定的模块。
+# 
+# 
+# GetModuleFileName: 找不到指定的模块。
+# 
+# 
+# ** Warning: (vsim-7) Failed to open readmem file "sprite_bytes/CompleteSpriteSheet.txt" in read mode.
+# No such file or directory. (errno = ENOENT)    : E:/Quartus/Project/Final/Final/My_ram.sv(21)
+#    Time: 0 ps  Iteration: 0  Instance: /testbench2/tp/ss
+# ** Warning: (vsim-7) Failed to open readmem file "sprite_bytes/DungeonMockup.txt" in read mode.
+# No such file or directory. (errno = ENOENT)    : E:/Quartus/Project/Final/Final/My_frame_buffer.sv(22)
+#    Time: 0 ps  Iteration: 0  Instance: /testbench2/tp/FB
+# End time: 15:47:19 on Apr 25,2020, Elapsed time: 0:45:24
+# Errors: 0, Warnings: 4

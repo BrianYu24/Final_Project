@@ -65,7 +65,10 @@ module lab8( input               CLOCK_50,
 	 logic is_ball;
 	 
 //	 logic Player_Draw_EN, Enemy_Draw_EN, Room_Draw_EN, Title_Draw_EN, Hud_Draw_EN, Transition_Draw_EN;
-	 logic Done;
+	 logic Done, isBlack, we;
+	 logic [4:0] data_Out, data_In, palette, FB_Data_In;
+	 logic [14:0] read_address, FB_write_address;
+	 logic [7:0] Red, Blue, Green;
 	 
 	 
     
@@ -126,7 +129,7 @@ module lab8( input               CLOCK_50,
     //ball ball_instance(.*,.Reset((Reset_s | Reset_h)),.frame_clk(VGA_VS));
 	 
     
-    color_mapper color_instance(.*);
+
 	 
 //	 DrawController ISDU (.*, .CLK(Clk), .RESET(Reset_s), .DrawWait(1'b0),.Start(Start_s), .NextRoom(1'b0));
 //	 
@@ -134,10 +137,41 @@ module lab8( input               CLOCK_50,
 //	
 
 	 Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(8'd0), .DrawY(8'd0),
-			.SpriteX(7'd1), .SpriteY(7'd4), .is_8(1'b1), .Draw_EN(1'b1), .Done);
-		
+			.SpriteX(7'd1), .SpriteY(7'd4), .is_8(1'b1), .Draw_EN(1'b1), .Done, .we, .palette(FB_Data_In),.write_address(FB_write_address) );
 
-	
+
+
+
+
+
+//	 FrameBuffer FB(.data_In(5'd19), .write_address(15'd1), .read_address(15'd0), .we(1'b1), .Clk, .data_Out);
+
+	 FrameBuffer FB(.data_In(FB_Data_In), .write_address(FB_write_address), .read_address,.Clk,.data_Out(palette),.we);
+		
+    color_mapper color_instance(.*);
+	 
+	 always_comb
+	 begin
+		if(isBlack)
+		begin
+			VGA_R = 8'hFF;
+			VGA_G = 8'h00;
+			VGA_B = 8'hFF;
+		end
+		else
+		begin
+			VGA_R = Red;
+			VGA_G = Green;
+			VGA_B = Blue;
+		end
+	 end
+	 
+	 
+	 Palette PL (.VGA_R(Red),.VGA_G(Green),.VGA_B(Blue),.color(palette));
+	 
+	 
+
+
 	
 	 
 	 

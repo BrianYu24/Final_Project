@@ -5,15 +5,17 @@ module Draw_Frame_Buffer(
 	input is_8,
 	input Draw_EN,
 	
-	output logic Done
+	output logic Done, we,
+	output logic [4:0] palette,
+	output logic [14:0] write_address
 	
 );
 
 	logic [14:0] read_address;
-	logic [14:0] write_address;
-	logic [4:0] palette;
-	logic [4:0] out;
-	logic we;
+//	logic [14:0] write_address;
+//	logic [4:0] palette;
+//	logic [4:0] out;
+//	logic we;
 	
 	logic [6:0] count;
 	
@@ -27,7 +29,7 @@ module Draw_Frame_Buffer(
 		.read_address, .Clk(CLK), .data_Out(palette));
 	
 	//FrameBuffer FB(.data_In(palette), .read_address(15'b0),.write_address, .we, .Clk(CLK), .data_Out(out));
-	FrameBuffer FB(.data_In(5'd19), .read_address(15'b0),.write_address, .we, .Clk(CLK), .data_Out(out));
+	//FrameBuffer FB(.data_In(5'd19), .read_address(15'b0),.write_address, .we, .Clk(CLK), .data_Out(out));
 
 
 	enum logic [4:0] {Halted, Drawing, DoneDrawing} State, Next_state;
