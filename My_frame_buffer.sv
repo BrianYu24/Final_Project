@@ -19,7 +19,8 @@ logic [4:0] mem[0:17471];
 
 initial
 begin
-	 $readmemh("sprite_bytes/DungeonMockup.txt", mem);
+	 $readmemh("sprite_bytes/white.txt", mem);
+	 //$readmemh("sprite_bytes/DungeonMockup.txt", mem);
 	 //$readmemh("sprite_bytes/CompleteSpriteSheet.txt", mem);
 end
 
@@ -29,8 +30,10 @@ end
 always_ff @ (posedge Clk) begin
 	if (we)
 	begin
-		mem[write_address] <= data_In;
-		
+		if (data_In != 5'b0)
+			mem[write_address] <= data_In;
+		else
+			mem[write_address] <= 5'd8;
 	end
 	
 	data_Out<= mem[read_address];

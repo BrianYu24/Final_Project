@@ -42,7 +42,10 @@ module Draw_Frame_Buffer(
 			count <= -7'b1;
 		end
 		else if (State == Halted)
+		begin
 			count <= -7'b1;
+			State <= Next_state;
+		end
 		else
 		begin
 			State <= Next_state;

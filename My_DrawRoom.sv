@@ -22,9 +22,10 @@ module DrawRoom(
 	logic addCount;
 	
 	assign Done = Done_Draw_FB;
+	assign is_8 = 1'b1;
 	
 	
-	localparam SPRITE_SIZE = 8;
+	localparam SPRITE_SIZE = 7'd8;
 	
 	always_comb
 	begin
@@ -60,11 +61,13 @@ module DrawRoom(
 	always_comb
 	begin
 		Next_state = State;
-		Draw_FB_EN = 1'b1;
+		
 		DrawX = 8'b0;
 		DrawY = 8'b0;
 		SpriteX = 7'b0;
 		SpriteY = 7'b0;
+		
+		Draw_FB_EN = 1'b1;
 		ALLDone = 1'b0;
 		
 		case(State)
@@ -82,19 +85,19 @@ module DrawRoom(
 				if(Done)
 					Next_state = TopWallFL;
 			TopWallFL:
-				if(count == 7'd19)
+				if(count == 8'd19)
 					Next_state = TopWallSL;
 			TopWallSL:
-				if(count == 7'd19)
+				if(count == 8'd19)
 					Next_state = LeftWall;
 			LeftWall:
-				if(count == 7'd9)
+				if(count == 8'd10)
 					Next_state = RightWall;
 			RightWall:
-				if(count == 7'd9)
+				if(count == 8'd10)
 					Next_state = Floor;
 			Floor:
-				if(count == 7'd171)
+				if(count == 8'd171)
 					Next_state = BottomLeftFL;
 			BottomLeftFL:
 				if(Done)
@@ -134,35 +137,35 @@ module DrawRoom(
 			end
 			TopRight:
 			begin
-				DrawY = 8'd20;
-				DrawX = 8'd0;
+				DrawY = 8'd0;
+				DrawX = 8'd20;
 				SpriteY = 7'd0;
 				SpriteX = 7'd3;
 			end
 			TopWallFL:
 			begin
 				DrawY = 8'd0;
-				DrawX = 8'd1*count;
+				DrawX = 8'd1*(count+1);
 				SpriteY = 7'd0;
 				SpriteX = 7'd1;
 			end
 			TopWallSL:
 			begin
 				DrawY = 8'd1;
-				DrawX = 8'd1*count;
+				DrawX = 8'd1*(count+1);
 				SpriteY = 7'd1;
 				SpriteX = 7'd1;
 			end
 			LeftWall:
 			begin
-				DrawY = 8'd1*count;
+				DrawY = 8'd1*(count+1);
 				DrawX = 8'd0;
 				SpriteY = 7'd1;
 				SpriteX = 7'd0;
 			end
 			RightWall:
 			begin
-				DrawY = 8'd1*count;
+				DrawY = 8'd1*(count+1);
 				DrawX = 8'd20;
 				SpriteY = 7'd1;
 				SpriteX = 7'd0;
@@ -205,20 +208,21 @@ module DrawRoom(
 			BottomWallFL:
 			begin
 				DrawY = 8'd11;
-				DrawX = 8'd1*count;
+				DrawX = 8'd1*(count+1);
 				SpriteY = 7'd0;
 				SpriteX = 7'd1;
 			end
 			BottomWallSL:
 			begin
 				DrawY = 8'd12;
-				DrawX = 8'd1*count;
+				DrawX = 8'd1*(count+1);
 				SpriteY = 7'd1;
 				SpriteX = 7'd1;
 			end
 			FinishedRoom:
 			begin
 				ALLDone = 1'b1;
+				Draw_FB_EN = 1'b0;
 			end
 		endcase
 	end

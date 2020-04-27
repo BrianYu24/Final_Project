@@ -31,9 +31,11 @@ vlog -vlog01compat -work lab7_soc +incdir+E:/Quartus/Project/Final/Final/lab7_so
 vlog -vlog01compat -work lab7_soc +incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules {E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_keycode.v}
 vlog -vlog01compat -work lab7_soc +incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules {E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_jtag_uart_0.v}
 vlog -vlog01compat -work lab7_soc +incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules {E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_Reset_s.v}
+vlog -sv -work work +incdir+E:/Quartus/Project/Final/Final {E:/Quartus/Project/Final/Final/My_DrawRoom.sv}
 vlog -sv -work work +incdir+E:/Quartus/Project/Final/Final {E:/Quartus/Project/Final/Final/My_DrawController.sv}
 vlog -sv -work work +incdir+E:/Quartus/Project/Final/Final {E:/Quartus/Project/Final/Final/VGA_controller.sv}
 vlog -sv -work work +incdir+E:/Quartus/Project/Final/Final {E:/Quartus/Project/Final/Final/HexDriver.sv}
+vlog -sv -work work +incdir+E:/Quartus/Project/Final/Final {E:/Quartus/Project/Final/Final/Color_Mapper.sv}
 vlog -sv -work work +incdir+E:/Quartus/Project/Final/Final {E:/Quartus/Project/Final/Final/My_Palette.sv}
 vlog -sv -work work +incdir+E:/Quartus/Project/Final/Final {E:/Quartus/Project/Final/Final/My_ram.sv}
 vlog -sv -work work +incdir+E:/Quartus/Project/Final/Final {E:/Quartus/Project/Final/Final/My_frame_buffer.sv}
@@ -60,7 +62,6 @@ vlog -sv -work lab7_soc +incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesi
 vlog -sv -work lab7_soc +incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules {E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_master_agent.sv}
 vlog -sv -work lab7_soc +incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules {E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_slave_translator.sv}
 vlog -sv -work lab7_soc +incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules {E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_master_translator.sv}
-vlog -sv -work work +incdir+E:/Quartus/Project/Final/Final {E:/Quartus/Project/Final/Final/Color_Mapper.sv}
 vlog -sv -work work +incdir+E:/Quartus/Project/Final/Final {E:/Quartus/Project/Final/Final/My_Draw_FB.sv}
 vlog -sv -work work +incdir+E:/Quartus/Project/Final/Final {E:/Quartus/Project/Final/Final/lab8.sv}
 

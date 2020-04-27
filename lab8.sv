@@ -138,11 +138,15 @@ module lab8( input               CLOCK_50,
 
 
 	 Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(NewDrawX), .DrawY(NewDrawY),
-			.SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8, .Draw_EN, .Done, .we, .palette(FB_Data_In),.write_address(FB_write_address) );
+			.SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8, .Draw_EN, .Done, .we, .palette(FB_Data_In),
+			.write_address(FB_write_address)
+		);
+		
 
 			
-	 DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), .NewDrawX(NewDrawX), .NewDrawY(NewDrawY),
-		.NewSpriteX(NewSpriteX), .NewSpriteY(NewSpriteY), .is_8, .Draw_FB_EN(Draw_EN), .ALLDone(Draw_Room_Done) 
+	 DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), 
+			.NewDrawX(NewDrawX), .NewDrawY(NewDrawY), .NewSpriteX(NewSpriteX), .NewSpriteY(NewSpriteY), .is_8, 
+			.Draw_FB_EN(Draw_EN), .ALLDone(Draw_Room_Done) 
 		);
 	
 
@@ -151,7 +155,7 @@ module lab8( input               CLOCK_50,
 
 	 FrameBuffer FB(.data_In(FB_Data_In), .write_address(FB_write_address), .read_address,.Clk,.data_Out(palette),.we);
 		
-    color_mapper color_instance(.*);
+    color_mapper color_instance(.*, .read_address, .isBlack);
 	 
 	 always_comb
 	 begin
