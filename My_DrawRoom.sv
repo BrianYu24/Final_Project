@@ -19,7 +19,6 @@ module DrawRoom(
 	
 //	logic Draw_FB_EN;
 	logic Done;
-	logic addCount;
 	
 	assign Done = Done_Draw_FB;
 	assign is_8 = 1'b1;
@@ -37,7 +36,7 @@ module DrawRoom(
 	
 
 	
-	enum logic [4:0] {Halted, TopLeft, TopRight, TopWallFL, TopWallSL, LeftWall, RightWall, Floor, BottomLeftFL, BottomLeftSL, BottomRightFL,BottomRightSL, BottomWallFL, BottomWallSL,FinishedRoom} State, Next_state;
+	enum logic [4:0] {Halted, TopLeft, TopRight, TopWallFL, TopWallSL, LeftWall, RightWall, Floor, BottomLeftFL, BottomLeftSL, BottomRightFL,BottomRightSL, BottomWallFL, BottomWallSL,FinishedRoom, Cycle} State, Next_state;
 
 	always_ff @ (posedge Clk)
 	begin
@@ -67,7 +66,7 @@ module DrawRoom(
 		SpriteX = 7'b0;
 		SpriteY = 7'b0;
 		
-		Draw_FB_EN = 1'b1;
+		Draw_FB_EN = 1'b0;
 		ALLDone = 1'b0;
 		
 		case(State)
@@ -112,13 +111,15 @@ module DrawRoom(
 				if(Done)
 					Next_state = BottomWallFL;
 			BottomWallFL:
-				if(count == 7'd19)
+				if(count == 8'd19)
 					Next_state = BottomWallSL;
 			BottomWallSL:
-				if(count == 7'd19)
+				if(count == 8'd19)
 					Next_state = FinishedRoom;
 			FinishedRoom:
-				Next_state = Halted;
+				Next_state = Cycle;
+			Cycle:
+				Next_state = Cycle;
 		endcase
 		
 		case(State)
@@ -133,6 +134,7 @@ module DrawRoom(
 				SpriteY = 7'd0;
 				SpriteX = 7'd0;
 				ALLDone = 1'b0;
+				Draw_FB_EN = 1'b1;
 				
 			end
 			TopRight:
@@ -141,6 +143,7 @@ module DrawRoom(
 				DrawX = 8'd20;
 				SpriteY = 7'd0;
 				SpriteX = 7'd3;
+				Draw_FB_EN = 1'b1;
 			end
 			TopWallFL:
 			begin
@@ -148,6 +151,7 @@ module DrawRoom(
 				DrawX = 8'd1*(count+1);
 				SpriteY = 7'd0;
 				SpriteX = 7'd1;
+				Draw_FB_EN = 1'b1;
 			end
 			TopWallSL:
 			begin
@@ -155,6 +159,7 @@ module DrawRoom(
 				DrawX = 8'd1*(count+1);
 				SpriteY = 7'd1;
 				SpriteX = 7'd1;
+				Draw_FB_EN = 1'b1;
 			end
 			LeftWall:
 			begin
@@ -162,6 +167,7 @@ module DrawRoom(
 				DrawX = 8'd0;
 				SpriteY = 7'd1;
 				SpriteX = 7'd0;
+				Draw_FB_EN = 1'b1;
 			end
 			RightWall:
 			begin
@@ -169,6 +175,7 @@ module DrawRoom(
 				DrawX = 8'd20;
 				SpriteY = 7'd1;
 				SpriteX = 7'd0;
+				Draw_FB_EN = 1'b1;
 			end
 			Floor:
 			begin
@@ -176,6 +183,7 @@ module DrawRoom(
 				DrawX = 8'd1+(count%19);
 				SpriteY = 7'd2;
 				SpriteX = 7'd3;
+				Draw_FB_EN = 1'b1;
 			end
 			BottomLeftFL:
 			begin
@@ -183,6 +191,7 @@ module DrawRoom(
 				DrawX = 8'd0;
 				SpriteY = 7'd0;
 				SpriteX = 7'd4;
+				Draw_FB_EN = 1'b1;
 			end
 			BottomLeftSL:
 			begin
@@ -190,6 +199,7 @@ module DrawRoom(
 				DrawX = 8'd0;
 				SpriteY = 7'd1;
 				SpriteX = 7'd4;
+				Draw_FB_EN = 1'b1;
 			end
 			BottomRightFL:
 			begin
@@ -197,6 +207,7 @@ module DrawRoom(
 				DrawX = 8'd20;
 				SpriteY = 7'd0;
 				SpriteX = 7'd5;
+				Draw_FB_EN = 1'b1;
 			end
 			BottomRightSL:
 			begin
@@ -204,6 +215,7 @@ module DrawRoom(
 				DrawX = 8'd20;
 				SpriteY = 7'd1;
 				SpriteX = 7'd5;
+				Draw_FB_EN = 1'b1;
 			end
 			BottomWallFL:
 			begin
@@ -211,6 +223,7 @@ module DrawRoom(
 				DrawX = 8'd1*(count+1);
 				SpriteY = 7'd0;
 				SpriteX = 7'd1;
+				Draw_FB_EN = 1'b1;
 			end
 			BottomWallSL:
 			begin
@@ -218,8 +231,14 @@ module DrawRoom(
 				DrawX = 8'd1*(count+1);
 				SpriteY = 7'd1;
 				SpriteX = 7'd1;
+				Draw_FB_EN = 1'b1;
 			end
 			FinishedRoom:
+			begin
+				ALLDone = 1'b1;
+				Draw_FB_EN = 1'b0;
+			end
+			Cycle:
 			begin
 				ALLDone = 1'b1;
 				Draw_FB_EN = 1'b0;

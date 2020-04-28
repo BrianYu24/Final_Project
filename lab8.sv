@@ -137,16 +137,26 @@ module lab8( input               CLOCK_50,
 //	 
 
 
-	 Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(NewDrawX), .DrawY(NewDrawY),
-			.SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8, .Draw_EN, .Done, .we, .palette(FB_Data_In),
+//	 Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(NewDrawX), .DrawY(NewDrawY),
+//			.SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8, .Draw_EN, .Done, .we, .palette(FB_Data_In),
+//			.write_address(FB_write_address)
+//		);
+	
+	Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(NewDrawX), .DrawY(NewDrawY),
+			.SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8, .Draw_EN(1'b1), .Done, .we, .palette(FB_Data_In),
 			.write_address(FB_write_address)
 		);
 		
 
 			
-	 DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), 
-			.NewDrawX(NewDrawX), .NewDrawY(NewDrawY), .NewSpriteX(NewSpriteX), .NewSpriteY(NewSpriteY), .is_8, 
-			.Draw_FB_EN(Draw_EN), .ALLDone(Draw_Room_Done) 
+//	 DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), 
+//			.NewDrawX(NewDrawX), .NewDrawY(NewDrawY), .NewSpriteX(NewSpriteX), .NewSpriteY(NewSpriteY), .is_8, 
+//			.Draw_FB_EN(Draw_EN), .ALLDone(Draw_Room_Done) 
+//		);
+
+	DrawPlayer(
+		.x(8'd40), .y(8'd40), .behavior(2'd1),.isLeft(1'b1), .period(2'd2), .Draw_En(1'b1), 
+		.NewDrawX, .NewDrawY, .SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8
 		);
 	
 

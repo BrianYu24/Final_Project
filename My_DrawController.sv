@@ -7,7 +7,7 @@
 //	output Player_Draw_EN, Enemy_Draw_EN, Room_Draw_EN, Title_Draw_EN, Hud_Draw_EN, Transition_Draw_EN
 //);
 //	
-//	enum logic [4:0] {DrawTitle, DrawRoom, DrawPlayer, DrawEnemy, DrawHud, DrawTransition} State, Next_state;
+//	enum logic [4:0] {DrawTitle, DrawRoom, DrawPlayer, DrawEnemy, DrawHud, DrawTransition,Stop} State, Next_state;
 //
 //	always_ff @(posedge CLK)
 //	begin
@@ -51,7 +51,12 @@
 //		end
 //		
 //		DrawPlayer:
-//			Next_state = DrawEnemy;
+//		//	Next_state = DrawEnemy;
+//			Next_state = Stop;
+//		
+//		Stop:
+//			Next_state = Stop;
+//		
 //		DrawEnemy:
 //			Next_state = DrawHud;
 //		DrawHud:
@@ -87,6 +92,9 @@
 //			
 //		DrawTransition:
 //			Transition_Draw_EN = 1'b1;
+//			
+//		Stop:
+//			;
 //		
 //		endcase
 //		
