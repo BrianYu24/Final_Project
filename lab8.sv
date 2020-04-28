@@ -65,12 +65,14 @@ module lab8( input               CLOCK_50,
 	 logic is_ball;
 	 
 //	 logic Player_Draw_EN, Enemy_Draw_EN, Room_Draw_EN, Title_Draw_EN, Hud_Draw_EN, Transition_Draw_EN;
-	 logic Done, isBlack, we, is_8, Draw_EN, Draw_Room_Done;
+	 logic Done, isBlack, we, is_8, Draw_EN, Draw_Room_Done, isLeft;
 	 logic [4:0] data_Out, data_In, palette, FB_Data_In;
 	 logic [14:0] read_address, FB_write_address;
 	 logic [7:0] Red, Blue, Green;
-	 logic [7:0] NewDrawX, NewDrawY;
+	 logic [7:0] NewDrawX, NewDrawY, PlayerX, PlayerY;
 	 logic [6:0] NewSpriteX, NewSpriteY;
+	 logic [1:0] behavior,period;
+	 
 	 
 	 
     
@@ -130,6 +132,8 @@ module lab8( input               CLOCK_50,
     // Which signal should be frame_clk?
     //ball ball_instance(.*,.Reset((Reset_s | Reset_h)),.frame_clk(VGA_VS));
 	 
+	 
+//	 Player_Controller PC (.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS));
     
 
 	 
@@ -149,15 +153,15 @@ module lab8( input               CLOCK_50,
 		
 
 			
-//	 DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), 
-//			.NewDrawX(NewDrawX), .NewDrawY(NewDrawY), .NewSpriteX(NewSpriteX), .NewSpriteY(NewSpriteY), .is_8, 
-//			.Draw_FB_EN(Draw_EN), .ALLDone(Draw_Room_Done) 
-//		);
-
-	DrawPlayer(
-		.x(8'd40), .y(8'd40), .behavior(2'd1),.isLeft(1'b1), .period(2'd2), .Draw_En(1'b1), 
-		.NewDrawX, .NewDrawY, .SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8
+	 DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), 
+			.NewDrawX(NewDrawX), .NewDrawY(NewDrawY), .NewSpriteX(NewSpriteX), .NewSpriteY(NewSpriteY), .is_8, 
+			.Draw_FB_EN(Draw_EN), .ALLDone(Draw_Room_Done) 
 		);
+
+//	DrawPlayer(
+//		.x(8'd40), .y(8'd40), .behavior(2'd1),.isLeft(1'b1), .period(2'd2), 
+//		.NewDrawX, .NewDrawY, .SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8
+//		);
 	
 
 

@@ -4,15 +4,14 @@ module DrawPlayer(
 	input [1:0] behavior,
 	input isLeft ,
 	input [1:0] period,
-	input Draw_En,
 	
 	output logic [7:0] NewDrawX, NewDrawY,
 	output logic [6:0] SpriteX, SpriteY,
 	output logic is_8
 );
 
-logic NewSpriteX;
-logic NewSpriteY;
+logic [6:0] NewSpriteX;
+logic [6:0] NewSpriteY;
 
 
 always_comb

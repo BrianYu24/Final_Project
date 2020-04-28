@@ -1,4 +1,22 @@
 
+State Machine - |lab8|DrawRoom:DR|State
+Name State.FinishedRoom State.BottomWallSL State.BottomWallFL State.BottomRightSL State.BottomRightFL State.BottomLeftSL State.BottomLeftFL State.Floor State.RightWall State.LeftWall State.TopWallSL State.TopWallFL State.TopRight State.TopLeft State.Halted 
+State.Halted 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+State.TopLeft 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+State.TopRight 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+State.TopWallFL 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+State.TopWallSL 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+State.LeftWall 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+State.RightWall 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+State.Floor 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+State.BottomLeftFL 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+State.BottomLeftSL 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+State.BottomRightFL 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+State.BottomRightSL 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+State.BottomWallFL 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+State.BottomWallSL 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.FinishedRoom 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
 State Machine - |lab8|Draw_Frame_Buffer:DFB|State
 Name State.Last_Drawing State.First_Drawing State.Drawing State.Halted State.DoneDrawing 
 State.Halted 0 0 0 0 0 

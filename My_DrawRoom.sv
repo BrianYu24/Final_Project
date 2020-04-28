@@ -117,9 +117,10 @@ module DrawRoom(
 				if(count == 8'd19)
 					Next_state = FinishedRoom;
 			FinishedRoom:
-				Next_state = Cycle;
-			Cycle:
-				Next_state = Cycle;
+				Next_state = Halted;
+//				Next_state = Cycle;
+//			Cycle:
+//				Next_state = Cycle;
 		endcase
 		
 		case(State)
@@ -238,11 +239,11 @@ module DrawRoom(
 				ALLDone = 1'b1;
 				Draw_FB_EN = 1'b0;
 			end
-			Cycle:
-			begin
-				ALLDone = 1'b1;
-				Draw_FB_EN = 1'b0;
-			end
+//			Cycle:
+//			begin
+//				ALLDone = 1'b1;
+//				Draw_FB_EN = 1'b0;
+//			end
 		endcase
 	end
 	

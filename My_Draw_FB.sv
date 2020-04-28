@@ -39,11 +39,15 @@ module Draw_Frame_Buffer(
 		if(RESET)
 		begin
 			State <= Halted;
-			count <= -7'b1;
+			count <= 7'b0;
 		end
 		else if (State == Halted)
 		begin
-			count <= -7'b1;
+			count <= 7'b0;
+			State <= Next_state;
+		end
+		else if (State == First_Drawing)
+		begin
 			State <= Next_state;
 		end
 		else
@@ -99,8 +103,8 @@ module Draw_Frame_Buffer(
 				we = 1'b0;
 				if(is_8)
 				begin
-					NewSpriteX = SpriteX + (count%8);
-					NewSpriteY = SpriteY + (count/8);
+					NewSpriteX = SpriteX + (count&7);
+					NewSpriteY = SpriteY + (count>>3);
 				end
 				else
 				begin
@@ -112,12 +116,19 @@ module Draw_Frame_Buffer(
 			begin
 				Done = 1'b0;
 				we = 1'b1;
+					
 				if(is_8)
 				begin
-					NewDrawX = DrawX + ((count-1)%8);
-					NewDrawY = DrawY + ((count-1)/8);
-					NewSpriteX = SpriteX + (count%8);
-					NewSpriteY = SpriteY + (count/8);
+					NewDrawX = DrawX + ((count-1)&7);
+					if (((count-1)%8 == 7'd7) & ((count)!=7'd0))
+						NewDrawY = DrawY + ((count-1)>>3);
+					else
+						NewDrawY = DrawY + ((count)>>3);
+//					if (((count-1)%8 == 7'd7) & (count-1)!=7'd7)
+//						NewDrawY = DrawY + ((count-1)>>3);
+//					NewDrawY = DrawY + ((count)>>3);
+					NewSpriteX = SpriteX + (count&7);
+					NewSpriteY = SpriteY + (count>>3);
 				end
 				else
 				begin
@@ -133,13 +144,13 @@ module Draw_Frame_Buffer(
 				we = 1'b1;
 				if(is_8)
 				begin
-					NewDrawX = DrawX + ((count-1)%8);
-					NewDrawY = DrawY + ((count-1)/8);
+					NewDrawX = DrawX + ((count-1)&7);
+					NewDrawY = DrawY + ((count-1)>>3);
 				end
 				else
 				begin
 					NewDrawX = DrawX + ((count-1)%12);
-					NewDrawY = DrawY + ((count-1)/12);
+					NewDrawY = DrawY + ((count-1)>>3);
 				end
 			end
 			DoneDrawing:
