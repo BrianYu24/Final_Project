@@ -81,32 +81,30 @@ module  Player_Controller ( input         Clk,                // 50 MHz clock
             //   both sides of the operator as UNSIGNED numbers.
             // e.g. Player_Y_Pos - Player_Size <= Player_Y_Min 
             // If Player_Y_Pos is 0, then Player_Y_Pos - Player_Size will not be -4, but rather a large positive number.
-            if( Player_Y_Pos + Player_Size >= Player_Y_Max )		// Player is at the bottom edge, BOUNCE!
-				begin
-                Player_Y_Motion_in = (~(Player_Y_Step) + 1'b1);  // 2's complement.
-					 Player_X_Motion_in = 10'd0;
-				end	 
-            else if ( Player_Y_Pos <= Player_Y_Min + Player_Size )  // Player is at the top edge, BOUNCE!
-				begin
-                Player_Y_Motion_in = Player_Y_Step;
-					 Player_X_Motion_in = 10'd0;
-				end
-            // TODO: Add other boundary detections and handle keypress here.
+//            if( Player_Y_Pos + Player_Size >= Player_Y_Max )		// Player is at the bottom edge, BOUNCE!
+//				begin
+//                Player_Y_Motion_in = (~(Player_Y_Step) + 1'b1);  // 2's complement.
+//					 Player_X_Motion_in = 10'd0;
+//				end	 
+//            else if ( Player_Y_Pos <= Player_Y_Min )  // Player is at the top edge, BOUNCE!
+//				begin
+//                Player_Y_Motion_in = Player_Y_Step;
+//					 Player_X_Motion_in = 10'd0;
+//				end
+//            // TODO: Add other boundary detections and handle keypress here.
+//				
+//				
+//				else if ( Player_X_Pos + Player_Size >= Player_X_Max )  // Player is at the right edge, BOUNCE!
+//				begin
+//                Player_X_Motion_in = (~(Player_X_Step) + 1'b1);  // 2's complement. 
+//					 Player_Y_Motion_in = 10'd0; 
+//				end
+//            else if ( Player_X_Pos <= Player_X_Min )  // Player is at the left edge, BOUNCE!
+//				begin
+//                Player_X_Motion_in = Player_X_Step;
+//					 Player_Y_Motion_in = 10'd0;
+//				end
 				
-				
-				else if ( Player_X_Pos + Player_Size >= Player_X_Max )  // Player is at the bottom edge, BOUNCE!
-				begin
-                Player_X_Motion_in = (~(Player_X_Step) + 1'b1);  // 2's complement. 
-					 Player_Y_Motion_in = 10'd0; 
-				end
-            else if ( Player_X_Pos <= Player_X_Min + Player_Size )  // Player is at the top edge, BOUNCE!
-				begin
-                Player_X_Motion_in = Player_X_Step;
-					 Player_Y_Motion_in = 10'd0;
-				end
-				
-				else
-				begin
 				
 					if (keycode == 8'd26)			//W pressed
 					begin
@@ -154,13 +152,26 @@ module  Player_Controller ( input         Clk,                // 50 MHz clock
 						behavior_in = 2'b0;
 						period_in = 2'b0;
 					end
-					
-				end
+
         
         
             // Update the Player's position with its motion
-            Player_X_Pos_in = Player_X_Pos + Player_X_Motion;
-            Player_Y_Pos_in = Player_Y_Pos + Player_Y_Motion;
+				
+				Player_X_Pos_in = Player_X_Pos;
+            Player_Y_Pos_in = Player_Y_Pos;
+				if (Player_X_Pos + Player_X_Motion > Player_X_Max)
+					;
+				else if (Player_X_Pos < Player_X_Min)
+					;
+				else if (Player_Y_Pos + Player_Size > Player_Y_Max)
+					;
+				else if (Player_Y_Pos < Player_Y_Min)
+					;
+				else
+				begin
+					Player_X_Pos_in = Player_X_Pos + Player_X_Motion;
+					Player_Y_Pos_in = Player_Y_Pos + Player_Y_Motion;
+				end
         end
         
     end

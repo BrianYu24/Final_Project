@@ -65,7 +65,7 @@ module lab8( input               CLOCK_50,
 	 logic is_ball;
 	 
 //	 logic Player_Draw_EN, Enemy_Draw_EN, Room_Draw_EN, Title_Draw_EN, Hud_Draw_EN, Transition_Draw_EN;
-	 logic Done, isBlack, we, is_8, Draw_EN, Draw_Room_Done, isLeft;
+	 logic Done, isBlack, we, is_8, Draw_EN, isLeft;
 	 logic [4:0] data_Out, data_In, palette, FB_Data_In;
 	 logic [14:0] read_address, FB_write_address;
 	 logic [7:0] Red, Blue, Green;
@@ -76,7 +76,7 @@ module lab8( input               CLOCK_50,
 	 
 	 logic [6:0] RoomSpriteX, RoomSpriteY, PlayerSpriteX, PlayerSpriteY;
 	 logic [7:0] RoomDrawX, RoomDrawY, PlayerDrawX, PlayerDrawY;
-	 logic Roomis_8, Playeris_8;
+	 logic Roomis_8, Playeris_8, Draw_Room_Done;
 	 logic [2:0] Draw_state;
 	 
 	 
@@ -138,22 +138,13 @@ module lab8( input               CLOCK_50,
     // Which signal should be frame_clk?
     //ball ball_instance(.*,.Reset((Reset_s | Reset_h)),.frame_clk(VGA_VS));
 	 
-	 
-	 
-	 
-	 Player_Controller PC (
-			.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS),
-			.keycode, .PlayerX, .PlayerY,
-			.behavior, .period, .isLeft
-	 );
-	 
-	 
+		
+	
 
+	DrawController ISDU (.*, .CLK(Clk), .RESET(Reset_s|Reset_h), .DrawWait(1'b0),.Start(1'b1), .NextRoom(1'b0),
+			.Done(Done), .DrawRoomDone(Draw_Room_Done)
+	); 
 	 
-	 
-	 DrawController ISDU (.*, .CLK(Clk), .RESET(Reset_s|Reset_h), .DrawWait(1'b0),.Start(1'b1), .NextRoom(1'b0));
-
-
 	always_comb
 	begin
 		NewDrawX = 8'd0;
@@ -181,20 +172,33 @@ module lab8( input               CLOCK_50,
 		endcase
 	
 	end
-	
-
-
-			
+	 
+	 
 	DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), 
 			.NewDrawX(RoomDrawX), .NewDrawY(RoomDrawY), .NewSpriteX(RoomSpriteX), .NewSpriteY(RoomSpriteY), .is_8(Roomis_8), 
 			.Draw_FB_EN(Draw_EN), .ALLDone(Draw_Room_Done) 
-		);
-
-	DrawPlayer DP(
-		.x(PlayerX), .y(PlayerY), .behavior,.isLeft, .period, 
-		.NewDrawX(PlayerDrawX), .NewDrawY(PlayerDrawY), .SpriteX(PlayerSpriteX), .SpriteY(PlayerSpriteY), .is_8(Playeris_8)
-		);
+	); 
+	 
+	 
+	Player_Controller PC (
+			.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS),
+			.keycode, .PlayerX, .PlayerY,
+			.behavior, .period, .isLeft
+	);
 	
+	DrawPlayer DP(
+			.x(PlayerX), .y(PlayerY), .behavior,.isLeft, .period, 
+			.NewDrawX(PlayerDrawX), .NewDrawY(PlayerDrawY), .SpriteX(PlayerSpriteX), .SpriteY(PlayerSpriteY), .is_8(Playeris_8)
+	);
+	 
+	 
+
+	 
+	 
+
+
+
+
 	
 
 //	 Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(NewDrawX), .DrawY(NewDrawY),
@@ -203,18 +207,21 @@ module lab8( input               CLOCK_50,
 //		);
 	
 	Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(NewDrawX), .DrawY(NewDrawY),
-		.SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8, .Draw_EN(1'b1), .Done, .we, .palette(FB_Data_In),
-		.write_address(FB_write_address)
-		);
+			.SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8, .Draw_EN(1'b1), .Done, .we, .palette(FB_Data_In),
+			.write_address(FB_write_address)
+	);
 
-//	 FrameBuffer FB(.data_In(5'd19), .write_address(15'd1), .read_address(15'd0), .we(1'b1), .Clk, .data_Out);
+//	FrameBuffer FB(.data_In(5'd19), .write_address(15'd1), .read_address(15'd0), .we(1'b1), .Clk, .data_Out);
 
-	 FrameBuffer FB(.data_In(FB_Data_In), .write_address(FB_write_address), .read_address,.Clk,.data_Out(palette),.we);
+	FrameBuffer FB(.data_In(FB_Data_In), .write_address(FB_write_address), .read_address,.Clk,.data_Out(palette),.we);
 		
-    color_mapper color_instance(.*, .read_address, .isBlack);
+   color_mapper color_instance(.*, .read_address, .isBlack);
+	
+	Palette PL (.VGA_R(Red),.VGA_G(Green),.VGA_B(Blue),.color(palette));
 	 
-	 always_comb
-	 begin
+	 
+	always_comb
+	begin
 		if(isBlack)
 		begin
 			VGA_R = 8'hFF;
@@ -227,10 +234,10 @@ module lab8( input               CLOCK_50,
 			VGA_G = Green;
 			VGA_B = Blue;
 		end
-	 end
+	end
 	 
 	 
-	 Palette PL (.VGA_R(Red),.VGA_G(Green),.VGA_B(Blue),.color(palette));
+	 
 	 
 	 
 

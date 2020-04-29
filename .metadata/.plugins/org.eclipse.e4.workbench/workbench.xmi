@@ -59,7 +59,7 @@
                   <children xsi:type="advanced:Placeholder" xmi:id="_XkvaXoppEequPvXSM7imyA" elementId="org.eclipse.ui.views.ContentOutline" ref="_XkxP04ppEequPvXSM7imyA"/>
                 </children>
               </children>
-              <children xsi:type="basic:PartStack" xmi:id="_XkvaX4ppEequPvXSM7imyA" elementId="bottom" containerData="4040" selectedElement="_XkvaYIppEequPvXSM7imyA">
+              <children xsi:type="basic:PartStack" xmi:id="_XkvaX4ppEequPvXSM7imyA" elementId="bottom" containerData="4040" selectedElement="_XkvaYoppEequPvXSM7imyA">
                 <tags>active</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_XkvaYIppEequPvXSM7imyA" elementId="org.eclipse.ui.views.ProblemView" ref="_XkxPh4ppEequPvXSM7imyA"/>
                 <children xsi:type="advanced:Placeholder" xmi:id="_XkvaYYppEequPvXSM7imyA" elementId="org.eclipse.ui.views.TaskList" ref="_XkxPjoppEequPvXSM7imyA"/>
@@ -237,7 +237,6 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view PRIMARY_SORT_FIELD=&quot;org.eclipse.ui.ide.severityAndDescriptionField&quot; categoryGroup=&quot;org.eclipse.ui.ide.severity&quot; markerContentGenerator=&quot;org.eclipse.ui.ide.problemsGenerator&quot; partName=&quot;Problems&quot;>&#xD;&#xA;&lt;columnWidths org.eclipse.ui.ide.locationField=&quot;105&quot; org.eclipse.ui.ide.markerType=&quot;105&quot; org.eclipse.ui.ide.pathField=&quot;140&quot; org.eclipse.ui.ide.resourceField=&quot;105&quot; org.eclipse.ui.ide.severityAndDescriptionField=&quot;350&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.severityAndDescriptionField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.resourceField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.pathField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.locationField&quot;/>&#xD;&#xA;&lt;visible IMemento.internal.id=&quot;org.eclipse.ui.ide.markerType&quot;/>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
-      <tags>active</tags>
       <menus xmi:id="_XkxPiIppEequPvXSM7imyA" elementId="org.eclipse.ui.views.ProblemView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -262,7 +261,7 @@
         <tags>popup:org.eclipse.ui.views.ProblemView</tags>
         <tags>popup:org.eclipse.ui.ide.MarkersView</tags>
       </menus>
-      <toolbar xmi:id="_XkxPjYppEequPvXSM7imyA" elementId="org.eclipse.ui.views.ProblemView"/>
+      <toolbar xmi:id="_XkxPjYppEequPvXSM7imyA" elementId="org.eclipse.ui.views.ProblemView" visible="false"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_XkxPjoppEequPvXSM7imyA" elementId="org.eclipse.ui.views.TaskList" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Tasks" iconURI="platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/tasks_tsk.png" tooltip="" closeable="true">
       <tags>View</tags>
@@ -272,7 +271,7 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
-      <tags>highlighted</tags>
+      <tags>active</tags>
       <menus xmi:id="_XkxPkIppEequPvXSM7imyA" elementId="org.eclipse.ui.console.ConsoleView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -325,7 +324,7 @@
         <tags>menuContribution:popup</tags>
         <tags>popup:org.eclipse.debug.ui.ProcessConsoleType.#ContextMenu</tags>
       </menus>
-      <toolbar xmi:id="_XkxPnYppEequPvXSM7imyA" elementId="org.eclipse.ui.console.ConsoleView" visible="false"/>
+      <toolbar xmi:id="_XkxPnYppEequPvXSM7imyA" elementId="org.eclipse.ui.console.ConsoleView"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_XkxPz4ppEequPvXSM7imyA" elementId="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:*" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Nios II Console" iconURI="platform:/plugin/com.altera.sbtgui.launch/icons/target.gif" tooltip="This Altera view is provided to monitor the input and output streams of an embedded process. The stop button turns the bytestream service off but does not pause the processor." closeable="true">
       <tags>View</tags>
@@ -390,7 +389,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XkxP_IppEequPvXSM7imyA" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_VeitYIpqEeqlH95P63x72g" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_Xk2JYIppEequPvXSM7imyA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_hwj0cIpxEeq-xtgH37JOlQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_Xk2JYIppEequPvXSM7imyA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XkxQCoppEequPvXSM7imyA" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -414,7 +413,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XkxQR4ppEequPvXSM7imyA" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_VeqpMIpqEeqlH95P63x72g" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_Xk2I0oppEequPvXSM7imyA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_hwpUAIpxEeq-xtgH37JOlQ" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_Xk2I0oppEequPvXSM7imyA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_XkxQUoppEequPvXSM7imyA" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
