@@ -32,8 +32,8 @@ always_ff @ (posedge Clk) begin
 	begin
 		if (data_In != 5'b0)
 			mem[write_address] <= data_In;
-		else
-			mem[write_address] <= 5'd8;
+//		else
+//			mem[write_address] <= 5'd8;
 	end
 	
 	data_Out<= mem[read_address];

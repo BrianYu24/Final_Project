@@ -124,9 +124,7 @@ module Draw_Frame_Buffer(
 						NewDrawY = DrawY + ((count-1)>>3);
 					else
 						NewDrawY = DrawY + ((count)>>3);
-//					if (((count-1)%8 == 7'd7) & (count-1)!=7'd7)
-//						NewDrawY = DrawY + ((count-1)>>3);
-//					NewDrawY = DrawY + ((count)>>3);
+						
 					NewSpriteX = SpriteX + (count&7);
 					NewSpriteY = SpriteY + (count>>3);
 				end
