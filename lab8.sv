@@ -74,6 +74,12 @@ module lab8( input               CLOCK_50,
 	 logic [1:0] behavior,period;
 	 
 	 
+	 logic [6:0] RoomSpriteX, RoomSpriteY, PlayerSpriteX, PlayerSpriteY;
+	 logic [7:0] RoomDrawX, RoomDrawY, PlayerDrawX, PlayerDrawY;
+	 logic Roomis_8, Playeris_8;
+	 logic [2:0] Draw_state;
+	 
+	 
 	 
     
     // Interface between NIOS II and EZ-OTG chip
@@ -135,23 +141,60 @@ module lab8( input               CLOCK_50,
 	 
 	 
 	 
-	 Player_Controller PC (.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS));
+	 Player_Controller PC (
+			.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS),
+			.keycode, .PlayerX, .PlayerY,
+			.behavior, .period, .isLeft
+	 );
 	 
 	 
-//	 DrawController ISDU (.*, .CLK(Clk), .RESET(Reset_s), .DrawWait(1'b0),.Start(Start_s), .NextRoom(1'b0));
-//	 
+
+	 
+	 
+	 DrawController ISDU (.*, .CLK(Clk), .RESET(Reset_s|Reset_h), .DrawWait(1'b0),.Start(1'b1), .NextRoom(1'b0));
+
+
+	always_comb
+	begin
+		NewDrawX = 8'd0;
+		NewDrawY = 8'd0;
+		NewSpriteX = 7'd0;
+		NewSpriteY = 7'd0;
+		is_8 = 1'b0;
+		case(Draw_state)
+			3'd2: 
+			begin
+				NewDrawX = RoomDrawX;
+				NewDrawY = RoomDrawY;
+				NewSpriteX = RoomSpriteX;
+				NewSpriteY = RoomSpriteY;
+				is_8 = Roomis_8;
+			end
+			3'd3:
+			begin
+				NewDrawX = PlayerDrawX;
+			   NewDrawY = PlayerDrawY;
+			   NewSpriteX = PlayerSpriteX;
+			   NewSpriteY = PlayerSpriteY;
+				is_8 = Playeris_8;
+			end
+		endcase
+	
+	end
+	
 
 
 			
-//	 DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), 
-//			.NewDrawX(NewDrawX), .NewDrawY(NewDrawY), .NewSpriteX(NewSpriteX), .NewSpriteY(NewSpriteY), .is_8, 
-//			.Draw_FB_EN(Draw_EN), .ALLDone(Draw_Room_Done) 
-//		);
-
-	DrawPlayer(
-		.x(PlayerX), .y(PlayerY), .behavior,.isLeft, .period, 
-		.NewDrawX, .NewDrawY, .SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8
+	DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), 
+			.NewDrawX(RoomDrawX), .NewDrawY(RoomDrawY), .NewSpriteX(RoomSpriteX), .NewSpriteY(RoomSpriteY), .is_8(Roomis_8), 
+			.Draw_FB_EN(Draw_EN), .ALLDone(Draw_Room_Done) 
 		);
+
+	DrawPlayer DP(
+		.x(PlayerX), .y(PlayerY), .behavior,.isLeft, .period, 
+		.NewDrawX(PlayerDrawX), .NewDrawY(PlayerDrawY), .SpriteX(PlayerSpriteX), .SpriteY(PlayerSpriteY), .is_8(Playeris_8)
+		);
+	
 	
 
 //	 Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(NewDrawX), .DrawY(NewDrawY),

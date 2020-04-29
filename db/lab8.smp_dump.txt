@@ -7,6 +7,34 @@ State.First_Drawing 0 1 0 1 0
 State.Last_Drawing 1 0 0 1 0 
 State.DoneDrawing 0 0 0 1 1 
 
+State Machine - |lab8|DrawRoom:DR|State
+Name State.FinishedRoom State.BottomWallSL State.BottomWallFL State.BottomRightSL State.BottomRightFL State.BottomLeftSL State.BottomLeftFL State.Floor State.RightWall State.LeftWall State.TopWallSL State.TopWallFL State.TopRight State.TopLeft State.Halted 
+State.Halted 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+State.TopLeft 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+State.TopRight 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+State.TopWallFL 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+State.TopWallSL 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+State.LeftWall 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+State.RightWall 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+State.Floor 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+State.BottomLeftFL 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+State.BottomLeftSL 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+State.BottomRightFL 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+State.BottomRightSL 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+State.BottomWallFL 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+State.BottomWallSL 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.FinishedRoom 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |lab8|DrawController:ISDU|State
+Name State.Stop State.DrawTransition State.DrawHud State.DrawEnemy State.DrawPlayer State.DrawRoom State.DrawTitle 
+State.DrawTitle 0 0 0 0 0 0 0 
+State.DrawRoom 0 0 0 0 0 1 1 
+State.DrawPlayer 0 0 0 0 1 0 1 
+State.DrawEnemy 0 0 0 1 0 0 1 
+State.DrawHud 0 0 1 0 0 0 1 
+State.DrawTransition 0 1 0 0 0 0 1 
+State.Stop 1 0 0 0 0 0 1 
+
 State Machine - |lab8|lab7_soc:nios_system|lab7_soc_sdram:sdram|m_next
 Name m_next.010000000 m_next.000010000 m_next.000001000 m_next.000000001 
 m_next.000000001 0 0 0 0 

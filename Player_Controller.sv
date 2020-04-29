@@ -21,6 +21,12 @@ module  Player_Controller ( input         Clk,                // 50 MHz clock
     
     logic [7:0] Player_X_Pos, Player_X_Motion, Player_Y_Pos, Player_Y_Motion;
     logic [7:0] Player_X_Pos_in, Player_X_Motion_in, Player_Y_Pos_in, Player_Y_Motion_in;
+	 logic isLeft_in;
+	 logic [1:0] behavior_in;
+	 logic [1:0] period_in;
+	 
+	 assign PlayerX = Player_X_Pos;
+	 assign PlayerY = Player_Y_Pos;
     
     //////// Do not modify the always_ff blocks. ////////
     // Detect rising edge of frame_clk
@@ -37,7 +43,10 @@ module  Player_Controller ( input         Clk,                // 50 MHz clock
             Player_X_Pos <= Player_X_Center;
             Player_Y_Pos <= Player_Y_Center;
             Player_X_Motion <= 8'd0;
-            Player_Y_Motion <= Player_Y_Step;
+            Player_Y_Motion <= 8'd0;
+				isLeft <= 1'b0;
+				period <= 2'b0;
+				behavior <= 2'b0;
         end
         else
         begin
@@ -45,7 +54,11 @@ module  Player_Controller ( input         Clk,                // 50 MHz clock
             Player_Y_Pos <= Player_Y_Pos_in;
             Player_X_Motion <= Player_X_Motion_in;
             Player_Y_Motion <= Player_Y_Motion_in;
+				isLeft <= isLeft_in;
+				period <= period_in;
+				behavior <= behavior_in;
         end
+		 
     end
     //////// Do not modify the always_ff blocks. ////////
     
@@ -55,8 +68,11 @@ module  Player_Controller ( input         Clk,                // 50 MHz clock
         // By default, keep motion and position unchanged
         Player_X_Pos_in = Player_X_Pos;
         Player_Y_Pos_in = Player_Y_Pos;
-        Player_X_Motion_in = 8'd0;
-        Player_Y_Motion_in = 8'd0;
+        Player_X_Motion_in = Player_X_Motion;
+        Player_Y_Motion_in = Player_Y_Motion;
+		  isLeft_in = isLeft;
+		  period_in = period;
+		  behavior_in = behavior;
         
         // Update position and motion only at rising edge of frame clock
         if (frame_clk_rising_edge)
@@ -94,31 +110,51 @@ module  Player_Controller ( input         Clk,                // 50 MHz clock
 				
 					if (keycode == 8'd26)			//W pressed
 					begin
-						Player_Y_Motion_in = (~(Player_Y_Step) + 1'b1);
-						Player_X_Motion_in = 10'd0;
+						Player_Y_Motion_in = (~(Player_Y_Step) + 8'b1);
+						Player_X_Motion_in = 8'd0;
+						behavior_in = 2'b1;
+						period_in = (period+1)%4;
 					end
 					else if (keycode == 8'd22)	//S pressed
 					begin
 						Player_Y_Motion_in = Player_Y_Step;
-						Player_X_Motion_in = 10'd0;
+						Player_X_Motion_in = 8'd0;
+						behavior_in = 2'b1;
+						period_in = (period+1)%4;
 					end
 					else if (keycode == 8'd4)	//A pressed
 					begin
-						Player_X_Motion_in = (~(Player_X_Step) + 1'b1);
-						Player_Y_Motion_in = 10'd0;
+						Player_X_Motion_in = (~(Player_X_Step) + 8'b1);
+						Player_Y_Motion_in = 8'd0;
+						behavior_in = 2'b1;
+						isLeft_in = 1'b1;
+						period_in = (period+1)%4;
 					end
 					else if (keycode == 8'd7)	//D pressed
 					begin
 						Player_X_Motion_in = Player_X_Step;
-						Player_Y_Motion_in = 10'd0;
+						Player_Y_Motion_in = 8'd0;
+						behavior_in = 2'b1;
+						isLeft_in = 1'b0;
+						period_in = (period+1)%4;
+					end
+					
+					else if (keycode == 8'd44)	//space pressed
+					begin
+						Player_X_Motion_in = 8'd0;
+						Player_Y_Motion_in = 8'd0;
+						behavior_in = 2'd2;
+						period_in = (period+1)%4;
 					end
 
-					else 
+					else 								//Nothing pressed
 					begin
 						Player_X_Motion_in = 8'b0;
 						Player_Y_Motion_in = 8'b0;
+						behavior_in = 2'b0;
+						period_in = 2'b0;
 					end
-				
+					
 				end
         
         

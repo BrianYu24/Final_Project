@@ -131,7 +131,10 @@ module Draw_Frame_Buffer(
 				else
 				begin
 					NewDrawX = DrawX + ((count-1)%12);
-					NewDrawY = DrawY + ((count-1)/12);
+					if (((count-1)%12 == 7'd11) & ((count)!=7'd0))
+						NewDrawY = DrawY + ((count-1)/12);
+					else
+						NewDrawY = DrawY + ((count)/12);
 					NewSpriteX = SpriteX + (count%12);
 					NewSpriteY = SpriteY + (count/12);
 				end
@@ -148,7 +151,7 @@ module Draw_Frame_Buffer(
 				else
 				begin
 					NewDrawX = DrawX + ((count-1)%12);
-					NewDrawY = DrawY + ((count-1)>>3);
+					NewDrawY = DrawY + ((count-1)/12);
 				end
 			end
 			DoneDrawing:
