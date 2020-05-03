@@ -5,7 +5,7 @@ module DrawRoom(
 	
 	output logic [7:0] NewDrawX, NewDrawY,
 	output logic [6:0] NewSpriteX, NewSpriteY,
-	output logic is_8, Draw_FB_EN, ALLDone
+	output logic is_8, ALLDone
 );
 
 
@@ -17,7 +17,7 @@ module DrawRoom(
 //	logic [7:0] NewDrawX, NewDrawY;
 	logic [7:0] count;
 	
-//	logic Draw_FB_EN;
+	logic Draw_FB_EN;
 	logic Done;
 	
 	assign Done = Done_Draw_FB;

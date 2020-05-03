@@ -2,8 +2,10 @@ module DrawEnemy(
 	input [7:0] x , 
 	input [7:0] y ,
 	input [1:0] behavior,
-	input isLeft ,
+	input isLeft,
 	input [1:0] period,
+	input [2:0] alive,
+	
 	
 	output logic [7:0] NewDrawX, NewDrawY,
 	output logic [6:0] SpriteX, SpriteY,

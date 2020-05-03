@@ -65,20 +65,22 @@ module lab8( input               CLOCK_50,
 	 logic is_ball;
 	 
 //	 logic Player_Draw_EN, Enemy_Draw_EN, Room_Draw_EN, Title_Draw_EN, Hud_Draw_EN, Transition_Draw_EN;
-	 logic Done, isBlack, we, is_8, Draw_EN, isLeft;
+	 logic Done, isBlack, we, is_8, Draw_EN;
 	 logic [4:0] data_Out, data_In, palette, FB_Data_In;
 	 logic [14:0] read_address, FB_write_address;
 	 logic [7:0] Red, Blue, Green;
-	 logic [7:0] NewDrawX, NewDrawY, PlayerX, PlayerY;
+	 logic [7:0] NewDrawX, NewDrawY, PlayerX, PlayerY, EnemyX, EnemyY;
 	 logic [6:0] NewSpriteX, NewSpriteY;
-	 logic [1:0] behavior,period;
+	 logic [1:0] Player_behavior,Player_period, Enemy_behavior, Enemy_period;
 	 
 	 
-	 logic [6:0] RoomSpriteX, RoomSpriteY, PlayerSpriteX, PlayerSpriteY;
-	 logic [7:0] RoomDrawX, RoomDrawY, PlayerDrawX, PlayerDrawY;
-	 logic Roomis_8, Playeris_8, Draw_Room_Done;
+	 logic [6:0] RoomSpriteX, RoomSpriteY, PlayerSpriteX, PlayerSpriteY, EnemySpriteX, EnemySpriteY;
+	 logic [7:0] RoomDrawX, RoomDrawY, PlayerDrawX, PlayerDrawY, EnemyDrawX, EnemyDrawY;
+	 logic Roomis_8, Playeris_8, Draw_Room_Done, Enemyis_8;
 	 logic [2:0] Draw_state;
-	 
+	 logic alive, Player_isLeft, Enemy_isLeft;
+
+	
 	 
 	 
     
@@ -152,7 +154,16 @@ module lab8( input               CLOCK_50,
 		NewSpriteX = 7'd0;
 		NewSpriteY = 7'd0;
 		is_8 = 1'b0;
+		Draw_EN = 1'b0;
 		case(Draw_state)
+			3'd0: 
+			begin
+				Draw_EN = 1'b0;
+			end
+			3'd1: 
+			begin
+				Draw_EN = 1'b0;
+			end
 			3'd2: 
 			begin
 				NewDrawX = RoomDrawX;
@@ -160,6 +171,7 @@ module lab8( input               CLOCK_50,
 				NewSpriteX = RoomSpriteX;
 				NewSpriteY = RoomSpriteY;
 				is_8 = Roomis_8;
+				Draw_EN = 1'b1;
 			end
 			3'd3:
 			begin
@@ -168,6 +180,16 @@ module lab8( input               CLOCK_50,
 			   NewSpriteX = PlayerSpriteX;
 			   NewSpriteY = PlayerSpriteY;
 				is_8 = Playeris_8;
+				Draw_EN = 1'b1;
+			end
+			3'd4:
+			begin
+				NewDrawX = EnemyDrawX;
+			   NewDrawY = EnemyDrawY;
+			   NewSpriteX = EnemySpriteX;
+			   NewSpriteY = EnemySpriteY;
+				is_8 = Enemyis_8;
+				Draw_EN = 1'b1;
 			end
 		endcase
 	
@@ -176,20 +198,36 @@ module lab8( input               CLOCK_50,
 	 
 	DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), 
 			.NewDrawX(RoomDrawX), .NewDrawY(RoomDrawY), .NewSpriteX(RoomSpriteX), .NewSpriteY(RoomSpriteY), .is_8(Roomis_8), 
-			.Draw_FB_EN(Draw_EN), .ALLDone(Draw_Room_Done) 
+			.ALLDone(Draw_Room_Done) 
 	); 
 	 
 	 
 	Player_Controller PC (
 			.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS),
 			.keycode, .PlayerX, .PlayerY,
-			.behavior, .period, .isLeft
+			.behavior(Player_behavior), .period(Player_period), .isLeft(Player_isLeft)
 	);
 	
 	DrawPlayer DP(
-			.x(PlayerX), .y(PlayerY), .behavior,.isLeft, .period, 
+			.x(PlayerX), .y(PlayerY), .behavior(Player_behavior),.isLeft(Player_isLeft), .period(Player_period), 
 			.NewDrawX(PlayerDrawX), .NewDrawY(PlayerDrawY), .SpriteX(PlayerSpriteX), .SpriteY(PlayerSpriteY), .is_8(Playeris_8)
 	);
+	
+	
+	Enemy_Controller EC (
+			.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS), .alive(1'd1),
+			.PlayerX, .PlayerY, .EnemyX, .EnemyY,
+			.behavior(Enemy_behavior), .period(Enemy_period), .isLeft(Enemy_isLeft)
+	);
+	
+				  
+	DrawEnemy DE(
+			.x(EnemyX), .y(EnemyY), .behavior(Enemy_behavior), .isLeft(Enemy_isLeft), .period(Enemy_period), .alive(1'd1),
+			.NewDrawX(EnemyDrawX), .NewDrawY(EnemyDrawY), .SpriteX(EnemySpriteX), .SpriteY(EnemySpriteY), .is_8(Enemyis_8)
+	);
+	
+
+
 	 
 	 
 
@@ -207,7 +245,7 @@ module lab8( input               CLOCK_50,
 //		);
 	
 	Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(NewDrawX), .DrawY(NewDrawY),
-			.SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8, .Draw_EN(1'b1), .Done, .we, .palette(FB_Data_In),
+			.SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8, .Draw_EN(Draw_EN), .Done, .we, .palette(FB_Data_In),
 			.write_address(FB_write_address)
 	);
 

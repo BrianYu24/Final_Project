@@ -4,15 +4,14 @@ module DrawController(
 	input logic Start,
 	input logic NextRoom,			//receive from player_controller.
 	input logic Done, DrawRoomDone,
-	input logic VGA_BLANK_N,
+	input logic VGA_VS,
 	
-	output logic [2:0] Draw_state,
-	output logic Draw_EN
+	output logic [2:0] Draw_state
 );
 	
 //	logic  Player_Draw_EN, Enemy_Draw_EN, Room_Draw_EN, Title_Draw_EN, Hud_Draw_EN, Transition_Draw_EN;
 	
-	enum logic [4:0] {DrawTitle, DrawRoom, DrawPlayer, DrawEnemy, DrawHud, DrawTransition, Stop, Wait} State, Next_state;
+	enum logic [4:0] {DrawTitle, DrawRoom, DrawPlayer, DrawEnemy1, DrawEnemy2, DrawEnemy3, DrawEnemy4, DrawEnemy5, DrawHud, DrawTransition, Stop, Wait} State, Next_state;
 
 	always_ff @(posedge CLK)
 	begin
@@ -29,7 +28,7 @@ module DrawController(
 	begin
 		Next_state = State;
 		Draw_state = 3'd0;
-		Draw_EN = 1'b1;
+//		Draw_EN = 1'b1;
 		
 //		Player_Draw_EN = 1'b0;
 //		Enemy_Draw_EN = 1'b0;
@@ -42,14 +41,14 @@ module DrawController(
 		case (State)
 		Stop:
 		begin
-			if(~VGA_BLANK_N)
+			if(~VGA_VS)
 				Next_state = DrawTitle;
 			else
 				Next_state = Stop;
 		end
 		Wait:
 		begin
-			if(~VGA_BLANK_N)
+			if(~VGA_VS)
 				Next_state = Wait;
 			else	
 				Next_state = Stop;
@@ -77,12 +76,42 @@ module DrawController(
 		DrawPlayer:
 		//	Next_state = DrawEnemy;
 		if (Done)
-			Next_state = Wait;
+			Next_state = DrawEnemy5;
 		else	
 			Next_state = DrawPlayer;
 		
-		DrawEnemy:
-			Next_state = DrawHud;
+		DrawEnemy1:
+		if (Done)
+			Next_state = DrawEnemy2;
+		else	
+			Next_state = DrawEnemy1;
+		
+		DrawEnemy2:
+		if (Done)
+			Next_state = DrawEnemy3;
+		else	
+			Next_state = DrawEnemy2;
+		
+		DrawEnemy3:
+		if (Done)
+			Next_state = DrawEnemy4;
+		else	
+			Next_state = DrawEnemy3;
+		
+		DrawEnemy4:
+		if (Done)
+			Next_state = DrawEnemy5;
+		else	
+			Next_state = DrawEnemy4;
+		
+		
+		
+		DrawEnemy5:
+		if (Done)
+			Next_state = Wait;
+		else
+			Next_state = DrawEnemy5;
+			
 		DrawHud:
 			Next_state = DrawRoom;
 		
@@ -111,7 +140,7 @@ module DrawController(
 	//		Player_Draw_EN = 1'b1;
 			Draw_state = 3'd3;
 			
-		DrawEnemy:
+		DrawEnemy1, DrawEnemy2, DrawEnemy3, DrawEnemy4, DrawEnemy5 :
 	//		Enemy_Draw_EN = 1'b1;
 			Draw_state = 3'd4;
 			
@@ -124,7 +153,7 @@ module DrawController(
 			Draw_state = 3'd6;
 			
 		Stop:
-			Draw_EN = 1'b1;
+			Draw_state = 3'd0;
 		
 		endcase
 		

@@ -7,7 +7,7 @@ module  Player_Controller ( input         Clk,                // 50 MHz clock
 					output logic isLeft
               );
 				  
-				  
+	
     
     parameter [7:0] Player_X_Center = 8'd84;  // Center position on the X axis
     parameter [7:0] Player_Y_Center = 8'd52;  // Center position on the Y axis
@@ -159,14 +159,18 @@ module  Player_Controller ( input         Clk,                // 50 MHz clock
 				
 				Player_X_Pos_in = Player_X_Pos;
             Player_Y_Pos_in = Player_Y_Pos;
-				if (Player_X_Pos + Player_X_Motion > Player_X_Max)
-					;
-				else if (Player_X_Pos < Player_X_Min)
-					;
-				else if (Player_Y_Pos + Player_Size > Player_Y_Max)
-					;
-				else if (Player_Y_Pos < Player_Y_Min)
-					;
+				if (Player_X_Pos + Player_X_Motion + Player_Size > Player_X_Max)
+					Player_X_Pos_in = Player_X_Max - Player_Size;
+					
+				else if (Player_X_Pos + Player_X_Motion < Player_X_Min)
+					Player_X_Pos_in = Player_X_Min;
+					
+				else if (Player_Y_Pos + Player_Size + Player_Y_Motion > Player_Y_Max)
+					Player_Y_Pos_in = Player_Y_Max - Player_Size;
+					
+				else if (Player_Y_Pos + Player_Y_Motion < Player_Y_Min)
+					Player_Y_Pos_in = Player_Y_Min;
+					
 				else
 				begin
 					Player_X_Pos_in = Player_X_Pos + Player_X_Motion;
