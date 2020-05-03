@@ -1,4 +1,4 @@
-module  Player_Controller ( input         Clk,                // 50 MHz clock
+module  Player_Controller ( input         Clk, Start,               // 50 MHz clock
                              Reset,              // Active-high reset signal
                              frame_clk,          // The clock indicating a new frame (~60Hz)
 					input [7:0]   keycode,
@@ -38,7 +38,7 @@ module  Player_Controller ( input         Clk,                // 50 MHz clock
     // Update registers
     always_ff @ (posedge Clk)
     begin
-        if (Reset)
+        if (Reset | Start)
         begin
             Player_X_Pos <= Player_X_Center;
             Player_Y_Pos <= Player_Y_Center;

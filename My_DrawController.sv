@@ -1,24 +1,25 @@
 module DrawController(
-	input logic CLK, RESET,
-	input logic DrawWait,
-	input logic Start,
-	input logic NextRoom,			//receive from player_controller.
-	input logic Done, DrawRoomDone,
-	input logic VGA_VS,
+	input CLK, RESET,
+	input DrawWait,
+	input Start,
+	input NextRoom,			//receive from player_controller.
+	input Done, DrawRoomDone,
+	input VGA_VS,
+	input [2:0] PlayerHealth, EnemyHealth,
 	
 	output logic [2:0] Draw_state
 );
 	
 //	logic  Player_Draw_EN, Enemy_Draw_EN, Room_Draw_EN, Title_Draw_EN, Hud_Draw_EN, Transition_Draw_EN;
 	
-	enum logic [4:0] {DrawTitle, DrawRoom, DrawPlayer, DrawEnemy1, DrawEnemy2, DrawEnemy3, DrawEnemy4, DrawEnemy5, DrawHud, DrawTransition, Stop, Wait} State, Next_state;
+	enum logic [4:0] {DrawTitle, DrawRoom, DrawPlayer, DrawEnemy1, DrawEnemy2, DrawEnemy3, DrawEnemy4, DrawEnemy5, DrawHud, DrawTransition, Stop1, Stop2, Wait, End} State, Next_state;
 
 	always_ff @(posedge CLK)
 	begin
 		if (RESET)
-		begin
-			State <= Stop;
-		end
+			State <= Stop1;
+		else if (PlayerHealth == 3'd0)
+			State <= Stop1;
 		else 
 			State <= Next_state;
 	
@@ -39,19 +40,26 @@ module DrawController(
 		
 		
 		case (State)
-		Stop:
+		Stop1:
 		begin
 			if(~VGA_VS)
 				Next_state = DrawTitle;
 			else
-				Next_state = Stop;
+				Next_state = Stop1;
 		end
 		Wait:
 		begin
 			if(~VGA_VS)
 				Next_state = Wait;
 			else	
-				Next_state = Stop;
+				Next_state = Stop2;
+		end
+		Stop2:
+		begin
+			if(~VGA_VS)
+				Next_state = DrawRoom;
+			else
+				Next_state = Stop2;
 		end
 		DrawTitle:
 		begin
@@ -79,35 +87,9 @@ module DrawController(
 			Next_state = DrawEnemy5;
 		else	
 			Next_state = DrawPlayer;
-		
-		DrawEnemy1:
-		if (Done)
-			Next_state = DrawEnemy2;
-		else	
-			Next_state = DrawEnemy1;
-		
-		DrawEnemy2:
-		if (Done)
-			Next_state = DrawEnemy3;
-		else	
-			Next_state = DrawEnemy2;
-		
-		DrawEnemy3:
-		if (Done)
-			Next_state = DrawEnemy4;
-		else	
-			Next_state = DrawEnemy3;
-		
-		DrawEnemy4:
-		if (Done)
-			Next_state = DrawEnemy5;
-		else	
-			Next_state = DrawEnemy4;
-		
-		
-		
+	
 		DrawEnemy5:
-		if (Done)
+		if (Done | (EnemyHealth == 3'd0))
 			Next_state = Wait;
 		else
 			Next_state = DrawEnemy5;
@@ -122,6 +104,10 @@ module DrawController(
 			else
 				Next_state = DrawRoom;
 		end
+		
+		End:
+			//Next_state = DrawTitle;
+			Next_state = End;
 		
 		endcase
 		
@@ -152,7 +138,9 @@ module DrawController(
 	//		Transition_Draw_EN = 1'b1;
 			Draw_state = 3'd6;
 			
-		Stop:
+		Stop1, Stop2:
+			Draw_state = 3'd0;
+		End:
 			Draw_state = 3'd0;
 		
 		endcase

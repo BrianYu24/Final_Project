@@ -1,5 +1,5 @@
 module Draw_Frame_Buffer(
-	input CLK,RESET,
+	input CLK,RESET, Start,
 	input [7:0] DrawX, DrawY,   		///0-168, 0-104	actual coordinates
 	input [6:0] SpriteX, SpriteY,    ///0-96, 0-120		actual coordinates
 	input is_8,
@@ -36,7 +36,7 @@ module Draw_Frame_Buffer(
 
 	always_ff @ (posedge CLK)
 	begin
-		if(RESET)
+		if(RESET | Start)
 		begin
 			State <= Halted;
 			count <= 8'b0;

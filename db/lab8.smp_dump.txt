@@ -35,19 +35,21 @@ State.BottomWallSL 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1
 State.FinishedRoom 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
 State Machine - |lab8|DrawController:ISDU|State
-Name State.Wait State.DrawTitle State.DrawTransition State.DrawHud State.DrawEnemy5 State.DrawEnemy4 State.DrawEnemy3 State.DrawEnemy2 State.DrawEnemy1 State.DrawPlayer State.DrawRoom State.Stop 
-State.Stop 0 0 0 0 0 0 0 0 0 0 0 0 
-State.DrawRoom 0 0 0 0 0 0 0 0 0 0 1 1 
-State.DrawPlayer 0 0 0 0 0 0 0 0 0 1 0 1 
-State.DrawEnemy1 0 0 0 0 0 0 0 0 1 0 0 1 
-State.DrawEnemy2 0 0 0 0 0 0 0 1 0 0 0 1 
-State.DrawEnemy3 0 0 0 0 0 0 1 0 0 0 0 1 
-State.DrawEnemy4 0 0 0 0 0 1 0 0 0 0 0 1 
-State.DrawEnemy5 0 0 0 0 1 0 0 0 0 0 0 1 
-State.DrawHud 0 0 0 1 0 0 0 0 0 0 0 1 
-State.DrawTransition 0 0 1 0 0 0 0 0 0 0 0 1 
-State.DrawTitle 0 1 0 0 0 0 0 0 0 0 0 1 
-State.Wait 1 0 0 0 0 0 0 0 0 0 0 1 
+Name State.End State.Wait State.Stop2 State.DrawTitle State.DrawTransition State.DrawHud State.DrawEnemy5 State.DrawEnemy4 State.DrawEnemy3 State.DrawEnemy2 State.DrawEnemy1 State.DrawPlayer State.DrawRoom State.Stop1 
+State.Stop1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+State.DrawRoom 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+State.DrawPlayer 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+State.DrawEnemy1 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+State.DrawEnemy2 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+State.DrawEnemy3 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+State.DrawEnemy4 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+State.DrawEnemy5 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+State.DrawHud 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+State.DrawTransition 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+State.DrawTitle 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+State.Stop2 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+State.Wait 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+State.End 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
 State Machine - |lab8|lab7_soc:nios_system|lab7_soc_sdram:sdram|m_next
 Name m_next.010000000 m_next.000010000 m_next.000001000 m_next.000000001 

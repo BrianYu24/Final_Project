@@ -104,17 +104,17 @@ case (behavior)
 				end
 				2'd1:
 				begin
-					NewSpriteX = 7'd8;
+					NewSpriteX = 7'd12;
 					NewSpriteY = 7'd72;
 				end
 				2'd2:
 				begin
-					NewSpriteX = 7'd16;
+					NewSpriteX = 7'd24;
 					NewSpriteY = 7'd72;
 				end
 				2'd3:
 				begin
-					NewSpriteX = 7'd24;
+					NewSpriteX = 7'd36;
 					NewSpriteY = 7'd72;
 				end
 			endcase
@@ -127,17 +127,17 @@ case (behavior)
 				end
 				2'd1:
 				begin
-					NewSpriteX = 7'd8;
+					NewSpriteX = 7'd12;
 					NewSpriteY = 7'd84;
 				end
 				2'd2:
 				begin
-					NewSpriteX = 7'd16;
+					NewSpriteX = 7'd24;
 					NewSpriteY = 7'd84;
 				end
 				2'd3:
 				begin
-					NewSpriteX = 7'd24;
+					NewSpriteX = 7'd36;
 					NewSpriteY = 7'd84;
 				end
 			endcase

@@ -1,5 +1,5 @@
 module DrawRoom(
-	input Draw_EN, Clk, RESET,
+	input Draw_EN, Clk, RESET, Start,
 	input [3:0] x, y,
 	input defeated, Done_Draw_FB,
 	
@@ -40,7 +40,7 @@ module DrawRoom(
 
 	always_ff @ (posedge Clk)
 	begin
-		if(RESET)
+		if(RESET | Start)
 		begin
 			State <= Halted;
 			count <= 8'b0;

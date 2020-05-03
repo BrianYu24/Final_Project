@@ -142,9 +142,20 @@ module lab8( input               CLOCK_50,
 	 
 		
 	
+	logic Start;
+//	assign Start = 1'b0;
+	
+	always_comb 
+	begin
+		if (keycode == 8'd40)
+			Start = 1'b1;
+		else
+			Start = 1'b0;
+	end
 
-	DrawController ISDU (.*, .CLK(Clk), .RESET(Reset_s|Reset_h), .DrawWait(1'b0),.Start(1'b1), .NextRoom(1'b0),
-			.Done(Done), .DrawRoomDone(Draw_Room_Done)
+	DrawController ISDU (.*, .CLK(Clk), .RESET(Reset_s|Reset_h), .DrawWait(1'b0),.Start, .NextRoom(1'b0),
+			.Done(Done), .DrawRoomDone(Draw_Room_Done),
+			.PlayerHealth, .EnemyHealth
 	); 
 	 
 	always_comb
@@ -189,21 +200,24 @@ module lab8( input               CLOCK_50,
 			   NewSpriteX = EnemySpriteX;
 			   NewSpriteY = EnemySpriteY;
 				is_8 = Enemyis_8;
-				Draw_EN = 1'b1;
+				if (EnemyHealth != 3'b0)
+					Draw_EN = 1'b1;
+				else
+					Draw_EN = 1'b0;
 			end
 		endcase
 	
 	end
 	 
 	 
-	DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), 
+	DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), .Start,
 			.NewDrawX(RoomDrawX), .NewDrawY(RoomDrawY), .NewSpriteX(RoomSpriteX), .NewSpriteY(RoomSpriteY), .is_8(Roomis_8), 
 			.ALLDone(Draw_Room_Done) 
 	); 
 	 
 	 
 	Player_Controller PC (
-			.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS),
+			.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS), .Start,
 			.keycode, .PlayerX, .PlayerY,
 			.behavior(Player_behavior), .period(Player_period), .isLeft(Player_isLeft)
 	);
@@ -215,19 +229,36 @@ module lab8( input               CLOCK_50,
 	
 	
 	Enemy_Controller EC (
-			.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS), .alive(1'd1),
+			.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS), .EnemyHealth, .Start,
 			.PlayerX, .PlayerY, .EnemyX, .EnemyY,
 			.behavior(Enemy_behavior), .period(Enemy_period), .isLeft(Enemy_isLeft)
 	);
 	
 				  
 	DrawEnemy DE(
-			.x(EnemyX), .y(EnemyY), .behavior(Enemy_behavior), .isLeft(Enemy_isLeft), .period(Enemy_period), .alive(1'd1),
+			.x(EnemyX), .y(EnemyY), .behavior(Enemy_behavior), .isLeft(Enemy_isLeft), .period(Enemy_period), .EnemyHealth,
 			.NewDrawX(EnemyDrawX), .NewDrawY(EnemyDrawY), .SpriteX(EnemySpriteX), .SpriteY(EnemySpriteY), .is_8(Enemyis_8)
 	);
 	
-
-
+	
+	logic EnemyAttack, PlayerAttack;
+	logic [2:0] PlayerHealth, EnemyHealth;
+	always_comb
+	begin
+		if (Enemy_behavior == 2'd2)
+			EnemyAttack = 1'd1;
+		else
+			EnemyAttack = 1'd0;
+		if (Player_behavior == 2'd2)
+			PlayerAttack = 1'd1;
+		else
+			PlayerAttack = 1'd0;
+	end
+	
+	Health H(
+			.*, .frame_clk(VGA_VS), .EnemyAttack, .PlayerAttack, .Reset(Reset_h | Reset_s), .NewRoom(1'd0),.Start,
+			.PlayerHealth, .EnemyHealth
+	);
 	 
 	 
 
@@ -245,7 +276,7 @@ module lab8( input               CLOCK_50,
 //		);
 	
 	Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(NewDrawX), .DrawY(NewDrawY),
-			.SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8, .Draw_EN(Draw_EN), .Done, .we, .palette(FB_Data_In),
+			.SpriteX(NewSpriteX), .SpriteY(NewSpriteY), .is_8, .Start, .Draw_EN(Draw_EN), .Done, .we, .palette(FB_Data_In),
 			.write_address(FB_write_address)
 	);
 

@@ -1,7 +1,7 @@
-module  Enemy_Controller ( input         Clk,                // 50 MHz clock
+module  Enemy_Controller ( input         Clk, Start,                // 50 MHz clock
                              Reset,              // Active-high reset signal
                              frame_clk,          // The clock indicating a new frame (~60Hz)
-					input alive,
+					input [2:0] EnemyHealth,
 					input [7:0] PlayerX, PlayerY,
 					output logic [7:0] EnemyX,EnemyY,
 					output [1:0] behavior,period,
@@ -24,11 +24,10 @@ module  Enemy_Controller ( input         Clk,                // 50 MHz clock
     
     logic [7:0] Enemy_X_Pos, Enemy_X_Motion, Enemy_Y_Pos, Enemy_Y_Motion;
     logic [7:0] Enemy_X_Pos_in, Enemy_X_Motion_in, Enemy_Y_Pos_in, Enemy_Y_Motion_in;
-	 logic isLeft_in;
+	 logic isLeft_in, alive;
 	 logic [1:0] behavior_in;
 	 logic [1:0] period_in;
 	 logic [7:0] keycode;
-	 
 	 
 	 assign EnemyX = Enemy_X_Pos;
 	 assign EnemyY = Enemy_Y_Pos;
@@ -43,7 +42,7 @@ module  Enemy_Controller ( input         Clk,                // 50 MHz clock
     // Update registers
     always_ff @ (posedge Clk)
     begin
-        if (Reset | ~alive)
+        if (Reset | (EnemyHealth==3'b0) |Start)
         begin
             Enemy_X_Pos <= Enemy_X_Center;
             Enemy_Y_Pos <= Enemy_Y_Center;
@@ -52,7 +51,6 @@ module  Enemy_Controller ( input         Clk,                // 50 MHz clock
 				isLeft <= 1'b0;
 				period <= 2'b0;
 				behavior <= 2'b0;
-				count <= 2'd0;
         end
         else
         begin
@@ -75,7 +73,8 @@ module  Enemy_Controller ( input         Clk,                // 50 MHz clock
 	 always_ff @(posedge frame_clk_rising_edge)
 	 begin
 		if (count%4 == 2'd0)
-			keycode = keycode_in;
+			keycode <= keycode_in;
+		count <= count + 2'd1;
 	 end
 	 
 	 
@@ -142,13 +141,13 @@ module  Enemy_Controller ( input         Clk,                // 50 MHz clock
 					
 					if ( ( DistX*DistX + DistY*DistY) <= (AttackSize*AttackSize) ) 
 						keycode_in = 8'd44;
-					else if (PlayerCX < EnemyCX)
+					else if (PlayerCX + AttackSize/2 < EnemyCX)
 						keycode_in = 8'd4;
-					else if (PlayerCX > EnemyCX)
+					else if (PlayerCX > EnemyCX + AttackSize/2)
 						keycode_in = 8'd7;
-					else if (PlayerCY < EnemyCY)
+					else if (PlayerCY + AttackSize/2< EnemyCY)
 						keycode_in = 8'd26;
-					else if (PlayerCY > EnemyCY)
+					else if (PlayerCY > EnemyCY + AttackSize/2)
 						keycode_in = 8'd22;
 				
 				

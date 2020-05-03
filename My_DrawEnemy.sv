@@ -4,7 +4,7 @@ module DrawEnemy(
 	input [1:0] behavior,
 	input isLeft,
 	input [1:0] period,
-	input [2:0] alive,
+	input [2:0] EnemyHealth,
 	
 	
 	output logic [7:0] NewDrawX, NewDrawY,
@@ -101,22 +101,22 @@ case (behavior)
 			case(period)
 				2'd0:
 				begin
-					NewSpriteX = 7'd0;
+					NewSpriteX = 7'd0+7'd48;
 					NewSpriteY = 7'd72;
 				end
 				2'd1:
 				begin
-					NewSpriteX = 7'd8;
+					NewSpriteX = 7'd12+7'd48;
 					NewSpriteY = 7'd72;
 				end
 				2'd2:
 				begin
-					NewSpriteX = 7'd16;
+					NewSpriteX = 7'd24+7'd48;
 					NewSpriteY = 7'd72;
 				end
 				2'd3:
 				begin
-					NewSpriteX = 7'd24;
+					NewSpriteX = 7'd36+7'd48;
 					NewSpriteY = 7'd72;
 				end
 			endcase
@@ -124,22 +124,22 @@ case (behavior)
 			case(period)
 				2'd0:
 				begin
-					NewSpriteX = 7'd0;
+					NewSpriteX = 7'd0+7'd48;
 					NewSpriteY = 7'd84;
 				end
 				2'd1:
 				begin
-					NewSpriteX = 7'd8;
+					NewSpriteX = 7'd12+7'd48;
 					NewSpriteY = 7'd84;
 				end
 				2'd2:
 				begin
-					NewSpriteX = 7'd16;
+					NewSpriteX = 7'd24+7'd48;
 					NewSpriteY = 7'd84;
 				end
 				2'd3:
 				begin
-					NewSpriteX = 7'd24;
+					NewSpriteX = 7'd36+7'd48;
 					NewSpriteY = 7'd84;
 				end
 			endcase
