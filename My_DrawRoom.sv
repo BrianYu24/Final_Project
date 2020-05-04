@@ -1,7 +1,8 @@
 module DrawRoom(
 	input Draw_EN, Clk, RESET, Start,
-	input [3:0] x, y,
-	input defeated, Done_Draw_FB,
+	input [3:0] Doors,
+	input Done_Draw_FB,
+	input [2:0] EnemyHealth,
 	
 	output logic [7:0] NewDrawX, NewDrawY,
 	output logic [6:0] NewSpriteX, NewSpriteY,
@@ -36,7 +37,7 @@ module DrawRoom(
 	
 
 	
-	enum logic [4:0] {Halted, TopLeft, TopRight, TopWallFL, TopWallSL, LeftWall, RightWall, Floor, BottomLeftFL, BottomLeftSL, BottomRightFL,BottomRightSL, BottomWallFL, BottomWallSL,FinishedRoom, Cycle} State, Next_state;
+	enum logic [4:0] {Halted, TopLeft, TopRight, TopWallFL, TopWallSL, LeftWall, RightWall, Floor, BottomLeftFL, BottomLeftSL, BottomRightFL,BottomRightSL, BottomWallFL, BottomWallSL,FinishedRoom, DrawDoor, Cycle} State, Next_state;
 
 	always_ff @ (posedge Clk)
 	begin
@@ -116,6 +117,35 @@ module DrawRoom(
 			BottomWallSL:
 				if(count == 8'd19)
 					Next_state = FinishedRoom;
+					
+			DrawTopDoor:
+				if (Done)
+					Next_state = DrawBottomDoor;
+			DrawBottomDoor:
+				if (Done)
+					Next_state = DrawLeft1Door;
+			DrawLeft1Door:
+				if (Done)
+					Next_state = DrawLeft2Door;
+			DrawLeft2Door:
+				if (Done)
+					Next_state = DrawLeft3Door;
+			DrawLeft3Door:
+				if (Done)
+					Next_state = DrawRight1Door;
+			DrawRight1Door:
+				if (Done)
+					Next_state = DrawRight2Door;
+			DrawRight2Door:
+				if (Done)
+					Next_state = DrawRight3Door;
+			DrawRight3Door:
+				if (Done)
+					Next_state = FinishedRoom;
+					
+				
+			
+			
 			FinishedRoom:
 				Next_state = Halted;
 //				Next_state = Cycle;
@@ -234,6 +264,33 @@ module DrawRoom(
 				SpriteX = 7'd1;
 				Draw_FB_EN = 1'b1;
 			end
+			DrawTopDoor:
+			begin
+				DrawY = 8'd1;
+				DrawX = 8'd10;
+				SpriteY = 7'd4;
+				SpriteX = 7'd1;
+				Draw_FB_EN = 1'b1;
+			end
+			DrawBottomDoor:
+				if (Done)
+					Next_state = DrawLeft1Door;
+			DrawLeft1Door:
+				if (Done)
+					Next_state = DrawLeft2Door;
+			DrawLeft2Door:
+				if (Done)
+					Next_state = DrawLeft3Door;
+			DrawLeft3Door:
+				if (Done)
+					Next_state = DrawRight1Door;
+			DrawRight1Door:
+				if (Done)
+					Next_state = DrawRight2Door;
+			DrawRight2Door:
+				if (Done)
+					Next_state = DrawRight3Door;
+			DrawRight3Door:
 			FinishedRoom:
 			begin
 				ALLDone = 1'b1;

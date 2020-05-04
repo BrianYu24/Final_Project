@@ -3,11 +3,12 @@ module DrawController(
 	input DrawWait,
 	input Start,
 	input NextRoom,			//receive from player_controller.
-	input Done, DrawRoomDone,
+	input Done, DrawRoomDone, DrawHudDone,
 	input VGA_VS,
 	input [2:0] PlayerHealth, EnemyHealth,
 	
-	output logic [2:0] Draw_state
+	output logic [2:0] Draw_state,
+	output logic DrawRoomEN, DrawHudEN
 );
 	
 //	logic  Player_Draw_EN, Enemy_Draw_EN, Room_Draw_EN, Title_Draw_EN, Hud_Draw_EN, Transition_Draw_EN;
@@ -38,6 +39,8 @@ module DrawController(
 //		Hud_Draw_EN = 1'b0;
 //		Transition_Draw_EN = 1'b0;
 		
+		DrawRoomEN = 1'b0;
+		DrawHudEN = 1'b0;
 		
 		case (State)
 		Stop1:
@@ -82,20 +85,34 @@ module DrawController(
 		end
 		
 		DrawPlayer:
+		begin
 		//	Next_state = DrawEnemy;
 		if (Done)
-			Next_state = DrawEnemy5;
+		begin
+			if(EnemyHealth == 3'd0)
+				Next_state = DrawHud;
+			else
+				Next_state = DrawEnemy5;
+		end
 		else	
 			Next_state = DrawPlayer;
+		end
 	
 		DrawEnemy5:
-		if (Done | (EnemyHealth == 3'd0))
-			Next_state = Wait;
+		begin
+		if (Done)
+			Next_state = DrawHud;
 		else
 			Next_state = DrawEnemy5;
-			
+		end
+		
 		DrawHud:
-			Next_state = DrawRoom;
+		begin
+		if (DrawHudDone)
+			Next_state = Wait;
+		else
+			Next_state = DrawHud;
+		end
 		
 		DrawTransition:
 		begin
@@ -119,9 +136,12 @@ module DrawController(
 			Draw_state = 3'd1;
 		
 		DrawRoom:
+		begin
 	//		Room_Draw_EN = 1'b1;
 			Draw_state = 3'd2;
-			
+			DrawRoomEN = 1'b1;
+		end
+		
 		DrawPlayer:
 	//		Player_Draw_EN = 1'b1;
 			Draw_state = 3'd3;
@@ -131,9 +151,12 @@ module DrawController(
 			Draw_state = 3'd4;
 			
 		DrawHud:
+		begin
 	//		Hud_Draw_EN = 1'b1;
 			Draw_state = 3'd5;
-			
+			DrawHudEN = 1'b1;
+		end
+		
 		DrawTransition:
 	//		Transition_Draw_EN = 1'b1;
 			Draw_state = 3'd6;

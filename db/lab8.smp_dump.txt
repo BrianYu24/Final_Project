@@ -7,6 +7,14 @@ State.First_Drawing 0 1 0 1 0
 State.Last_Drawing 1 0 0 1 0 
 State.DoneDrawing 0 0 0 1 1 
 
+State Machine - |lab8|DrawHud:DH|State
+Name State.DrawThirdHeart State.DrawSecondHeart State.DrawFirstHeart State.Halted State.Finished 
+State.Halted 0 0 0 0 0 
+State.DrawFirstHeart 0 0 1 1 0 
+State.DrawSecondHeart 0 1 0 1 0 
+State.DrawThirdHeart 1 0 0 1 0 
+State.Finished 0 0 0 1 1 
+
 State Machine - |lab8|Enemy_Controller:EC|keycode
 Name keycode.00011010 keycode.00010110 keycode.00000100 keycode.00000000 keycode.00101100 keycode.00000111 
 keycode.00000000 0 0 0 0 0 0 

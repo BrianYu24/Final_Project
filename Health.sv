@@ -27,8 +27,8 @@ module Health (
 		begin
 			PlayerHealth <= 3'd6;
 			EnemyHealth <= 3'd6;
-			EnemyAttackCD <= 6'b60;
-			PlayerAttackCD <= 6'b60;
+			EnemyAttackCD <= 6'd60;
+			PlayerAttackCD <= 6'd60;
 		end
 		
 		else

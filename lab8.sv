@@ -65,7 +65,7 @@ module lab8( input               CLOCK_50,
 	 logic is_ball;
 	 
 //	 logic Player_Draw_EN, Enemy_Draw_EN, Room_Draw_EN, Title_Draw_EN, Hud_Draw_EN, Transition_Draw_EN;
-	 logic Done, isBlack, we, is_8, Draw_EN;
+	 logic Done, isBlack, we, is_8, Draw_EN, DrawRoomEN, DrawHudEN;
 	 logic [4:0] data_Out, data_In, palette, FB_Data_In;
 	 logic [14:0] read_address, FB_write_address;
 	 logic [7:0] Red, Blue, Green;
@@ -74,14 +74,14 @@ module lab8( input               CLOCK_50,
 	 logic [1:0] Player_behavior,Player_period, Enemy_behavior, Enemy_period;
 	 
 	 
-	 logic [6:0] RoomSpriteX, RoomSpriteY, PlayerSpriteX, PlayerSpriteY, EnemySpriteX, EnemySpriteY;
-	 logic [7:0] RoomDrawX, RoomDrawY, PlayerDrawX, PlayerDrawY, EnemyDrawX, EnemyDrawY;
-	 logic Roomis_8, Playeris_8, Draw_Room_Done, Enemyis_8;
+	 logic [6:0] RoomSpriteX, RoomSpriteY, PlayerSpriteX, PlayerSpriteY, EnemySpriteX, EnemySpriteY, HudSpriteX, HudSpriteY;
+	 logic [7:0] RoomDrawX, RoomDrawY, PlayerDrawX, PlayerDrawY, EnemyDrawX, EnemyDrawY, HudDrawX, HudDrawY;
+	 logic Roomis_8, Playeris_8, Enemyis_8, Hudis_8, Draw_Room_Done, Draw_Hud_Done;
 	 logic [2:0] Draw_state;
 	 logic alive, Player_isLeft, Enemy_isLeft;
 
-	
 	 
+
 	 
     
     // Interface between NIOS II and EZ-OTG chip
@@ -154,8 +154,8 @@ module lab8( input               CLOCK_50,
 	end
 
 	DrawController ISDU (.*, .CLK(Clk), .RESET(Reset_s|Reset_h), .DrawWait(1'b0),.Start, .NextRoom(1'b0),
-			.Done(Done), .DrawRoomDone(Draw_Room_Done),
-			.PlayerHealth, .EnemyHealth
+			.Done(Done), .DrawRoomDone(Draw_Room_Done), .DrawHudDone(Draw_Hud_Done),
+			.PlayerHealth, .EnemyHealth, .DrawRoomEN, .DrawHudEN
 	); 
 	 
 	always_comb
@@ -205,12 +205,21 @@ module lab8( input               CLOCK_50,
 				else
 					Draw_EN = 1'b0;
 			end
+			3'd5:
+			begin
+				NewDrawX = HudDrawX;
+			   NewDrawY = HudDrawY;
+			   NewSpriteX = HudSpriteX;
+			   NewSpriteY = HudSpriteY;
+				is_8 = Hudis_8;
+				Draw_EN = 1'b1;
+			end
 		endcase
 	
 	end
 	 
 	 
-	DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(1'b1), .Clk,.RESET(Reset_s) , .x(4'b0), .y(4'b0), .defeated(1'b0), .Start,
+	DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(DrawRoomEN), .Clk,.RESET(Reset_s) ,.Doors(4'b1000), .EnemyHealth, .Start,
 			.NewDrawX(RoomDrawX), .NewDrawY(RoomDrawY), .NewSpriteX(RoomSpriteX), .NewSpriteY(RoomSpriteY), .is_8(Roomis_8), 
 			.ALLDone(Draw_Room_Done) 
 	); 
@@ -259,15 +268,17 @@ module lab8( input               CLOCK_50,
 			.*, .frame_clk(VGA_VS), .EnemyAttack, .PlayerAttack, .Reset(Reset_h | Reset_s), .NewRoom(1'd0),.Start,
 			.PlayerHealth, .EnemyHealth
 	);
+	
+	DrawHud DH(
+			.*, .PlayerHealth, .Done, .Draw_EN(DrawHudEN), .Clk, .RESET(Reset_h | Reset_s), .Start,
+			.NewDrawX(HudDrawX), .NewDrawY(HudDrawY), .NewSpriteX(HudSpriteX), .NewSpriteY(HudSpriteY),
+			.is_8(Hudis_8), .AllDone(Draw_Hud_Done)
+	);
 	 
+
+
+
 	 
-
-	 
-	 
-
-
-
-
 	
 
 //	 Draw_Frame_Buffer DFB (.CLK(Clk), .RESET(Reset_s), .DrawX(NewDrawX), .DrawY(NewDrawY),
