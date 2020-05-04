@@ -10,6 +10,7 @@
 			otg_hpi_reset_export   : out   std_logic;                                        -- export
 			otg_hpi_w_export       : out   std_logic;                                        -- export
 			reset_reset_n          : in    std_logic                     := 'X';             -- reset_n
+			reset_s_export         : in    std_logic                     := 'X';             -- export
 			sdram_clk_clk          : out   std_logic;                                        -- clk
 			sdram_wire_addr        : out   std_logic_vector(12 downto 0);                    -- addr
 			sdram_wire_ba          : out   std_logic_vector(1 downto 0);                     -- ba
@@ -20,7 +21,7 @@
 			sdram_wire_dqm         : out   std_logic_vector(3 downto 0);                     -- dqm
 			sdram_wire_ras_n       : out   std_logic;                                        -- ras_n
 			sdram_wire_we_n        : out   std_logic;                                        -- we_n
-			reset_s_export         : in    std_logic                     := 'X'              -- export
+			keycode2_export        : out   std_logic_vector(7 downto 0)                      -- export
 		);
 	end component lab7_soc;
 
@@ -36,6 +37,7 @@
 			otg_hpi_reset_export   => CONNECTED_TO_otg_hpi_reset_export,   --   otg_hpi_reset.export
 			otg_hpi_w_export       => CONNECTED_TO_otg_hpi_w_export,       --       otg_hpi_w.export
 			reset_reset_n          => CONNECTED_TO_reset_reset_n,          --           reset.reset_n
+			reset_s_export         => CONNECTED_TO_reset_s_export,         --         reset_s.export
 			sdram_clk_clk          => CONNECTED_TO_sdram_clk_clk,          --       sdram_clk.clk
 			sdram_wire_addr        => CONNECTED_TO_sdram_wire_addr,        --      sdram_wire.addr
 			sdram_wire_ba          => CONNECTED_TO_sdram_wire_ba,          --                .ba
@@ -46,6 +48,6 @@
 			sdram_wire_dqm         => CONNECTED_TO_sdram_wire_dqm,         --                .dqm
 			sdram_wire_ras_n       => CONNECTED_TO_sdram_wire_ras_n,       --                .ras_n
 			sdram_wire_we_n        => CONNECTED_TO_sdram_wire_we_n,        --                .we_n
-			reset_s_export         => CONNECTED_TO_reset_s_export          --         reset_s.export
+			keycode2_export        => CONNECTED_TO_keycode2_export         --        keycode2.export
 		);
 

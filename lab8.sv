@@ -15,7 +15,7 @@
 
 module lab8( input               CLOCK_50,
              input        [3:0]  KEY,          //bit 0 is set up as Reset
-             output logic [6:0]  HEX0, HEX1,
+             output logic [6:0]  HEX0, HEX1, HEX2, HEX3,
              // VGA Interface 
              output logic [7:0]  VGA_R,        //VGA Red
                                  VGA_G,        //VGA Green
@@ -48,7 +48,7 @@ module lab8( input               CLOCK_50,
                     );
     
     logic Reset_h, Clk, Reset_s, Start_s;
-    logic [7:0] keycode;
+    logic [7:0] keycode, keycode2;
     
     assign Clk = CLOCK_50;
     always_ff @ (posedge Clk) begin
@@ -119,7 +119,8 @@ module lab8( input               CLOCK_50,
                              .sdram_wire_ras_n(DRAM_RAS_N),
                              .sdram_wire_we_n(DRAM_WE_N), 
                              .sdram_clk_clk(DRAM_CLK),
-                             .keycode_export(keycode),  
+                             .keycode_export(keycode), 
+									  .keycode2_export(keycode2), 
                              .otg_hpi_address_export(hpi_addr),
                              .otg_hpi_data_in_port(hpi_data_in),
                              .otg_hpi_data_out_port(hpi_data_out),
@@ -204,6 +205,13 @@ module lab8( input               CLOCK_50,
 					Draw_EN = 1'b1;
 				else
 					Draw_EN = 1'b0;
+
+//				NewDrawX = 8'd40;
+//			   NewDrawY = 8'd40;
+//			   NewSpriteX = 7'd56;
+//			   NewSpriteY = 7'd32;
+//				is_8 = 1'b1;
+//				Draw_EN = 1'b1;
 			end
 			3'd5:
 			begin
@@ -213,6 +221,12 @@ module lab8( input               CLOCK_50,
 			   NewSpriteY = HudSpriteY;
 				is_8 = Hudis_8;
 				Draw_EN = 1'b1;
+//				NewDrawX = 8'd16;
+//			   NewDrawY = 8'd0;
+//			   NewSpriteX = 7'd56;
+//			   NewSpriteY = 7'd32;
+//				is_8 = 1'b1;
+//				Draw_EN = 1'b1;
 			end
 		endcase
 	
@@ -227,7 +241,7 @@ module lab8( input               CLOCK_50,
 	 
 	Player_Controller PC (
 			.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS), .Start,
-			.keycode, .PlayerX, .PlayerY,
+			.keycode, .keycode2, .PlayerX, .PlayerY,
 			.behavior(Player_behavior), .period(Player_period), .isLeft(Player_isLeft)
 	);
 	
@@ -328,6 +342,9 @@ module lab8( input               CLOCK_50,
     // Display keycode on hex display
     HexDriver hex_inst_0 (keycode[3:0], HEX0);
     HexDriver hex_inst_1 (keycode[7:4], HEX1);
+	 HexDriver hex_inst_2 (keycode2[3:0], HEX2);
+    HexDriver hex_inst_3 (keycode2[7:4], HEX3);
+	 
     
     /**************************************************************************************
         ATTENTION! Please answer the following quesiton in your lab report! Points will be allocated for the answers!

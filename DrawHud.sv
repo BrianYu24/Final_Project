@@ -13,14 +13,9 @@ module DrawHud(
 	always_ff @ (posedge Clk)
 	begin
 		if(RESET | Start)
-		begin
 			State <= Halted;
-		end
 		else
-		begin
 			State <= Next_state;
-		end
-		
 	end
 	
 	always_comb 
@@ -79,11 +74,13 @@ module DrawHud(
 		
 		DrawFirstHeart:
 		begin
-			NewDrawX = 8'd0;
+			NewDrawX = 8'd16;
 			NewDrawY = 8'd0;
 			NewSpriteY = 7'd32;
 			if (PlayerHealth >= 3'd2)
+			begin
 				NewSpriteX = 7'd56;
+			end
 			else if (PlayerHealth == 3'd1)
 				NewSpriteX = 7'd64;
 			else
@@ -92,7 +89,7 @@ module DrawHud(
 		
 		DrawSecondHeart:
 		begin
-			NewDrawX = 8'd0;
+			NewDrawX = 8'd24;
 			NewDrawY = 8'd0;
 			NewSpriteY = 7'd32;
 			if (PlayerHealth >= 3'd4)
@@ -105,7 +102,7 @@ module DrawHud(
 		
 		DrawThirdHeart:
 		begin
-			NewDrawX = 8'd0;
+			NewDrawX = 8'd32;
 			NewDrawY = 8'd0;
 			NewSpriteY = 7'd32;
 			if (PlayerHealth == 3'd6)

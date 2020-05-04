@@ -1,7 +1,7 @@
 module  Player_Controller ( input         Clk, Start,               // 50 MHz clock
                              Reset,              // Active-high reset signal
                              frame_clk,          // The clock indicating a new frame (~60Hz)
-					input [7:0]   keycode,
+					input [7:0]   keycode, keycode2,
 					output logic [7:0] PlayerX,PlayerY,
 					output [1:0] behavior,period,
 					output logic isLeft
@@ -106,43 +106,85 @@ module  Player_Controller ( input         Clk, Start,               // 50 MHz cl
 //				end
 				
 				
-					if (keycode == 8'd26)			//W pressed
+					if ((keycode == 8'd26) | (keycode2 == 8'd26))			//W pressed
 					begin
 						Player_Y_Motion_in = (~(Player_Y_Step) + 8'b1);
 						Player_X_Motion_in = 8'd0;
-						behavior_in = 2'b1;
 						period_in = (period+1)%4;
+						behavior_in = 2'b1;
+						if ((keycode == 8'd44) | (keycode2 == 8'd44))
+						begin
+							behavior_in = 2'd2;
+						end
 					end
-					else if (keycode == 8'd22)	//S pressed
+					
+					else if ((keycode == 8'd22) | (keycode2 == 8'd22))	//S pressed
 					begin
 						Player_Y_Motion_in = Player_Y_Step;
 						Player_X_Motion_in = 8'd0;
-						behavior_in = 2'b1;
 						period_in = (period+1)%4;
+						if ((keycode == 8'd44) | (keycode2 == 8'd44))
+							behavior_in = 2'd2;
+						else
+							behavior_in = 2'd1;
 					end
-					else if (keycode == 8'd4)	//A pressed
+					
+					else if ((keycode == 8'd4) | (keycode2 == 8'd4))	//A pressed
 					begin
 						Player_X_Motion_in = (~(Player_X_Step) + 8'b1);
 						Player_Y_Motion_in = 8'd0;
-						behavior_in = 2'b1;
-						isLeft_in = 1'b1;
 						period_in = (period+1)%4;
+						isLeft_in = 1'b1;
+						if ((keycode == 8'd44) | (keycode2 == 8'd44))
+							behavior_in = 2'd2;
+						else
+							behavior_in = 2'd1;
 					end
-					else if (keycode == 8'd7)	//D pressed
+					
+					else if ((keycode == 8'd7) | (keycode2 == 8'd7))	//D pressed
 					begin
 						Player_X_Motion_in = Player_X_Step;
 						Player_Y_Motion_in = 8'd0;
-						behavior_in = 2'b1;
 						isLeft_in = 1'b0;
 						period_in = (period+1)%4;
+						if ((keycode == 8'd44) | (keycode2 == 8'd44))
+							behavior_in = 2'd2;
+						else
+							behavior_in = 2'd1;
 					end
 					
-					else if (keycode == 8'd44)	//space pressed
+					
+					else if ((keycode == 8'd44) | (keycode2 == 8'd44))	//space pressed
 					begin
-						Player_X_Motion_in = 8'd0;
-						Player_Y_Motion_in = 8'd0;
 						behavior_in = 2'd2;
 						period_in = (period+1)%4;
+						
+						Player_X_Motion_in = 8'd0;
+						Player_Y_Motion_in = 8'd0;
+						if ((keycode == 8'd26) | (keycode2 == 8'd26))			//W pressed
+						begin
+							Player_Y_Motion_in = (~(Player_Y_Step) + 8'b1);
+							Player_X_Motion_in = 8'd0;
+						end
+						
+						else if ((keycode == 8'd22) | (keycode2 == 8'd22))	//S pressed
+						begin
+							Player_Y_Motion_in = Player_Y_Step;
+							Player_X_Motion_in = 8'd0;
+						end
+						
+						else if ((keycode == 8'd4) | (keycode2 == 8'd4))	//A pressed
+						begin
+							Player_X_Motion_in = (~(Player_X_Step) + 8'b1);
+							Player_Y_Motion_in = 8'd0;
+						end
+						
+						else if ((keycode == 8'd7) | (keycode2 == 8'd7))	//D pressed
+						begin
+							Player_X_Motion_in = Player_X_Step;
+							Player_Y_Motion_in = 8'd0;
+						end
+						
 					end
 
 					else 								//Nothing pressed

@@ -590,6 +590,12 @@ set_global_assignment -name EDA_TEST_BENCH_NAME testbench2 -section_id eda_simul
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id testbench2
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "3000 ns" -section_id testbench2
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME testbench2 -section_id testbench2
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name EDA_TEST_BENCH_FILE testbench.sv -section_id testbench
+set_global_assignment -name EDA_TEST_BENCH_FILE testbench2.sv -section_id testbench2
+set_global_assignment -name QIP_FILE lab7_soc/synthesis/lab7_soc.qip
 set_global_assignment -name SYSTEMVERILOG_FILE My_DrawRoom.sv
 set_global_assignment -name SYSTEMVERILOG_FILE testbench.sv
 set_global_assignment -name SYSTEMVERILOG_FILE My_ram.sv
@@ -598,7 +604,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE My_DrawPlayer.sv
 set_global_assignment -name SYSTEMVERILOG_FILE My_DrawEnemy.sv
 set_global_assignment -name SYSTEMVERILOG_FILE My_DrawController.sv
 set_global_assignment -name SDC_FILE lab8.sdc
-set_global_assignment -name QIP_FILE lab7_soc/synthesis/lab7_soc.qip
 set_global_assignment -name SYSTEMVERILOG_FILE hpi_io_intf.sv
 set_global_assignment -name SYSTEMVERILOG_FILE VGA_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE lab8.sv
@@ -609,11 +614,6 @@ set_global_assignment -name QIP_FILE vga_clk.qip
 set_global_assignment -name SYSTEMVERILOG_FILE My_Palette.sv
 set_global_assignment -name SYSTEMVERILOG_FILE My_Draw_FB.sv
 set_global_assignment -name SYSTEMVERILOG_FILE testbench2.sv
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name EDA_TEST_BENCH_FILE testbench.sv -section_id testbench
-set_global_assignment -name EDA_TEST_BENCH_FILE testbench2.sv -section_id testbench2
 set_global_assignment -name SYSTEMVERILOG_FILE TestDP.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Player_Controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE My_EnemyController.sv

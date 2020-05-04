@@ -10,6 +10,7 @@ module lab7_soc (
 	otg_hpi_reset_export,
 	otg_hpi_w_export,
 	reset_reset_n,
+	reset_s_export,
 	sdram_clk_clk,
 	sdram_wire_addr,
 	sdram_wire_ba,
@@ -20,7 +21,7 @@ module lab7_soc (
 	sdram_wire_dqm,
 	sdram_wire_ras_n,
 	sdram_wire_we_n,
-	reset_s_export);	
+	keycode2_export);	
 
 	input		clk_clk;
 	output	[7:0]	keycode_export;
@@ -32,6 +33,7 @@ module lab7_soc (
 	output		otg_hpi_reset_export;
 	output		otg_hpi_w_export;
 	input		reset_reset_n;
+	input		reset_s_export;
 	output		sdram_clk_clk;
 	output	[12:0]	sdram_wire_addr;
 	output	[1:0]	sdram_wire_ba;
@@ -42,5 +44,5 @@ module lab7_soc (
 	output	[3:0]	sdram_wire_dqm;
 	output		sdram_wire_ras_n;
 	output		sdram_wire_we_n;
-	input		reset_s_export;
+	output	[7:0]	keycode2_export;
 endmodule

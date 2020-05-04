@@ -60,7 +60,7 @@ module Health (
 	assign EnemyCX = EnemyX + 8'd4;
 	assign EnemyCY = EnemyY + 8'd4;
 	
-	assign AttackSize = 12;
+	assign AttackSize = 15;
 	assign DistX = PlayerCX - EnemyCX;
 	assign DistY = PlayerCY - EnemyCY;
 	

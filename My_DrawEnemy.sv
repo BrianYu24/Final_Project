@@ -18,16 +18,10 @@ logic [6:0] NewSpriteY;
 
 always_comb
 begin
-NewDrawX = x;
-NewDrawY = y;
 is_8 = 1'b1;
 NewSpriteX = 7'b0;
 NewSpriteY = 7'b0;
 
-if(isLeft == 1'b1 && behavior == 2'd2)
-begin
-	NewDrawX = x-8'd4;
-end
 
 case (behavior)
 	2'd0: // Standing Still
@@ -146,6 +140,14 @@ case (behavior)
 		endcase
 		end
 endcase
+
+NewDrawX = x;
+NewDrawY = y;
+if(isLeft == 1'b1 && behavior == 2'd2)
+begin
+	NewDrawX = x-8'd4;
+end
+
 
 if(is_8)
 begin

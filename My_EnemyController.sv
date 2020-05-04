@@ -141,14 +141,15 @@ module  Enemy_Controller ( input         Clk, Start,                // 50 MHz cl
 					
 					if ( ( DistX*DistX + DistY*DistY) <= (AttackSize*AttackSize) ) 
 						keycode_in = 8'd44;
-					else if (PlayerCX + AttackSize/2 < EnemyCX)
-						keycode_in = 8'd4;
 					else if (PlayerCX > EnemyCX + AttackSize/2)
-						keycode_in = 8'd7;
-					else if (PlayerCY + AttackSize/2< EnemyCY)
-						keycode_in = 8'd26;
+						keycode_in = 8'd7;			//S
 					else if (PlayerCY > EnemyCY + AttackSize/2)
-						keycode_in = 8'd22;
+						keycode_in = 8'd22;			//D
+					else if (PlayerCY + AttackSize/2< EnemyCY)
+						keycode_in = 8'd26;			//W
+					else if (PlayerCX + AttackSize/2 < EnemyCX)
+						keycode_in = 8'd4;			//A
+					
 				
 				
 							

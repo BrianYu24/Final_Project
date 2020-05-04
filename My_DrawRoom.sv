@@ -37,7 +37,10 @@ module DrawRoom(
 	
 
 	
-	enum logic [4:0] {Halted, TopLeft, TopRight, TopWallFL, TopWallSL, LeftWall, RightWall, Floor, BottomLeftFL, BottomLeftSL, BottomRightFL,BottomRightSL, BottomWallFL, BottomWallSL,FinishedRoom, DrawDoor, Cycle} State, Next_state;
+	enum logic [4:0] {Halted, TopLeft, TopRight, TopWallFL, TopWallSL, LeftWall, RightWall, 
+							Floor, BottomLeftFL, BottomLeftSL, BottomRightFL,BottomRightSL, BottomWallFL, 
+							BottomWallSL,FinishedRoom, DrawTopDoor, DrawBottomDoor, DrawLeft1Door, 
+							DrawLeft2Door, DrawLeft3Door, DrawRight1Door, DrawRight2Door, DrawRight3Door, Cycle} State, Next_state;
 
 	always_ff @ (posedge Clk)
 	begin
@@ -266,31 +269,76 @@ module DrawRoom(
 			end
 			DrawTopDoor:
 			begin
-				DrawY = 8'd1;
-				DrawX = 8'd10;
-				SpriteY = 7'd4;
-				SpriteX = 7'd1;
-				Draw_FB_EN = 1'b1;
+				Draw_FB_EN = 1'b0;
+				if(Doors == 4'b1000)
+				begin
+					DrawY = 8'd1;
+					DrawX = 8'd10;
+					SpriteY = 7'd4;
+					SpriteX = 7'd1;
+					Draw_FB_EN = 1'b1;
+				end
 			end
 			DrawBottomDoor:
-				if (Done)
-					Next_state = DrawLeft1Door;
+			begin
+				Draw_FB_EN = 1'b0;
+				if(Doors == 4'b0100)
+				begin
+					DrawY = 8'd12;
+					DrawX = 8'd10;
+					SpriteY = 7'd4;
+					SpriteX = 7'd1;
+					Draw_FB_EN = 1'b1;
+				end
+			end
 			DrawLeft1Door:
-				if (Done)
-					Next_state = DrawLeft2Door;
+			begin
+				DrawY = 8'd4;
+				DrawX = 8'd0;
+				SpriteY = 7'd0;
+				SpriteX = 7'd6;
+				Draw_FB_EN = 1'b1;
+			end
 			DrawLeft2Door:
-				if (Done)
-					Next_state = DrawLeft3Door;
+			begin
+				DrawY = 8'd5;
+				DrawX = 8'd0;
+				SpriteY = 7'd1;
+				SpriteX = 7'd6;
+				Draw_FB_EN = 1'b1;
+			end
 			DrawLeft3Door:
-				if (Done)
-					Next_state = DrawRight1Door;
+			begin
+				DrawY = 8'd6;
+				DrawX = 8'd0;
+				SpriteY = 7'd2;
+				SpriteX = 7'd3;
+				Draw_FB_EN = 1'b1;
+			end
 			DrawRight1Door:
-				if (Done)
-					Next_state = DrawRight2Door;
+			begin
+				DrawY = 8'd4;
+				DrawX = 8'd20;
+				SpriteY = 7'd0;
+				SpriteX = 7'd6;
+				Draw_FB_EN = 1'b1;
+			end
 			DrawRight2Door:
-				if (Done)
-					Next_state = DrawRight3Door;
+			begin
+				DrawY = 8'd5;
+				DrawX = 8'd20;
+				SpriteY = 7'd1;
+				SpriteX = 7'd6;
+				Draw_FB_EN = 1'b1;
+			end
 			DrawRight3Door:
+			begin
+				DrawY = 8'd6;
+				DrawX = 8'd20;
+				SpriteY = 7'd2;
+				SpriteX = 7'd3;
+				Draw_FB_EN = 1'b1;
+			end
 			FinishedRoom:
 			begin
 				ALLDone = 1'b1;
