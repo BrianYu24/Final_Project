@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <io.h>
 #include <fcntl.h>
+#include "queue.h"
 
 #include "system.h"
 #include "alt_types.h"
@@ -27,6 +28,212 @@
 #include "lcp_cmd.h"
 #include "lcp_data.h"
 
+#define ROOM_WIDTH 5
+#define ROOM_HEIGHT 5
+#define ROOM_MIDDLE_X ROOM_WIDTH/2
+#define ROOM_MIDDLE_Y ROOM_HEIGHT/2
+
+enum doors {top = 0b1000, bottom = 0b0100, left = 0b0010, right = 0b0001};
+
+unsigned char rooms[ROOM_HEIGHT][ROOM_WIDTH];
+unsigned char numOfRooms = 1;
+
+// Room -> top,bottom,left,right
+int hasTopDoor(unsigned char room){
+    return room & 0b1000;
+}
+
+int hasBottomDoor(unsigned char room){
+    return room & 0b0100;
+}
+
+int hasLeftDoor(unsigned char room){
+    return room & 0b0010;
+}
+
+int hasRightDoor(unsigned char room){
+    return room & 0b0001;
+}
+
+void printRoom(){
+    int i,j;
+    char printArray[ROOM_HEIGHT*3][ROOM_WIDTH*3];
+    for(j = 0; j < ROOM_HEIGHT*3; j++){
+        for(i = 0; i < ROOM_WIDTH*3; i++){
+            printArray[j][i] = ' ';
+        }
+    }
+    for(j = 0; j < ROOM_HEIGHT; j++){
+        for(i = 0; i < ROOM_WIDTH; i++){
+            unsigned char curRoom = rooms[j][i];
+            if(curRoom == 0)
+                continue;
+                
+            if(!hasTopDoor(curRoom))
+                printArray[j*3][i*3+1] = '#';
+            if(!hasBottomDoor(curRoom))
+                printArray[j*3+2][i*3+1] = '#';
+            if(!hasLeftDoor(curRoom))
+                printArray[j*3+1][i*3] = '#';
+            if(!hasRightDoor(curRoom))
+                printArray[j*3+1][i*3+2] = '#';
+            
+            printArray[j*3][i*3] = '#';
+            printArray[j*3][i*3+2] = '#';
+            printArray[j*3+2][i*3] = '#';
+            printArray[j*3+2][i*3+2] = '#';
+        }
+    }
+    
+    for(j = 0; j < ROOM_HEIGHT*3; j++){
+        for(i = 0; i < ROOM_WIDTH*3; i++){
+            printf("%c",printArray[j][i]);
+            if((i+1)%3 == 0){
+                printf("   ");
+            }
+        }
+        printf("\n");
+        if((j+1)%3 == 0){
+            printf("\n");
+        }
+    }
+    
+}
+
+int checkTopOOB(int x, int y){
+    if(y-1>=0)
+        return 1;
+    return 0;
+}
+
+int checkBottomOOB(int x, int y){
+    if(y+1<ROOM_HEIGHT)
+        return 1;
+    return 0;
+}
+
+int checkLeftOOB(int x, int y){
+    if(x-1>=0)
+        return 1;
+    return 0;
+}
+
+int checkRightOOB(int x, int y){
+    if(x+1<ROOM_WIDTH)
+        return 1;
+    return 0;
+}
+
+
+
+void generateDungeon(){
+    srand(time(0));
+    
+    int visited[ROOM_HEIGHT][ROOM_WIDTH];
+    for(int j = 0; j < ROOM_HEIGHT; j++){
+        for(int i = 0; i < ROOM_WIDTH; i++){
+            rooms[j][i] = 0;
+            visited[j][i] = 0;
+        }
+    }
+    
+    struct Queue* xQueue = createQueue(121);
+    struct Queue* yQueue = createQueue(121);
+    
+    rooms[ROOM_MIDDLE_Y][ROOM_MIDDLE_X] = top|bottom|left|right;
+    
+    visited[ROOM_MIDDLE_Y][ROOM_MIDDLE_X] = 1;
+    
+    enqueue(xQueue, ROOM_MIDDLE_X+1);
+    enqueue(yQueue, ROOM_MIDDLE_Y);
+    
+    enqueue(xQueue, ROOM_MIDDLE_X-1);
+    enqueue(yQueue, ROOM_MIDDLE_Y);
+    
+    enqueue(xQueue, ROOM_MIDDLE_X);
+    enqueue(yQueue, ROOM_MIDDLE_Y+1);
+    
+    enqueue(xQueue, ROOM_MIDDLE_X);
+    enqueue(yQueue, ROOM_MIDDLE_Y-1);
+    
+
+    while(!isEmpty(xQueue)){
+        int curX = dequeue(xQueue);
+        int curY = dequeue(yQueue);
+        if(visited[curY][curX])
+            continue;
+        unsigned char curRoom = 0;
+        visited[curY][curX] = 1;
+        numOfRooms++;
+        
+        if(checkTopOOB(curX,curY)){
+            int topRoomVisited = visited[curY-1][curX];
+            if(!topRoomVisited){
+                if(rand()%2){
+                    curRoom|=top;
+                    enqueue(xQueue, curX);
+                    enqueue(yQueue, curY-1);
+                }
+            }
+            else{
+                unsigned char topRoom = rooms[curY-1][curX];
+                if(hasBottomDoor(topRoom))
+                    curRoom|=top;
+            }
+        }
+        
+        if(checkBottomOOB(curX,curY)){
+            int bottomRoomVisited = visited[curY+1][curX];
+            if(!bottomRoomVisited){
+                if(rand()%2){
+                    curRoom|=bottom;
+                    enqueue(xQueue, curX);
+                    enqueue(yQueue, curY+1);
+                }
+            }
+            else{
+                unsigned char bottomRoom = rooms[curY+1][curX];
+                if(hasTopDoor(bottomRoom))
+                    curRoom|=bottom;
+            }
+        }
+        
+        if(checkLeftOOB(curX,curY)){
+            int leftRoomVisited = visited[curY][curX-1];
+            if(!leftRoomVisited){
+                if(rand()%2){
+                    curRoom|=left;
+                    enqueue(xQueue, curX-1);
+                    enqueue(yQueue, curY);
+                }
+            }
+            else{
+                unsigned char leftRoom = rooms[curY][curX-1];
+                if(leftRoom & right)
+                    curRoom|=left;
+            }
+        }
+        
+        if(checkRightOOB(curX,curY)){
+            int rightRoomVisited = visited[curY][curX+1];
+            if(!rightRoomVisited){
+                if(rand()%2){
+                    curRoom|=right;
+                    enqueue(xQueue, curX+1);
+                    enqueue(yQueue, curY);
+                }
+            }
+            else{
+                unsigned char rightRoom = rooms[curY][curX+1];
+                if(rightRoom & left)
+                    curRoom|=right;
+            }
+        }
+        
+        rooms[curY][curX] = curRoom;
+    }
+}
+
 
 //----------------------------------------------------------------------------------------//
 //
@@ -35,6 +242,9 @@
 //----------------------------------------------------------------------------------------//
 int main(void)
 {
+
+	generateDungeon();
+
 	IO_init();
 
 	/*while(1)
