@@ -1,6 +1,7 @@
 	component lab7_soc is
 		port (
 			clk_clk                : in    std_logic                     := 'X';             -- clk
+			export_data_new_signal : out   std_logic_vector(7 downto 0);                     -- new_signal
 			keycode_export         : out   std_logic_vector(7 downto 0);                     -- export
 			keycode2_export        : out   std_logic_vector(7 downto 0);                     -- export
 			otg_hpi_address_export : out   std_logic_vector(1 downto 0);                     -- export
@@ -12,6 +13,32 @@
 			otg_hpi_w_export       : out   std_logic;                                        -- export
 			reset_reset_n          : in    std_logic                     := 'X';             -- reset_n
 			reset_s_export         : in    std_logic                     := 'X';             -- export
+			room0_export           : out   std_logic_vector(7 downto 0);                     -- export
+			room1_export           : out   std_logic_vector(7 downto 0);                     -- export
+			room10_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room11_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room12_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room13_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room14_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room15_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room16_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room17_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room18_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room19_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room2_export           : out   std_logic_vector(7 downto 0);                     -- export
+			room20_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room21_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room22_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room23_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room24_export          : out   std_logic_vector(7 downto 0);                     -- export
+			room3_export           : out   std_logic_vector(7 downto 0);                     -- export
+			room4_export           : out   std_logic_vector(7 downto 0);                     -- export
+			room5_export           : out   std_logic_vector(7 downto 0);                     -- export
+			room6_export           : out   std_logic_vector(7 downto 0);                     -- export
+			room7_export           : out   std_logic_vector(7 downto 0);                     -- export
+			room8_export           : out   std_logic_vector(7 downto 0);                     -- export
+			room9_export           : out   std_logic_vector(7 downto 0);                     -- export
+			roomnumber_export      : out   std_logic_vector(7 downto 0);                     -- export
 			sdram_clk_clk          : out   std_logic;                                        -- clk
 			sdram_wire_addr        : out   std_logic_vector(12 downto 0);                    -- addr
 			sdram_wire_ba          : out   std_logic_vector(1 downto 0);                     -- ba

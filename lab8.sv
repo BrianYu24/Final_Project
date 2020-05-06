@@ -15,7 +15,7 @@
 
 module lab8( input               CLOCK_50,
              input        [3:0]  KEY,          //bit 0 is set up as Reset
-             output logic [6:0]  HEX0, HEX1, HEX2, HEX3,
+             output logic [6:0]  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5,
              // VGA Interface 
              output logic [7:0]  VGA_R,        //VGA Red
                                  VGA_G,        //VGA Green
@@ -65,7 +65,7 @@ module lab8( input               CLOCK_50,
 	 logic is_ball;
 	 
 //	 logic Player_Draw_EN, Enemy_Draw_EN, Room_Draw_EN, Title_Draw_EN, Hud_Draw_EN, Transition_Draw_EN;
-	 logic Done, isBlack, we, is_8, Draw_EN, DrawRoomEN, DrawHudEN;
+	 logic Done, isBlack, we, is_8, Draw_EN, DrawRoomEN, DrawHudEN, transition;
 	 logic [4:0] data_Out, data_In, palette, FB_Data_In;
 	 logic [14:0] read_address, FB_write_address;
 	 logic [7:0] Red, Blue, Green;
@@ -77,8 +77,12 @@ module lab8( input               CLOCK_50,
 	 logic [6:0] RoomSpriteX, RoomSpriteY, PlayerSpriteX, PlayerSpriteY, EnemySpriteX, EnemySpriteY, HudSpriteX, HudSpriteY;
 	 logic [7:0] RoomDrawX, RoomDrawY, PlayerDrawX, PlayerDrawY, EnemyDrawX, EnemyDrawY, HudDrawX, HudDrawY;
 	 logic Roomis_8, Playeris_8, Enemyis_8, Hudis_8, Draw_Room_Done, Draw_Hud_Done;
-	 logic [2:0] Draw_state;
+	 logic [3:0] Draw_state;
 	 logic alive, Player_isLeft, Enemy_isLeft;
+	 logic [7:0] totalEnemies;
+	 logic thisRoomIsDead;
+	 
+	 
 
 	 
 
@@ -105,6 +109,15 @@ module lab8( input               CLOCK_50,
                             .OTG_RST_N(OTG_RST_N)
     );
      
+	  logic [4:0] RoomAddr;
+	  logic [7:0] RoomData;
+	  logic [3:0] Doors;
+	  logic [7:0] Room_Out, Room_Number;
+	  logic [7:0] Room_Set [25];
+	  assign RoomData = Room_Set[RoomAddr];
+	  
+	 HexDriver hex_inst_4 (Room_Number[3:0], HEX4);
+    HexDriver hex_inst_5 (Room_Number[7:4], HEX5);
      // You need to make sure that the port names here match the ports in Qsys-generated codes.
      lab7_soc nios_system(
                              .clk_clk(Clk),         
@@ -128,7 +141,36 @@ module lab8( input               CLOCK_50,
                              .otg_hpi_r_export(hpi_r),
                              .otg_hpi_w_export(hpi_w),
                              .otg_hpi_reset_export(hpi_reset),
-									  .reset_s_export(Reset_s)
+									  .reset_s_export(Reset_s),
+//									  .Reg_ADDR(RoomAddr),
+//									  .RoomData(RoomData),
+									  .export_data_new_signal(Room_Out),
+									  .room0_export(Room_Set[0]),
+									  .room1_export(Room_Set[1]),      
+									  .room10_export(Room_Set[10]),     
+									  .room11_export(Room_Set[11]),     
+									  .room12_export(Room_Set[12]),     
+									  .room13_export(Room_Set[13]),     
+									  .room14_export(Room_Set[14]),     
+									  .room15_export(Room_Set[15]),     
+									  .room16_export(Room_Set[16]),     
+									  .room17_export(Room_Set[17]),     
+									  .room18_export(Room_Set[18]),     
+									  .room19_export(Room_Set[19]),     
+									  .room2_export(Room_Set[2]),      
+									  .room20_export(Room_Set[20]),     
+									  .room21_export(Room_Set[21]),     
+									  .room22_export(Room_Set[22]),     
+									  .room23_export(Room_Set[23]),     
+									  .room24_export(Room_Set[24]),     
+									  .room3_export(Room_Set[3]),      
+									  .room4_export(Room_Set[4]),      
+									  .room5_export(Room_Set[5]),      
+									  .room6_export(Room_Set[6]),      
+									  .room7_export(Room_Set[7]),      
+									  .room8_export(Room_Set[8]),      
+									  .room9_export(Room_Set[9]),      
+									  .roomnumber_export(Room_Number), 
     );
     
     // Use PLL to generate the 25MHZ VGA_CLK.
@@ -154,9 +196,9 @@ module lab8( input               CLOCK_50,
 			Start = 1'b0;
 	end
 
-	DrawController ISDU (.*, .CLK(Clk), .RESET(Reset_s|Reset_h), .DrawWait(1'b0),.Start, .NextRoom(1'b0),
+	DrawController ISDU (.*, .CLK(Clk), .RESET(Reset_s|Reset_h), .DrawWait(1'b0),.Start,
 			.Done(Done), .DrawRoomDone(Draw_Room_Done), .DrawHudDone(Draw_Hud_Done),
-			.PlayerHealth, .EnemyHealth, .DrawRoomEN, .DrawHudEN
+			.PlayerHealth, .EnemyHealth, .DrawRoomEN, .DrawHudEN, .transition, .totalEnemies
 	); 
 	 
 	always_comb
@@ -168,15 +210,15 @@ module lab8( input               CLOCK_50,
 		is_8 = 1'b0;
 		Draw_EN = 1'b0;
 		case(Draw_state)
-			3'd0: 
+			4'd0: 
 			begin
 				Draw_EN = 1'b0;
 			end
-			3'd1: 
+			4'd1: 
 			begin
 				Draw_EN = 1'b0;
 			end
-			3'd2: 
+			4'd2: 
 			begin
 				NewDrawX = RoomDrawX;
 				NewDrawY = RoomDrawY;
@@ -185,7 +227,7 @@ module lab8( input               CLOCK_50,
 				is_8 = Roomis_8;
 				Draw_EN = 1'b1;
 			end
-			3'd3:
+			4'd3:
 			begin
 				NewDrawX = PlayerDrawX;
 			   NewDrawY = PlayerDrawY;
@@ -194,14 +236,14 @@ module lab8( input               CLOCK_50,
 				is_8 = Playeris_8;
 				Draw_EN = 1'b1;
 			end
-			3'd4:
+			4'd4:
 			begin
 				NewDrawX = EnemyDrawX;
 			   NewDrawY = EnemyDrawY;
 			   NewSpriteX = EnemySpriteX;
 			   NewSpriteY = EnemySpriteY;
 				is_8 = Enemyis_8;
-				if (EnemyHealth != 3'b0)
+				if ((EnemyHealth != 3'b0) | (~thisRoomIsDead))
 					Draw_EN = 1'b1;
 				else
 					Draw_EN = 1'b0;
@@ -213,7 +255,7 @@ module lab8( input               CLOCK_50,
 //				is_8 = 1'b1;
 //				Draw_EN = 1'b1;
 			end
-			3'd5:
+			4'd5:
 			begin
 				NewDrawX = HudDrawX;
 			   NewDrawY = HudDrawY;
@@ -228,19 +270,25 @@ module lab8( input               CLOCK_50,
 //				is_8 = 1'b1;
 //				Draw_EN = 1'b1;
 			end
+			4'd7: //Lose
+			begin
+			end
+			4'd8: //Win
+			begin
+			end
 		endcase
 	
 	end
 	 
 	 
-	DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(DrawRoomEN), .Clk,.RESET(Reset_s) ,.Doors(4'b1000), .EnemyHealth, .Start,
+	DrawRoom DR (.Done_Draw_FB(Done), .Draw_EN(DrawRoomEN), .Clk,.RESET(Reset_s) ,.Doors, .EnemyHealth, .Start,
 			.NewDrawX(RoomDrawX), .NewDrawY(RoomDrawY), .NewSpriteX(RoomSpriteX), .NewSpriteY(RoomSpriteY), .is_8(Roomis_8), 
 			.ALLDone(Draw_Room_Done) 
 	); 
 	 
 	 
 	Player_Controller PC (
-			.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS), .Start,
+			.*, .Reset((Reset_s | Reset_h)), .frame_clk(VGA_VS), .Start, .transition,
 			.keycode, .keycode2, .PlayerX, .PlayerY,
 			.behavior(Player_behavior), .period(Player_period), .isLeft(Player_isLeft)
 	);
@@ -279,7 +327,7 @@ module lab8( input               CLOCK_50,
 	end
 	
 	Health H(
-			.*, .frame_clk(VGA_VS), .EnemyAttack, .PlayerAttack, .Reset(Reset_h | Reset_s), .NewRoom(1'd0),.Start,
+			.*, .frame_clk(VGA_VS), .EnemyAttack, .PlayerAttack, .Reset(Reset_h | Reset_s), .transition,.Start,
 			.PlayerHealth, .EnemyHealth
 	);
 	
@@ -288,6 +336,13 @@ module lab8( input               CLOCK_50,
 			.NewDrawX(HudDrawX), .NewDrawY(HudDrawY), .NewSpriteX(HudSpriteX), .NewSpriteY(HudSpriteY),
 			.is_8(Hudis_8), .AllDone(Draw_Hud_Done)
 	);
+	 
+	DungeonController DC (
+			.*, .RESET(Reset_h | Reset_s), .PlayerX, .PlayerY, .RoomData, .EnemyHealth, .RoomAddr, .Doors, .transition,
+			.frame_Clk(VGA_VS), .Start
+	);
+	
+
 	 
 
 
@@ -313,14 +368,29 @@ module lab8( input               CLOCK_50,
 	
 	Palette PL (.VGA_R(Red),.VGA_G(Green),.VGA_B(Blue),.color(palette));
 	 
-	 
+
 	always_comb
 	begin
 		if(isBlack)
 		begin
-			VGA_R = 8'hFF;
-			VGA_G = 8'h00;
-			VGA_B = 8'hFF;
+			if(Draw_state == 4'd8)
+			begin
+				VGA_R = 8'd235;
+				VGA_G = 8'd64;
+				VGA_B = 8'd52;
+			end
+			else if(Draw_state == 4'd7)
+			begin
+				VGA_R = 8'd112;
+				VGA_G = 8'd230;
+				VGA_B = 8'd44;
+			end
+			else
+			begin
+				VGA_R = 8'h00;
+				VGA_G = 8'h00;
+				VGA_B = 8'h00;
+			end
 		end
 		else
 		begin

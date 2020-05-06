@@ -5,6 +5,7 @@
 `timescale 1 ps / 1 ps
 module lab7_soc (
 		input  wire        clk_clk,                //             clk.clk
+		output wire [7:0]  export_data_new_signal, //     export_data.new_signal
 		output wire [7:0]  keycode_export,         //         keycode.export
 		output wire [7:0]  keycode2_export,        //        keycode2.export
 		output wire [1:0]  otg_hpi_address_export, // otg_hpi_address.export
@@ -16,6 +17,32 @@ module lab7_soc (
 		output wire        otg_hpi_w_export,       //       otg_hpi_w.export
 		input  wire        reset_reset_n,          //           reset.reset_n
 		input  wire        reset_s_export,         //         reset_s.export
+		output wire [7:0]  room0_export,           //           room0.export
+		output wire [7:0]  room1_export,           //           room1.export
+		output wire [7:0]  room10_export,          //          room10.export
+		output wire [7:0]  room11_export,          //          room11.export
+		output wire [7:0]  room12_export,          //          room12.export
+		output wire [7:0]  room13_export,          //          room13.export
+		output wire [7:0]  room14_export,          //          room14.export
+		output wire [7:0]  room15_export,          //          room15.export
+		output wire [7:0]  room16_export,          //          room16.export
+		output wire [7:0]  room17_export,          //          room17.export
+		output wire [7:0]  room18_export,          //          room18.export
+		output wire [7:0]  room19_export,          //          room19.export
+		output wire [7:0]  room2_export,           //           room2.export
+		output wire [7:0]  room20_export,          //          room20.export
+		output wire [7:0]  room21_export,          //          room21.export
+		output wire [7:0]  room22_export,          //          room22.export
+		output wire [7:0]  room23_export,          //          room23.export
+		output wire [7:0]  room24_export,          //          room24.export
+		output wire [7:0]  room3_export,           //           room3.export
+		output wire [7:0]  room4_export,           //           room4.export
+		output wire [7:0]  room5_export,           //           room5.export
+		output wire [7:0]  room6_export,           //           room6.export
+		output wire [7:0]  room7_export,           //           room7.export
+		output wire [7:0]  room8_export,           //           room8.export
+		output wire [7:0]  room9_export,           //           room9.export
+		output wire [7:0]  roomnumber_export,      //      roomnumber.export
 		output wire        sdram_clk_clk,          //       sdram_clk.clk
 		output wire [12:0] sdram_wire_addr,        //      sdram_wire.addr
 		output wire [1:0]  sdram_wire_ba,          //                .ba
@@ -41,6 +68,13 @@ module lab7_soc (
 	wire         nios2_gen2_0_instruction_master_waitrequest;                 // mm_interconnect_0:nios2_gen2_0_instruction_master_waitrequest -> nios2_gen2_0:i_waitrequest
 	wire  [28:0] nios2_gen2_0_instruction_master_address;                     // nios2_gen2_0:i_address -> mm_interconnect_0:nios2_gen2_0_instruction_master_address
 	wire         nios2_gen2_0_instruction_master_read;                        // nios2_gen2_0:i_read -> mm_interconnect_0:nios2_gen2_0_instruction_master_read
+	wire         mm_interconnect_0_rooms_slave_chipselect;                    // mm_interconnect_0:Rooms_Slave_chipselect -> Rooms:AVL_CS
+	wire   [7:0] mm_interconnect_0_rooms_slave_readdata;                      // Rooms:AVL_READDATA -> mm_interconnect_0:Rooms_Slave_readdata
+	wire   [4:0] mm_interconnect_0_rooms_slave_address;                       // mm_interconnect_0:Rooms_Slave_address -> Rooms:AVL_ADDR
+	wire         mm_interconnect_0_rooms_slave_read;                          // mm_interconnect_0:Rooms_Slave_read -> Rooms:AVL_READ
+	wire   [0:0] mm_interconnect_0_rooms_slave_byteenable;                    // mm_interconnect_0:Rooms_Slave_byteenable -> Rooms:AVL_BYTE_EN
+	wire         mm_interconnect_0_rooms_slave_write;                         // mm_interconnect_0:Rooms_Slave_write -> Rooms:AVL_WRITE
+	wire   [7:0] mm_interconnect_0_rooms_slave_writedata;                     // mm_interconnect_0:Rooms_Slave_writedata -> Rooms:AVL_WRITEDATA
 	wire         mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect;  // mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_chipselect -> jtag_uart_0:av_chipselect
 	wire  [31:0] mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_readdata;    // jtag_uart_0:av_readdata -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_readdata
 	wire         mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest; // jtag_uart_0:av_waitrequest -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_waitrequest
@@ -121,10 +155,146 @@ module lab7_soc (
 	wire   [1:0] mm_interconnect_0_keycode2_s1_address;                       // mm_interconnect_0:keycode2_s1_address -> keycode2:address
 	wire         mm_interconnect_0_keycode2_s1_write;                         // mm_interconnect_0:keycode2_s1_write -> keycode2:write_n
 	wire  [31:0] mm_interconnect_0_keycode2_s1_writedata;                     // mm_interconnect_0:keycode2_s1_writedata -> keycode2:writedata
+	wire         mm_interconnect_0_roomnumber_s1_chipselect;                  // mm_interconnect_0:RoomNumber_s1_chipselect -> RoomNumber:chipselect
+	wire  [31:0] mm_interconnect_0_roomnumber_s1_readdata;                    // RoomNumber:readdata -> mm_interconnect_0:RoomNumber_s1_readdata
+	wire   [1:0] mm_interconnect_0_roomnumber_s1_address;                     // mm_interconnect_0:RoomNumber_s1_address -> RoomNumber:address
+	wire         mm_interconnect_0_roomnumber_s1_write;                       // mm_interconnect_0:RoomNumber_s1_write -> RoomNumber:write_n
+	wire  [31:0] mm_interconnect_0_roomnumber_s1_writedata;                   // mm_interconnect_0:RoomNumber_s1_writedata -> RoomNumber:writedata
+	wire         mm_interconnect_0_timer_s1_chipselect;                       // mm_interconnect_0:TIMER_s1_chipselect -> TIMER:chipselect
+	wire  [15:0] mm_interconnect_0_timer_s1_readdata;                         // TIMER:readdata -> mm_interconnect_0:TIMER_s1_readdata
+	wire   [2:0] mm_interconnect_0_timer_s1_address;                          // mm_interconnect_0:TIMER_s1_address -> TIMER:address
+	wire         mm_interconnect_0_timer_s1_write;                            // mm_interconnect_0:TIMER_s1_write -> TIMER:write_n
+	wire  [15:0] mm_interconnect_0_timer_s1_writedata;                        // mm_interconnect_0:TIMER_s1_writedata -> TIMER:writedata
+	wire         mm_interconnect_0_room0_s1_chipselect;                       // mm_interconnect_0:Room0_s1_chipselect -> Room0:chipselect
+	wire  [31:0] mm_interconnect_0_room0_s1_readdata;                         // Room0:readdata -> mm_interconnect_0:Room0_s1_readdata
+	wire   [1:0] mm_interconnect_0_room0_s1_address;                          // mm_interconnect_0:Room0_s1_address -> Room0:address
+	wire         mm_interconnect_0_room0_s1_write;                            // mm_interconnect_0:Room0_s1_write -> Room0:write_n
+	wire  [31:0] mm_interconnect_0_room0_s1_writedata;                        // mm_interconnect_0:Room0_s1_writedata -> Room0:writedata
+	wire         mm_interconnect_0_room1_s1_chipselect;                       // mm_interconnect_0:Room1_s1_chipselect -> Room1:chipselect
+	wire  [31:0] mm_interconnect_0_room1_s1_readdata;                         // Room1:readdata -> mm_interconnect_0:Room1_s1_readdata
+	wire   [1:0] mm_interconnect_0_room1_s1_address;                          // mm_interconnect_0:Room1_s1_address -> Room1:address
+	wire         mm_interconnect_0_room1_s1_write;                            // mm_interconnect_0:Room1_s1_write -> Room1:write_n
+	wire  [31:0] mm_interconnect_0_room1_s1_writedata;                        // mm_interconnect_0:Room1_s1_writedata -> Room1:writedata
+	wire         mm_interconnect_0_room2_s1_chipselect;                       // mm_interconnect_0:Room2_s1_chipselect -> Room2:chipselect
+	wire  [31:0] mm_interconnect_0_room2_s1_readdata;                         // Room2:readdata -> mm_interconnect_0:Room2_s1_readdata
+	wire   [1:0] mm_interconnect_0_room2_s1_address;                          // mm_interconnect_0:Room2_s1_address -> Room2:address
+	wire         mm_interconnect_0_room2_s1_write;                            // mm_interconnect_0:Room2_s1_write -> Room2:write_n
+	wire  [31:0] mm_interconnect_0_room2_s1_writedata;                        // mm_interconnect_0:Room2_s1_writedata -> Room2:writedata
+	wire         mm_interconnect_0_room3_s1_chipselect;                       // mm_interconnect_0:Room3_s1_chipselect -> Room3:chipselect
+	wire  [31:0] mm_interconnect_0_room3_s1_readdata;                         // Room3:readdata -> mm_interconnect_0:Room3_s1_readdata
+	wire   [1:0] mm_interconnect_0_room3_s1_address;                          // mm_interconnect_0:Room3_s1_address -> Room3:address
+	wire         mm_interconnect_0_room3_s1_write;                            // mm_interconnect_0:Room3_s1_write -> Room3:write_n
+	wire  [31:0] mm_interconnect_0_room3_s1_writedata;                        // mm_interconnect_0:Room3_s1_writedata -> Room3:writedata
+	wire         mm_interconnect_0_room6_s1_chipselect;                       // mm_interconnect_0:Room6_s1_chipselect -> Room6:chipselect
+	wire  [31:0] mm_interconnect_0_room6_s1_readdata;                         // Room6:readdata -> mm_interconnect_0:Room6_s1_readdata
+	wire   [1:0] mm_interconnect_0_room6_s1_address;                          // mm_interconnect_0:Room6_s1_address -> Room6:address
+	wire         mm_interconnect_0_room6_s1_write;                            // mm_interconnect_0:Room6_s1_write -> Room6:write_n
+	wire  [31:0] mm_interconnect_0_room6_s1_writedata;                        // mm_interconnect_0:Room6_s1_writedata -> Room6:writedata
+	wire         mm_interconnect_0_room7_s1_chipselect;                       // mm_interconnect_0:Room7_s1_chipselect -> Room7:chipselect
+	wire  [31:0] mm_interconnect_0_room7_s1_readdata;                         // Room7:readdata -> mm_interconnect_0:Room7_s1_readdata
+	wire   [1:0] mm_interconnect_0_room7_s1_address;                          // mm_interconnect_0:Room7_s1_address -> Room7:address
+	wire         mm_interconnect_0_room7_s1_write;                            // mm_interconnect_0:Room7_s1_write -> Room7:write_n
+	wire  [31:0] mm_interconnect_0_room7_s1_writedata;                        // mm_interconnect_0:Room7_s1_writedata -> Room7:writedata
+	wire         mm_interconnect_0_room4_s1_chipselect;                       // mm_interconnect_0:Room4_s1_chipselect -> Room4:chipselect
+	wire  [31:0] mm_interconnect_0_room4_s1_readdata;                         // Room4:readdata -> mm_interconnect_0:Room4_s1_readdata
+	wire   [1:0] mm_interconnect_0_room4_s1_address;                          // mm_interconnect_0:Room4_s1_address -> Room4:address
+	wire         mm_interconnect_0_room4_s1_write;                            // mm_interconnect_0:Room4_s1_write -> Room4:write_n
+	wire  [31:0] mm_interconnect_0_room4_s1_writedata;                        // mm_interconnect_0:Room4_s1_writedata -> Room4:writedata
+	wire         mm_interconnect_0_room5_s1_chipselect;                       // mm_interconnect_0:Room5_s1_chipselect -> Room5:chipselect
+	wire  [31:0] mm_interconnect_0_room5_s1_readdata;                         // Room5:readdata -> mm_interconnect_0:Room5_s1_readdata
+	wire   [1:0] mm_interconnect_0_room5_s1_address;                          // mm_interconnect_0:Room5_s1_address -> Room5:address
+	wire         mm_interconnect_0_room5_s1_write;                            // mm_interconnect_0:Room5_s1_write -> Room5:write_n
+	wire  [31:0] mm_interconnect_0_room5_s1_writedata;                        // mm_interconnect_0:Room5_s1_writedata -> Room5:writedata
+	wire         mm_interconnect_0_room8_s1_chipselect;                       // mm_interconnect_0:Room8_s1_chipselect -> Room8:chipselect
+	wire  [31:0] mm_interconnect_0_room8_s1_readdata;                         // Room8:readdata -> mm_interconnect_0:Room8_s1_readdata
+	wire   [1:0] mm_interconnect_0_room8_s1_address;                          // mm_interconnect_0:Room8_s1_address -> Room8:address
+	wire         mm_interconnect_0_room8_s1_write;                            // mm_interconnect_0:Room8_s1_write -> Room8:write_n
+	wire  [31:0] mm_interconnect_0_room8_s1_writedata;                        // mm_interconnect_0:Room8_s1_writedata -> Room8:writedata
+	wire         mm_interconnect_0_room9_s1_chipselect;                       // mm_interconnect_0:Room9_s1_chipselect -> Room9:chipselect
+	wire  [31:0] mm_interconnect_0_room9_s1_readdata;                         // Room9:readdata -> mm_interconnect_0:Room9_s1_readdata
+	wire   [1:0] mm_interconnect_0_room9_s1_address;                          // mm_interconnect_0:Room9_s1_address -> Room9:address
+	wire         mm_interconnect_0_room9_s1_write;                            // mm_interconnect_0:Room9_s1_write -> Room9:write_n
+	wire  [31:0] mm_interconnect_0_room9_s1_writedata;                        // mm_interconnect_0:Room9_s1_writedata -> Room9:writedata
+	wire         mm_interconnect_0_room10_s1_chipselect;                      // mm_interconnect_0:Room10_s1_chipselect -> Room10:chipselect
+	wire  [31:0] mm_interconnect_0_room10_s1_readdata;                        // Room10:readdata -> mm_interconnect_0:Room10_s1_readdata
+	wire   [1:0] mm_interconnect_0_room10_s1_address;                         // mm_interconnect_0:Room10_s1_address -> Room10:address
+	wire         mm_interconnect_0_room10_s1_write;                           // mm_interconnect_0:Room10_s1_write -> Room10:write_n
+	wire  [31:0] mm_interconnect_0_room10_s1_writedata;                       // mm_interconnect_0:Room10_s1_writedata -> Room10:writedata
+	wire         mm_interconnect_0_room11_s1_chipselect;                      // mm_interconnect_0:Room11_s1_chipselect -> Room11:chipselect
+	wire  [31:0] mm_interconnect_0_room11_s1_readdata;                        // Room11:readdata -> mm_interconnect_0:Room11_s1_readdata
+	wire   [1:0] mm_interconnect_0_room11_s1_address;                         // mm_interconnect_0:Room11_s1_address -> Room11:address
+	wire         mm_interconnect_0_room11_s1_write;                           // mm_interconnect_0:Room11_s1_write -> Room11:write_n
+	wire  [31:0] mm_interconnect_0_room11_s1_writedata;                       // mm_interconnect_0:Room11_s1_writedata -> Room11:writedata
+	wire         mm_interconnect_0_room12_s1_chipselect;                      // mm_interconnect_0:Room12_s1_chipselect -> Room12:chipselect
+	wire  [31:0] mm_interconnect_0_room12_s1_readdata;                        // Room12:readdata -> mm_interconnect_0:Room12_s1_readdata
+	wire   [1:0] mm_interconnect_0_room12_s1_address;                         // mm_interconnect_0:Room12_s1_address -> Room12:address
+	wire         mm_interconnect_0_room12_s1_write;                           // mm_interconnect_0:Room12_s1_write -> Room12:write_n
+	wire  [31:0] mm_interconnect_0_room12_s1_writedata;                       // mm_interconnect_0:Room12_s1_writedata -> Room12:writedata
+	wire         mm_interconnect_0_room13_s1_chipselect;                      // mm_interconnect_0:Room13_s1_chipselect -> Room13:chipselect
+	wire  [31:0] mm_interconnect_0_room13_s1_readdata;                        // Room13:readdata -> mm_interconnect_0:Room13_s1_readdata
+	wire   [1:0] mm_interconnect_0_room13_s1_address;                         // mm_interconnect_0:Room13_s1_address -> Room13:address
+	wire         mm_interconnect_0_room13_s1_write;                           // mm_interconnect_0:Room13_s1_write -> Room13:write_n
+	wire  [31:0] mm_interconnect_0_room13_s1_writedata;                       // mm_interconnect_0:Room13_s1_writedata -> Room13:writedata
+	wire         mm_interconnect_0_room14_s1_chipselect;                      // mm_interconnect_0:Room14_s1_chipselect -> Room14:chipselect
+	wire  [31:0] mm_interconnect_0_room14_s1_readdata;                        // Room14:readdata -> mm_interconnect_0:Room14_s1_readdata
+	wire   [1:0] mm_interconnect_0_room14_s1_address;                         // mm_interconnect_0:Room14_s1_address -> Room14:address
+	wire         mm_interconnect_0_room14_s1_write;                           // mm_interconnect_0:Room14_s1_write -> Room14:write_n
+	wire  [31:0] mm_interconnect_0_room14_s1_writedata;                       // mm_interconnect_0:Room14_s1_writedata -> Room14:writedata
+	wire         mm_interconnect_0_room15_s1_chipselect;                      // mm_interconnect_0:Room15_s1_chipselect -> Room15:chipselect
+	wire  [31:0] mm_interconnect_0_room15_s1_readdata;                        // Room15:readdata -> mm_interconnect_0:Room15_s1_readdata
+	wire   [1:0] mm_interconnect_0_room15_s1_address;                         // mm_interconnect_0:Room15_s1_address -> Room15:address
+	wire         mm_interconnect_0_room15_s1_write;                           // mm_interconnect_0:Room15_s1_write -> Room15:write_n
+	wire  [31:0] mm_interconnect_0_room15_s1_writedata;                       // mm_interconnect_0:Room15_s1_writedata -> Room15:writedata
+	wire         mm_interconnect_0_room16_s1_chipselect;                      // mm_interconnect_0:Room16_s1_chipselect -> Room16:chipselect
+	wire  [31:0] mm_interconnect_0_room16_s1_readdata;                        // Room16:readdata -> mm_interconnect_0:Room16_s1_readdata
+	wire   [1:0] mm_interconnect_0_room16_s1_address;                         // mm_interconnect_0:Room16_s1_address -> Room16:address
+	wire         mm_interconnect_0_room16_s1_write;                           // mm_interconnect_0:Room16_s1_write -> Room16:write_n
+	wire  [31:0] mm_interconnect_0_room16_s1_writedata;                       // mm_interconnect_0:Room16_s1_writedata -> Room16:writedata
+	wire         mm_interconnect_0_room17_s1_chipselect;                      // mm_interconnect_0:Room17_s1_chipselect -> Room17:chipselect
+	wire  [31:0] mm_interconnect_0_room17_s1_readdata;                        // Room17:readdata -> mm_interconnect_0:Room17_s1_readdata
+	wire   [1:0] mm_interconnect_0_room17_s1_address;                         // mm_interconnect_0:Room17_s1_address -> Room17:address
+	wire         mm_interconnect_0_room17_s1_write;                           // mm_interconnect_0:Room17_s1_write -> Room17:write_n
+	wire  [31:0] mm_interconnect_0_room17_s1_writedata;                       // mm_interconnect_0:Room17_s1_writedata -> Room17:writedata
+	wire         mm_interconnect_0_room18_s1_chipselect;                      // mm_interconnect_0:Room18_s1_chipselect -> Room18:chipselect
+	wire  [31:0] mm_interconnect_0_room18_s1_readdata;                        // Room18:readdata -> mm_interconnect_0:Room18_s1_readdata
+	wire   [1:0] mm_interconnect_0_room18_s1_address;                         // mm_interconnect_0:Room18_s1_address -> Room18:address
+	wire         mm_interconnect_0_room18_s1_write;                           // mm_interconnect_0:Room18_s1_write -> Room18:write_n
+	wire  [31:0] mm_interconnect_0_room18_s1_writedata;                       // mm_interconnect_0:Room18_s1_writedata -> Room18:writedata
+	wire         mm_interconnect_0_room19_s1_chipselect;                      // mm_interconnect_0:Room19_s1_chipselect -> Room19:chipselect
+	wire  [31:0] mm_interconnect_0_room19_s1_readdata;                        // Room19:readdata -> mm_interconnect_0:Room19_s1_readdata
+	wire   [1:0] mm_interconnect_0_room19_s1_address;                         // mm_interconnect_0:Room19_s1_address -> Room19:address
+	wire         mm_interconnect_0_room19_s1_write;                           // mm_interconnect_0:Room19_s1_write -> Room19:write_n
+	wire  [31:0] mm_interconnect_0_room19_s1_writedata;                       // mm_interconnect_0:Room19_s1_writedata -> Room19:writedata
+	wire         mm_interconnect_0_room20_s1_chipselect;                      // mm_interconnect_0:Room20_s1_chipselect -> Room20:chipselect
+	wire  [31:0] mm_interconnect_0_room20_s1_readdata;                        // Room20:readdata -> mm_interconnect_0:Room20_s1_readdata
+	wire   [1:0] mm_interconnect_0_room20_s1_address;                         // mm_interconnect_0:Room20_s1_address -> Room20:address
+	wire         mm_interconnect_0_room20_s1_write;                           // mm_interconnect_0:Room20_s1_write -> Room20:write_n
+	wire  [31:0] mm_interconnect_0_room20_s1_writedata;                       // mm_interconnect_0:Room20_s1_writedata -> Room20:writedata
+	wire         mm_interconnect_0_room21_s1_chipselect;                      // mm_interconnect_0:Room21_s1_chipselect -> Room21:chipselect
+	wire  [31:0] mm_interconnect_0_room21_s1_readdata;                        // Room21:readdata -> mm_interconnect_0:Room21_s1_readdata
+	wire   [1:0] mm_interconnect_0_room21_s1_address;                         // mm_interconnect_0:Room21_s1_address -> Room21:address
+	wire         mm_interconnect_0_room21_s1_write;                           // mm_interconnect_0:Room21_s1_write -> Room21:write_n
+	wire  [31:0] mm_interconnect_0_room21_s1_writedata;                       // mm_interconnect_0:Room21_s1_writedata -> Room21:writedata
+	wire         mm_interconnect_0_room22_s1_chipselect;                      // mm_interconnect_0:Room22_s1_chipselect -> Room22:chipselect
+	wire  [31:0] mm_interconnect_0_room22_s1_readdata;                        // Room22:readdata -> mm_interconnect_0:Room22_s1_readdata
+	wire   [1:0] mm_interconnect_0_room22_s1_address;                         // mm_interconnect_0:Room22_s1_address -> Room22:address
+	wire         mm_interconnect_0_room22_s1_write;                           // mm_interconnect_0:Room22_s1_write -> Room22:write_n
+	wire  [31:0] mm_interconnect_0_room22_s1_writedata;                       // mm_interconnect_0:Room22_s1_writedata -> Room22:writedata
+	wire         mm_interconnect_0_room23_s1_chipselect;                      // mm_interconnect_0:Room23_s1_chipselect -> Room23:chipselect
+	wire  [31:0] mm_interconnect_0_room23_s1_readdata;                        // Room23:readdata -> mm_interconnect_0:Room23_s1_readdata
+	wire   [1:0] mm_interconnect_0_room23_s1_address;                         // mm_interconnect_0:Room23_s1_address -> Room23:address
+	wire         mm_interconnect_0_room23_s1_write;                           // mm_interconnect_0:Room23_s1_write -> Room23:write_n
+	wire  [31:0] mm_interconnect_0_room23_s1_writedata;                       // mm_interconnect_0:Room23_s1_writedata -> Room23:writedata
+	wire         mm_interconnect_0_room24_s1_chipselect;                      // mm_interconnect_0:Room24_s1_chipselect -> Room24:chipselect
+	wire  [31:0] mm_interconnect_0_room24_s1_readdata;                        // Room24:readdata -> mm_interconnect_0:Room24_s1_readdata
+	wire   [1:0] mm_interconnect_0_room24_s1_address;                         // mm_interconnect_0:Room24_s1_address -> Room24:address
+	wire         mm_interconnect_0_room24_s1_write;                           // mm_interconnect_0:Room24_s1_write -> Room24:write_n
+	wire  [31:0] mm_interconnect_0_room24_s1_writedata;                       // mm_interconnect_0:Room24_s1_writedata -> Room24:writedata
 	wire         irq_mapper_receiver0_irq;                                    // jtag_uart_0:av_irq -> irq_mapper:receiver0_irq
+	wire         irq_mapper_receiver1_irq;                                    // TIMER:irq -> irq_mapper:receiver1_irq
 	wire  [31:0] nios2_gen2_0_irq_irq;                                        // irq_mapper:sender_irq -> nios2_gen2_0:irq
-	wire         rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [Reset_s:reset_n, jtag_uart_0:rst_n, keycode2:reset_n, keycode:reset_n, mm_interconnect_0:jtag_uart_0_reset_reset_bridge_in_reset_reset, otg_hpi_address:reset_n, otg_hpi_cs:reset_n, otg_hpi_data:reset_n, otg_hpi_r:reset_n, otg_hpi_reset:reset_n, otg_hpi_w:reset_n]
-	wire         rst_controller_001_reset_out_reset;                          // rst_controller_001:reset_out -> [irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, onchip_memory2_0:reset, rst_translator:in_reset, sdram_pll:reset, sysid_qsys_0:reset_n]
+	wire         rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [Reset_s:reset_n, Room0:reset_n, Room10:reset_n, Room11:reset_n, Room12:reset_n, Room13:reset_n, Room14:reset_n, Room15:reset_n, Room16:reset_n, Room17:reset_n, Room18:reset_n, Room19:reset_n, Room1:reset_n, Room20:reset_n, Room21:reset_n, Room22:reset_n, Room23:reset_n, Room24:reset_n, Room2:reset_n, Room3:reset_n, Room4:reset_n, Room5:reset_n, Room6:reset_n, Room7:reset_n, Room8:reset_n, Room9:reset_n, RoomNumber:reset_n, Rooms:RESET, jtag_uart_0:rst_n, keycode2:reset_n, keycode:reset_n, mm_interconnect_0:Rooms_RESET_reset_bridge_in_reset_reset, otg_hpi_address:reset_n, otg_hpi_cs:reset_n, otg_hpi_data:reset_n, otg_hpi_r:reset_n, otg_hpi_reset:reset_n, otg_hpi_w:reset_n]
+	wire         rst_controller_001_reset_out_reset;                          // rst_controller_001:reset_out -> [TIMER:reset_n, irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, onchip_memory2_0:reset, rst_translator:in_reset, sdram_pll:reset, sysid_qsys_0:reset_n]
 	wire         rst_controller_001_reset_out_reset_req;                      // rst_controller_001:reset_req -> [nios2_gen2_0:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
 	wire         nios2_gen2_0_debug_reset_request_reset;                      // nios2_gen2_0:debug_reset_request -> [rst_controller_001:reset_in1, rst_controller_002:reset_in1]
 	wire         rst_controller_002_reset_out_reset;                          // rst_controller_002:reset_out -> [mm_interconnect_0:sdram_reset_reset_bridge_in_reset_reset, sdram:reset_n]
@@ -135,6 +305,316 @@ module lab7_soc (
 		.address  (mm_interconnect_0_reset_s_s1_address),  //                  s1.address
 		.readdata (mm_interconnect_0_reset_s_s1_readdata), //                    .readdata
 		.in_port  (reset_s_export)                         // external_connection.export
+	);
+
+	lab7_soc_Room0 room0 (
+		.clk        (clk_clk),                               //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
+		.address    (mm_interconnect_0_room0_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room0_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room0_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room0_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room0_s1_readdata),   //                    .readdata
+		.out_port   (room0_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room1 (
+		.clk        (clk_clk),                               //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
+		.address    (mm_interconnect_0_room1_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room1_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room1_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room1_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room1_s1_readdata),   //                    .readdata
+		.out_port   (room1_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room10 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room10_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room10_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room10_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room10_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room10_s1_readdata),   //                    .readdata
+		.out_port   (room10_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room11 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room11_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room11_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room11_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room11_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room11_s1_readdata),   //                    .readdata
+		.out_port   (room11_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room12 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room12_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room12_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room12_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room12_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room12_s1_readdata),   //                    .readdata
+		.out_port   (room12_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room13 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room13_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room13_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room13_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room13_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room13_s1_readdata),   //                    .readdata
+		.out_port   (room13_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room14 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room14_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room14_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room14_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room14_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room14_s1_readdata),   //                    .readdata
+		.out_port   (room14_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room15 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room15_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room15_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room15_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room15_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room15_s1_readdata),   //                    .readdata
+		.out_port   (room15_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room16 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room16_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room16_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room16_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room16_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room16_s1_readdata),   //                    .readdata
+		.out_port   (room16_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room17 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room17_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room17_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room17_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room17_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room17_s1_readdata),   //                    .readdata
+		.out_port   (room17_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room18 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room18_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room18_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room18_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room18_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room18_s1_readdata),   //                    .readdata
+		.out_port   (room18_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room19 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room19_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room19_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room19_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room19_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room19_s1_readdata),   //                    .readdata
+		.out_port   (room19_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room2 (
+		.clk        (clk_clk),                               //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
+		.address    (mm_interconnect_0_room2_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room2_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room2_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room2_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room2_s1_readdata),   //                    .readdata
+		.out_port   (room2_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room20 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room20_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room20_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room20_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room20_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room20_s1_readdata),   //                    .readdata
+		.out_port   (room20_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room21 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room21_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room21_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room21_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room21_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room21_s1_readdata),   //                    .readdata
+		.out_port   (room21_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room22 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room22_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room22_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room22_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room22_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room22_s1_readdata),   //                    .readdata
+		.out_port   (room22_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room23 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room23_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room23_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room23_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room23_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room23_s1_readdata),   //                    .readdata
+		.out_port   (room23_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room24 (
+		.clk        (clk_clk),                                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address    (mm_interconnect_0_room24_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room24_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room24_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room24_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room24_s1_readdata),   //                    .readdata
+		.out_port   (room24_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room3 (
+		.clk        (clk_clk),                               //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
+		.address    (mm_interconnect_0_room3_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room3_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room3_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room3_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room3_s1_readdata),   //                    .readdata
+		.out_port   (room3_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room4 (
+		.clk        (clk_clk),                               //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
+		.address    (mm_interconnect_0_room4_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room4_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room4_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room4_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room4_s1_readdata),   //                    .readdata
+		.out_port   (room4_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room5 (
+		.clk        (clk_clk),                               //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
+		.address    (mm_interconnect_0_room5_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room5_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room5_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room5_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room5_s1_readdata),   //                    .readdata
+		.out_port   (room5_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room6 (
+		.clk        (clk_clk),                               //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
+		.address    (mm_interconnect_0_room6_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room6_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room6_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room6_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room6_s1_readdata),   //                    .readdata
+		.out_port   (room6_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room7 (
+		.clk        (clk_clk),                               //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
+		.address    (mm_interconnect_0_room7_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room7_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room7_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room7_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room7_s1_readdata),   //                    .readdata
+		.out_port   (room7_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room8 (
+		.clk        (clk_clk),                               //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
+		.address    (mm_interconnect_0_room8_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room8_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room8_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room8_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room8_s1_readdata),   //                    .readdata
+		.out_port   (room8_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 room9 (
+		.clk        (clk_clk),                               //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
+		.address    (mm_interconnect_0_room9_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_room9_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_room9_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_room9_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_room9_s1_readdata),   //                    .readdata
+		.out_port   (room9_export)                           // external_connection.export
+	);
+
+	lab7_soc_Room0 roomnumber (
+		.clk        (clk_clk),                                    //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address    (mm_interconnect_0_roomnumber_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_roomnumber_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_roomnumber_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_roomnumber_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_roomnumber_s1_readdata),   //                    .readdata
+		.out_port   (roomnumber_export)                           // external_connection.export
+	);
+
+	Rooms rooms (
+		.CLK           (clk_clk),                                  //         CLK.clk
+		.RESET         (rst_controller_reset_out_reset),           //       RESET.reset
+		.AVL_ADDR      (mm_interconnect_0_rooms_slave_address),    //       Slave.address
+		.AVL_CS        (mm_interconnect_0_rooms_slave_chipselect), //            .chipselect
+		.AVL_BYTE_EN   (mm_interconnect_0_rooms_slave_byteenable), //            .byteenable
+		.AVL_READ      (mm_interconnect_0_rooms_slave_read),       //            .read
+		.AVL_READDATA  (mm_interconnect_0_rooms_slave_readdata),   //            .readdata
+		.AVL_WRITE     (mm_interconnect_0_rooms_slave_write),      //            .write
+		.AVL_WRITEDATA (mm_interconnect_0_rooms_slave_writedata),  //            .writedata
+		.Export_Data   (export_data_new_signal)                    // Export_Data.new_signal
+	);
+
+	lab7_soc_TIMER timer (
+		.clk        (clk_clk),                               //   clk.clk
+		.reset_n    (~rst_controller_001_reset_out_reset),   // reset.reset_n
+		.address    (mm_interconnect_0_timer_s1_address),    //    s1.address
+		.writedata  (mm_interconnect_0_timer_s1_writedata),  //      .writedata
+		.readdata   (mm_interconnect_0_timer_s1_readdata),   //      .readdata
+		.chipselect (mm_interconnect_0_timer_s1_chipselect), //      .chipselect
+		.write_n    (~mm_interconnect_0_timer_s1_write),     //      .write_n
+		.irq        (irq_mapper_receiver1_irq)               //   irq.irq
 	);
 
 	lab7_soc_jtag_uart_0 jtag_uart_0 (
@@ -150,7 +630,7 @@ module lab7_soc (
 		.av_irq         (irq_mapper_receiver0_irq)                                     //               irq.irq
 	);
 
-	lab7_soc_keycode keycode (
+	lab7_soc_Room0 keycode (
 		.clk        (clk_clk),                                 //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),         //               reset.reset_n
 		.address    (mm_interconnect_0_keycode_s1_address),    //                  s1.address
@@ -161,7 +641,7 @@ module lab7_soc (
 		.out_port   (keycode_export)                           // external_connection.export
 	);
 
-	lab7_soc_keycode keycode2 (
+	lab7_soc_Room0 keycode2 (
 		.clk        (clk_clk),                                  //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_keycode2_s1_address),    //                  s1.address
@@ -339,8 +819,8 @@ module lab7_soc (
 	lab7_soc_mm_interconnect_0 mm_interconnect_0 (
 		.clk_0_clk_clk                                  (clk_clk),                                                     //                                clk_0_clk.clk
 		.sdram_pll_c0_clk                               (sdram_pll_c0_clk),                                            //                             sdram_pll_c0.clk
-		.jtag_uart_0_reset_reset_bridge_in_reset_reset  (rst_controller_reset_out_reset),                              //  jtag_uart_0_reset_reset_bridge_in_reset.reset
 		.nios2_gen2_0_reset_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),                          // nios2_gen2_0_reset_reset_bridge_in_reset.reset
+		.Rooms_RESET_reset_bridge_in_reset_reset        (rst_controller_reset_out_reset),                              //        Rooms_RESET_reset_bridge_in_reset.reset
 		.sdram_reset_reset_bridge_in_reset_reset        (rst_controller_002_reset_out_reset),                          //        sdram_reset_reset_bridge_in_reset.reset
 		.nios2_gen2_0_data_master_address               (nios2_gen2_0_data_master_address),                            //                 nios2_gen2_0_data_master.address
 		.nios2_gen2_0_data_master_waitrequest           (nios2_gen2_0_data_master_waitrequest),                        //                                         .waitrequest
@@ -418,6 +898,143 @@ module lab7_soc (
 		.otg_hpi_w_s1_chipselect                        (mm_interconnect_0_otg_hpi_w_s1_chipselect),                   //                                         .chipselect
 		.Reset_s_s1_address                             (mm_interconnect_0_reset_s_s1_address),                        //                               Reset_s_s1.address
 		.Reset_s_s1_readdata                            (mm_interconnect_0_reset_s_s1_readdata),                       //                                         .readdata
+		.Room0_s1_address                               (mm_interconnect_0_room0_s1_address),                          //                                 Room0_s1.address
+		.Room0_s1_write                                 (mm_interconnect_0_room0_s1_write),                            //                                         .write
+		.Room0_s1_readdata                              (mm_interconnect_0_room0_s1_readdata),                         //                                         .readdata
+		.Room0_s1_writedata                             (mm_interconnect_0_room0_s1_writedata),                        //                                         .writedata
+		.Room0_s1_chipselect                            (mm_interconnect_0_room0_s1_chipselect),                       //                                         .chipselect
+		.Room1_s1_address                               (mm_interconnect_0_room1_s1_address),                          //                                 Room1_s1.address
+		.Room1_s1_write                                 (mm_interconnect_0_room1_s1_write),                            //                                         .write
+		.Room1_s1_readdata                              (mm_interconnect_0_room1_s1_readdata),                         //                                         .readdata
+		.Room1_s1_writedata                             (mm_interconnect_0_room1_s1_writedata),                        //                                         .writedata
+		.Room1_s1_chipselect                            (mm_interconnect_0_room1_s1_chipselect),                       //                                         .chipselect
+		.Room10_s1_address                              (mm_interconnect_0_room10_s1_address),                         //                                Room10_s1.address
+		.Room10_s1_write                                (mm_interconnect_0_room10_s1_write),                           //                                         .write
+		.Room10_s1_readdata                             (mm_interconnect_0_room10_s1_readdata),                        //                                         .readdata
+		.Room10_s1_writedata                            (mm_interconnect_0_room10_s1_writedata),                       //                                         .writedata
+		.Room10_s1_chipselect                           (mm_interconnect_0_room10_s1_chipselect),                      //                                         .chipselect
+		.Room11_s1_address                              (mm_interconnect_0_room11_s1_address),                         //                                Room11_s1.address
+		.Room11_s1_write                                (mm_interconnect_0_room11_s1_write),                           //                                         .write
+		.Room11_s1_readdata                             (mm_interconnect_0_room11_s1_readdata),                        //                                         .readdata
+		.Room11_s1_writedata                            (mm_interconnect_0_room11_s1_writedata),                       //                                         .writedata
+		.Room11_s1_chipselect                           (mm_interconnect_0_room11_s1_chipselect),                      //                                         .chipselect
+		.Room12_s1_address                              (mm_interconnect_0_room12_s1_address),                         //                                Room12_s1.address
+		.Room12_s1_write                                (mm_interconnect_0_room12_s1_write),                           //                                         .write
+		.Room12_s1_readdata                             (mm_interconnect_0_room12_s1_readdata),                        //                                         .readdata
+		.Room12_s1_writedata                            (mm_interconnect_0_room12_s1_writedata),                       //                                         .writedata
+		.Room12_s1_chipselect                           (mm_interconnect_0_room12_s1_chipselect),                      //                                         .chipselect
+		.Room13_s1_address                              (mm_interconnect_0_room13_s1_address),                         //                                Room13_s1.address
+		.Room13_s1_write                                (mm_interconnect_0_room13_s1_write),                           //                                         .write
+		.Room13_s1_readdata                             (mm_interconnect_0_room13_s1_readdata),                        //                                         .readdata
+		.Room13_s1_writedata                            (mm_interconnect_0_room13_s1_writedata),                       //                                         .writedata
+		.Room13_s1_chipselect                           (mm_interconnect_0_room13_s1_chipselect),                      //                                         .chipselect
+		.Room14_s1_address                              (mm_interconnect_0_room14_s1_address),                         //                                Room14_s1.address
+		.Room14_s1_write                                (mm_interconnect_0_room14_s1_write),                           //                                         .write
+		.Room14_s1_readdata                             (mm_interconnect_0_room14_s1_readdata),                        //                                         .readdata
+		.Room14_s1_writedata                            (mm_interconnect_0_room14_s1_writedata),                       //                                         .writedata
+		.Room14_s1_chipselect                           (mm_interconnect_0_room14_s1_chipselect),                      //                                         .chipselect
+		.Room15_s1_address                              (mm_interconnect_0_room15_s1_address),                         //                                Room15_s1.address
+		.Room15_s1_write                                (mm_interconnect_0_room15_s1_write),                           //                                         .write
+		.Room15_s1_readdata                             (mm_interconnect_0_room15_s1_readdata),                        //                                         .readdata
+		.Room15_s1_writedata                            (mm_interconnect_0_room15_s1_writedata),                       //                                         .writedata
+		.Room15_s1_chipselect                           (mm_interconnect_0_room15_s1_chipselect),                      //                                         .chipselect
+		.Room16_s1_address                              (mm_interconnect_0_room16_s1_address),                         //                                Room16_s1.address
+		.Room16_s1_write                                (mm_interconnect_0_room16_s1_write),                           //                                         .write
+		.Room16_s1_readdata                             (mm_interconnect_0_room16_s1_readdata),                        //                                         .readdata
+		.Room16_s1_writedata                            (mm_interconnect_0_room16_s1_writedata),                       //                                         .writedata
+		.Room16_s1_chipselect                           (mm_interconnect_0_room16_s1_chipselect),                      //                                         .chipselect
+		.Room17_s1_address                              (mm_interconnect_0_room17_s1_address),                         //                                Room17_s1.address
+		.Room17_s1_write                                (mm_interconnect_0_room17_s1_write),                           //                                         .write
+		.Room17_s1_readdata                             (mm_interconnect_0_room17_s1_readdata),                        //                                         .readdata
+		.Room17_s1_writedata                            (mm_interconnect_0_room17_s1_writedata),                       //                                         .writedata
+		.Room17_s1_chipselect                           (mm_interconnect_0_room17_s1_chipselect),                      //                                         .chipselect
+		.Room18_s1_address                              (mm_interconnect_0_room18_s1_address),                         //                                Room18_s1.address
+		.Room18_s1_write                                (mm_interconnect_0_room18_s1_write),                           //                                         .write
+		.Room18_s1_readdata                             (mm_interconnect_0_room18_s1_readdata),                        //                                         .readdata
+		.Room18_s1_writedata                            (mm_interconnect_0_room18_s1_writedata),                       //                                         .writedata
+		.Room18_s1_chipselect                           (mm_interconnect_0_room18_s1_chipselect),                      //                                         .chipselect
+		.Room19_s1_address                              (mm_interconnect_0_room19_s1_address),                         //                                Room19_s1.address
+		.Room19_s1_write                                (mm_interconnect_0_room19_s1_write),                           //                                         .write
+		.Room19_s1_readdata                             (mm_interconnect_0_room19_s1_readdata),                        //                                         .readdata
+		.Room19_s1_writedata                            (mm_interconnect_0_room19_s1_writedata),                       //                                         .writedata
+		.Room19_s1_chipselect                           (mm_interconnect_0_room19_s1_chipselect),                      //                                         .chipselect
+		.Room2_s1_address                               (mm_interconnect_0_room2_s1_address),                          //                                 Room2_s1.address
+		.Room2_s1_write                                 (mm_interconnect_0_room2_s1_write),                            //                                         .write
+		.Room2_s1_readdata                              (mm_interconnect_0_room2_s1_readdata),                         //                                         .readdata
+		.Room2_s1_writedata                             (mm_interconnect_0_room2_s1_writedata),                        //                                         .writedata
+		.Room2_s1_chipselect                            (mm_interconnect_0_room2_s1_chipselect),                       //                                         .chipselect
+		.Room20_s1_address                              (mm_interconnect_0_room20_s1_address),                         //                                Room20_s1.address
+		.Room20_s1_write                                (mm_interconnect_0_room20_s1_write),                           //                                         .write
+		.Room20_s1_readdata                             (mm_interconnect_0_room20_s1_readdata),                        //                                         .readdata
+		.Room20_s1_writedata                            (mm_interconnect_0_room20_s1_writedata),                       //                                         .writedata
+		.Room20_s1_chipselect                           (mm_interconnect_0_room20_s1_chipselect),                      //                                         .chipselect
+		.Room21_s1_address                              (mm_interconnect_0_room21_s1_address),                         //                                Room21_s1.address
+		.Room21_s1_write                                (mm_interconnect_0_room21_s1_write),                           //                                         .write
+		.Room21_s1_readdata                             (mm_interconnect_0_room21_s1_readdata),                        //                                         .readdata
+		.Room21_s1_writedata                            (mm_interconnect_0_room21_s1_writedata),                       //                                         .writedata
+		.Room21_s1_chipselect                           (mm_interconnect_0_room21_s1_chipselect),                      //                                         .chipselect
+		.Room22_s1_address                              (mm_interconnect_0_room22_s1_address),                         //                                Room22_s1.address
+		.Room22_s1_write                                (mm_interconnect_0_room22_s1_write),                           //                                         .write
+		.Room22_s1_readdata                             (mm_interconnect_0_room22_s1_readdata),                        //                                         .readdata
+		.Room22_s1_writedata                            (mm_interconnect_0_room22_s1_writedata),                       //                                         .writedata
+		.Room22_s1_chipselect                           (mm_interconnect_0_room22_s1_chipselect),                      //                                         .chipselect
+		.Room23_s1_address                              (mm_interconnect_0_room23_s1_address),                         //                                Room23_s1.address
+		.Room23_s1_write                                (mm_interconnect_0_room23_s1_write),                           //                                         .write
+		.Room23_s1_readdata                             (mm_interconnect_0_room23_s1_readdata),                        //                                         .readdata
+		.Room23_s1_writedata                            (mm_interconnect_0_room23_s1_writedata),                       //                                         .writedata
+		.Room23_s1_chipselect                           (mm_interconnect_0_room23_s1_chipselect),                      //                                         .chipselect
+		.Room24_s1_address                              (mm_interconnect_0_room24_s1_address),                         //                                Room24_s1.address
+		.Room24_s1_write                                (mm_interconnect_0_room24_s1_write),                           //                                         .write
+		.Room24_s1_readdata                             (mm_interconnect_0_room24_s1_readdata),                        //                                         .readdata
+		.Room24_s1_writedata                            (mm_interconnect_0_room24_s1_writedata),                       //                                         .writedata
+		.Room24_s1_chipselect                           (mm_interconnect_0_room24_s1_chipselect),                      //                                         .chipselect
+		.Room3_s1_address                               (mm_interconnect_0_room3_s1_address),                          //                                 Room3_s1.address
+		.Room3_s1_write                                 (mm_interconnect_0_room3_s1_write),                            //                                         .write
+		.Room3_s1_readdata                              (mm_interconnect_0_room3_s1_readdata),                         //                                         .readdata
+		.Room3_s1_writedata                             (mm_interconnect_0_room3_s1_writedata),                        //                                         .writedata
+		.Room3_s1_chipselect                            (mm_interconnect_0_room3_s1_chipselect),                       //                                         .chipselect
+		.Room4_s1_address                               (mm_interconnect_0_room4_s1_address),                          //                                 Room4_s1.address
+		.Room4_s1_write                                 (mm_interconnect_0_room4_s1_write),                            //                                         .write
+		.Room4_s1_readdata                              (mm_interconnect_0_room4_s1_readdata),                         //                                         .readdata
+		.Room4_s1_writedata                             (mm_interconnect_0_room4_s1_writedata),                        //                                         .writedata
+		.Room4_s1_chipselect                            (mm_interconnect_0_room4_s1_chipselect),                       //                                         .chipselect
+		.Room5_s1_address                               (mm_interconnect_0_room5_s1_address),                          //                                 Room5_s1.address
+		.Room5_s1_write                                 (mm_interconnect_0_room5_s1_write),                            //                                         .write
+		.Room5_s1_readdata                              (mm_interconnect_0_room5_s1_readdata),                         //                                         .readdata
+		.Room5_s1_writedata                             (mm_interconnect_0_room5_s1_writedata),                        //                                         .writedata
+		.Room5_s1_chipselect                            (mm_interconnect_0_room5_s1_chipselect),                       //                                         .chipselect
+		.Room6_s1_address                               (mm_interconnect_0_room6_s1_address),                          //                                 Room6_s1.address
+		.Room6_s1_write                                 (mm_interconnect_0_room6_s1_write),                            //                                         .write
+		.Room6_s1_readdata                              (mm_interconnect_0_room6_s1_readdata),                         //                                         .readdata
+		.Room6_s1_writedata                             (mm_interconnect_0_room6_s1_writedata),                        //                                         .writedata
+		.Room6_s1_chipselect                            (mm_interconnect_0_room6_s1_chipselect),                       //                                         .chipselect
+		.Room7_s1_address                               (mm_interconnect_0_room7_s1_address),                          //                                 Room7_s1.address
+		.Room7_s1_write                                 (mm_interconnect_0_room7_s1_write),                            //                                         .write
+		.Room7_s1_readdata                              (mm_interconnect_0_room7_s1_readdata),                         //                                         .readdata
+		.Room7_s1_writedata                             (mm_interconnect_0_room7_s1_writedata),                        //                                         .writedata
+		.Room7_s1_chipselect                            (mm_interconnect_0_room7_s1_chipselect),                       //                                         .chipselect
+		.Room8_s1_address                               (mm_interconnect_0_room8_s1_address),                          //                                 Room8_s1.address
+		.Room8_s1_write                                 (mm_interconnect_0_room8_s1_write),                            //                                         .write
+		.Room8_s1_readdata                              (mm_interconnect_0_room8_s1_readdata),                         //                                         .readdata
+		.Room8_s1_writedata                             (mm_interconnect_0_room8_s1_writedata),                        //                                         .writedata
+		.Room8_s1_chipselect                            (mm_interconnect_0_room8_s1_chipselect),                       //                                         .chipselect
+		.Room9_s1_address                               (mm_interconnect_0_room9_s1_address),                          //                                 Room9_s1.address
+		.Room9_s1_write                                 (mm_interconnect_0_room9_s1_write),                            //                                         .write
+		.Room9_s1_readdata                              (mm_interconnect_0_room9_s1_readdata),                         //                                         .readdata
+		.Room9_s1_writedata                             (mm_interconnect_0_room9_s1_writedata),                        //                                         .writedata
+		.Room9_s1_chipselect                            (mm_interconnect_0_room9_s1_chipselect),                       //                                         .chipselect
+		.RoomNumber_s1_address                          (mm_interconnect_0_roomnumber_s1_address),                     //                            RoomNumber_s1.address
+		.RoomNumber_s1_write                            (mm_interconnect_0_roomnumber_s1_write),                       //                                         .write
+		.RoomNumber_s1_readdata                         (mm_interconnect_0_roomnumber_s1_readdata),                    //                                         .readdata
+		.RoomNumber_s1_writedata                        (mm_interconnect_0_roomnumber_s1_writedata),                   //                                         .writedata
+		.RoomNumber_s1_chipselect                       (mm_interconnect_0_roomnumber_s1_chipselect),                  //                                         .chipselect
+		.Rooms_Slave_address                            (mm_interconnect_0_rooms_slave_address),                       //                              Rooms_Slave.address
+		.Rooms_Slave_write                              (mm_interconnect_0_rooms_slave_write),                         //                                         .write
+		.Rooms_Slave_read                               (mm_interconnect_0_rooms_slave_read),                          //                                         .read
+		.Rooms_Slave_readdata                           (mm_interconnect_0_rooms_slave_readdata),                      //                                         .readdata
+		.Rooms_Slave_writedata                          (mm_interconnect_0_rooms_slave_writedata),                     //                                         .writedata
+		.Rooms_Slave_byteenable                         (mm_interconnect_0_rooms_slave_byteenable),                    //                                         .byteenable
+		.Rooms_Slave_chipselect                         (mm_interconnect_0_rooms_slave_chipselect),                    //                                         .chipselect
 		.sdram_s1_address                               (mm_interconnect_0_sdram_s1_address),                          //                                 sdram_s1.address
 		.sdram_s1_write                                 (mm_interconnect_0_sdram_s1_write),                            //                                         .write
 		.sdram_s1_read                                  (mm_interconnect_0_sdram_s1_read),                             //                                         .read
@@ -433,13 +1050,19 @@ module lab7_soc (
 		.sdram_pll_pll_slave_readdata                   (mm_interconnect_0_sdram_pll_pll_slave_readdata),              //                                         .readdata
 		.sdram_pll_pll_slave_writedata                  (mm_interconnect_0_sdram_pll_pll_slave_writedata),             //                                         .writedata
 		.sysid_qsys_0_control_slave_address             (mm_interconnect_0_sysid_qsys_0_control_slave_address),        //               sysid_qsys_0_control_slave.address
-		.sysid_qsys_0_control_slave_readdata            (mm_interconnect_0_sysid_qsys_0_control_slave_readdata)        //                                         .readdata
+		.sysid_qsys_0_control_slave_readdata            (mm_interconnect_0_sysid_qsys_0_control_slave_readdata),       //                                         .readdata
+		.TIMER_s1_address                               (mm_interconnect_0_timer_s1_address),                          //                                 TIMER_s1.address
+		.TIMER_s1_write                                 (mm_interconnect_0_timer_s1_write),                            //                                         .write
+		.TIMER_s1_readdata                              (mm_interconnect_0_timer_s1_readdata),                         //                                         .readdata
+		.TIMER_s1_writedata                             (mm_interconnect_0_timer_s1_writedata),                        //                                         .writedata
+		.TIMER_s1_chipselect                            (mm_interconnect_0_timer_s1_chipselect)                        //                                         .chipselect
 	);
 
 	lab7_soc_irq_mapper irq_mapper (
 		.clk           (clk_clk),                            //       clk.clk
 		.reset         (rst_controller_001_reset_out_reset), // clk_reset.reset
 		.receiver0_irq (irq_mapper_receiver0_irq),           // receiver0.irq
+		.receiver1_irq (irq_mapper_receiver1_irq),           // receiver1.irq
 		.sender_irq    (nios2_gen2_0_irq_irq)                //    sender.irq
 	);
 

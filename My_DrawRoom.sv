@@ -40,7 +40,8 @@ module DrawRoom(
 	enum logic [4:0] {Halted, TopLeft, TopRight, TopWallFL, TopWallSL, LeftWall, RightWall, 
 							Floor, BottomLeftFL, BottomLeftSL, BottomRightFL,BottomRightSL, BottomWallFL, 
 							BottomWallSL,FinishedRoom, DrawTopDoor, DrawBottomDoor, DrawLeft1Door, 
-							DrawLeft2Door, DrawLeft3Door, DrawRight1Door, DrawRight2Door, DrawRight3Door, Cycle} State, Next_state;
+							DrawLeft2Door, DrawLeft3Door, DrawRight1Door, DrawRight2Door, DrawRight3Door, 
+							DrawTopDoor2, DrawBottomDoor2, Cycle} State, Next_state;
 
 	always_ff @ (posedge Clk)
 	begin
@@ -119,17 +120,35 @@ module DrawRoom(
 					Next_state = BottomWallSL;
 			BottomWallSL:
 				if(count == 8'd19)
-					Next_state = FinishedRoom;
+					//Next_state = FinishedRoom;
+					if (EnemyHealth == 3'd0)
+						Next_state = DrawTopDoor;
+					else
+						Next_state = FinishedRoom;
 					
 			DrawTopDoor:
 				if (Done)
+					Next_state = DrawTopDoor2;
+				else if (((Doors & 4'b1000)==4'b0))
 					Next_state = DrawBottomDoor;
+			DrawTopDoor2:
+				if (Done)
+					Next_state = DrawBottomDoor;
+					
 			DrawBottomDoor:
 				if (Done)
+					Next_state = DrawBottomDoor2;
+				else if (((Doors & 4'b0100)==4'b0))
 					Next_state = DrawLeft1Door;
+			DrawBottomDoor2:
+				if (Done)
+					Next_state = DrawLeft1Door;
+					
 			DrawLeft1Door:
 				if (Done)
 					Next_state = DrawLeft2Door;
+				else if (((Doors & 4'b0010)==4'b0))
+					Next_state = DrawRight1Door;
 			DrawLeft2Door:
 				if (Done)
 					Next_state = DrawLeft3Door;
@@ -139,6 +158,8 @@ module DrawRoom(
 			DrawRight1Door:
 				if (Done)
 					Next_state = DrawRight2Door;
+				else if (((Doors & 4'b0001)==4'b0))
+					Next_state = FinishedRoom;
 			DrawRight2Door:
 				if (Done)
 					Next_state = DrawRight3Door;
@@ -267,29 +288,27 @@ module DrawRoom(
 				SpriteX = 7'd1;
 				Draw_FB_EN = 1'b1;
 			end
-			DrawTopDoor:
+			DrawTopDoor, DrawTopDoor2:
 			begin
 				Draw_FB_EN = 1'b0;
-				if(Doors == 4'b1000)
-				begin
-					DrawY = 8'd1;
-					DrawX = 8'd10;
-					SpriteY = 7'd4;
-					SpriteX = 7'd1;
-					Draw_FB_EN = 1'b1;
-				end
+				DrawY = 8'd1;
+				DrawX = 8'd10;
+				SpriteY = 7'd4;
+				SpriteX = 7'd1;
+				Draw_FB_EN = 1'b1;
+				if (((Doors & 4'b1000)==4'b0))
+					Draw_FB_EN = 1'b0;
 			end
-			DrawBottomDoor:
+			DrawBottomDoor,DrawBottomDoor2:
 			begin
 				Draw_FB_EN = 1'b0;
-				if(Doors == 4'b0100)
-				begin
-					DrawY = 8'd12;
-					DrawX = 8'd10;
-					SpriteY = 7'd4;
-					SpriteX = 7'd1;
-					Draw_FB_EN = 1'b1;
-				end
+				DrawY = 8'd12;
+				DrawX = 8'd10;
+				SpriteY = 7'd4;
+				SpriteX = 7'd1;
+				Draw_FB_EN = 1'b1;
+				if (((Doors & 4'b0100)==4'b0))
+					Draw_FB_EN = 1'b0;
 			end
 			DrawLeft1Door:
 			begin
@@ -298,6 +317,8 @@ module DrawRoom(
 				SpriteY = 7'd0;
 				SpriteX = 7'd6;
 				Draw_FB_EN = 1'b1;
+				if (((Doors & 4'b0010)==4'b0))
+					Draw_FB_EN = 1'b0;
 			end
 			DrawLeft2Door:
 			begin
@@ -306,6 +327,8 @@ module DrawRoom(
 				SpriteY = 7'd1;
 				SpriteX = 7'd6;
 				Draw_FB_EN = 1'b1;
+				if (((Doors & 4'b0010)==4'b0))
+					Draw_FB_EN = 1'b0;
 			end
 			DrawLeft3Door:
 			begin
@@ -314,6 +337,8 @@ module DrawRoom(
 				SpriteY = 7'd2;
 				SpriteX = 7'd3;
 				Draw_FB_EN = 1'b1;
+				if (((Doors & 4'b0010)==4'b0))
+					Draw_FB_EN = 1'b0;
 			end
 			DrawRight1Door:
 			begin
@@ -322,6 +347,8 @@ module DrawRoom(
 				SpriteY = 7'd0;
 				SpriteX = 7'd6;
 				Draw_FB_EN = 1'b1;
+				if (((Doors & 4'b0001)==4'b0))
+					Draw_FB_EN = 1'b0;
 			end
 			DrawRight2Door:
 			begin
@@ -330,6 +357,8 @@ module DrawRoom(
 				SpriteY = 7'd1;
 				SpriteX = 7'd6;
 				Draw_FB_EN = 1'b1;
+				if (((Doors & 4'b0001)==4'b0))
+					Draw_FB_EN = 1'b0;
 			end
 			DrawRight3Door:
 			begin
@@ -338,6 +367,8 @@ module DrawRoom(
 				SpriteY = 7'd2;
 				SpriteX = 7'd3;
 				Draw_FB_EN = 1'b1;
+				if (((Doors & 4'b0001)==4'b0))
+					Draw_FB_EN = 1'b0;
 			end
 			FinishedRoom:
 			begin

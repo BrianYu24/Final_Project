@@ -7,7 +7,6 @@
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Project,Library/Processors and Peripherals,Library/Processors and Peripherals/Peripherals,Library" />
+ <library expandedCategories="Project/ECE385 Final,Library,Project" />
  <window width="1920" height="1079" x="0" y="1" />
 </preferences>

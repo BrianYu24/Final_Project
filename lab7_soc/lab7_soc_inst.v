@@ -1,6 +1,7 @@
 	lab7_soc u0 (
 		.clk_clk                (<connected-to-clk_clk>),                //             clk.clk
 		.keycode_export         (<connected-to-keycode_export>),         //         keycode.export
+		.keycode2_export        (<connected-to-keycode2_export>),        //        keycode2.export
 		.otg_hpi_address_export (<connected-to-otg_hpi_address_export>), // otg_hpi_address.export
 		.otg_hpi_cs_export      (<connected-to-otg_hpi_cs_export>),      //      otg_hpi_cs.export
 		.otg_hpi_data_in_port   (<connected-to-otg_hpi_data_in_port>),   //    otg_hpi_data.in_port
@@ -10,6 +11,7 @@
 		.otg_hpi_w_export       (<connected-to-otg_hpi_w_export>),       //       otg_hpi_w.export
 		.reset_reset_n          (<connected-to-reset_reset_n>),          //           reset.reset_n
 		.reset_s_export         (<connected-to-reset_s_export>),         //         reset_s.export
+		.roomnumber_export      (<connected-to-roomnumber_export>),      //      roomnumber.export
 		.sdram_clk_clk          (<connected-to-sdram_clk_clk>),          //       sdram_clk.clk
 		.sdram_wire_addr        (<connected-to-sdram_wire_addr>),        //      sdram_wire.addr
 		.sdram_wire_ba          (<connected-to-sdram_wire_ba>),          //                .ba
@@ -20,6 +22,31 @@
 		.sdram_wire_dqm         (<connected-to-sdram_wire_dqm>),         //                .dqm
 		.sdram_wire_ras_n       (<connected-to-sdram_wire_ras_n>),       //                .ras_n
 		.sdram_wire_we_n        (<connected-to-sdram_wire_we_n>),        //                .we_n
-		.keycode2_export        (<connected-to-keycode2_export>)         //        keycode2.export
+		.export_data_new_signal (<connected-to-export_data_new_signal>), //     export_data.new_signal
+		.room0_export           (<connected-to-room0_export>),           //           room0.export
+		.room1_export           (<connected-to-room1_export>),           //           room1.export
+		.room2_export           (<connected-to-room2_export>),           //           room2.export
+		.room3_export           (<connected-to-room3_export>),           //           room3.export
+		.room4_export           (<connected-to-room4_export>),           //           room4.export
+		.room5_export           (<connected-to-room5_export>),           //           room5.export
+		.room6_export           (<connected-to-room6_export>),           //           room6.export
+		.room7_export           (<connected-to-room7_export>),           //           room7.export
+		.room8_export           (<connected-to-room8_export>),           //           room8.export
+		.room9_export           (<connected-to-room9_export>),           //           room9.export
+		.room10_export          (<connected-to-room10_export>),          //          room10.export
+		.room11_export          (<connected-to-room11_export>),          //          room11.export
+		.room12_export          (<connected-to-room12_export>),          //          room12.export
+		.room13_export          (<connected-to-room13_export>),          //          room13.export
+		.room14_export          (<connected-to-room14_export>),          //          room14.export
+		.room15_export          (<connected-to-room15_export>),          //          room15.export
+		.room16_export          (<connected-to-room16_export>),          //          room16.export
+		.room17_export          (<connected-to-room17_export>),          //          room17.export
+		.room18_export          (<connected-to-room18_export>),          //          room18.export
+		.room19_export          (<connected-to-room19_export>),          //          room19.export
+		.room20_export          (<connected-to-room20_export>),          //          room20.export
+		.room21_export          (<connected-to-room21_export>),          //          room21.export
+		.room22_export          (<connected-to-room22_export>),          //          room22.export
+		.room23_export          (<connected-to-room23_export>),          //          room23.export
+		.room24_export          (<connected-to-room24_export>)           //          room24.export
 	);
 

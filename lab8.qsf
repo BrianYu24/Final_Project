@@ -614,9 +614,10 @@ set_global_assignment -name QIP_FILE vga_clk.qip
 set_global_assignment -name SYSTEMVERILOG_FILE My_Palette.sv
 set_global_assignment -name SYSTEMVERILOG_FILE My_Draw_FB.sv
 set_global_assignment -name SYSTEMVERILOG_FILE testbench2.sv
-set_global_assignment -name SYSTEMVERILOG_FILE TestDP.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Player_Controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE My_EnemyController.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Health.sv
 set_global_assignment -name SYSTEMVERILOG_FILE DrawHud.sv
+set_global_assignment -name SYSTEMVERILOG_FILE lab7_soc/synthesis/lab7_soc.v -library lab7_soc
+set_global_assignment -name SYSTEMVERILOG_FILE DungeonController.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

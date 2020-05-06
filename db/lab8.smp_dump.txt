@@ -25,47 +25,50 @@ keycode.00011010 1 0 0 1 0 0
 keycode.00101100 0 0 0 1 1 0 
 
 State Machine - |lab8|DrawRoom:DR|State
-Name State.DrawRight3Door State.DrawRight2Door State.DrawRight1Door State.DrawLeft3Door State.DrawLeft2Door State.DrawLeft1Door State.DrawBottomDoor State.DrawTopDoor State.FinishedRoom State.BottomWallSL State.BottomWallFL State.BottomRightSL State.BottomRightFL State.BottomLeftSL State.BottomLeftFL State.Floor State.RightWall State.LeftWall State.TopWallSL State.TopWallFL State.TopRight State.TopLeft State.Halted 
-State.Halted 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-State.TopLeft 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
-State.TopRight 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
-State.TopWallFL 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
-State.TopWallSL 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
-State.LeftWall 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
-State.RightWall 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
-State.Floor 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
-State.BottomLeftFL 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
-State.BottomLeftSL 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
-State.BottomRightFL 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
-State.BottomRightSL 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
-State.BottomWallFL 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
-State.BottomWallSL 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
-State.FinishedRoom 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-State.DrawTopDoor 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-State.DrawBottomDoor 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-State.DrawLeft1Door 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-State.DrawLeft2Door 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-State.DrawLeft3Door 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-State.DrawRight1Door 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-State.DrawRight2Door 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
-State.DrawRight3Door 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Name State.DrawBottomDoor2 State.DrawTopDoor2 State.DrawRight3Door State.DrawRight2Door State.DrawRight1Door State.DrawLeft3Door State.DrawLeft2Door State.DrawLeft1Door State.DrawBottomDoor State.DrawTopDoor State.FinishedRoom State.BottomWallSL State.BottomWallFL State.BottomRightSL State.BottomRightFL State.BottomLeftSL State.BottomLeftFL State.Floor State.RightWall State.LeftWall State.TopWallSL State.TopWallFL State.TopRight State.TopLeft State.Halted 
+State.Halted 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+State.TopLeft 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+State.TopRight 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+State.TopWallFL 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+State.TopWallSL 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+State.LeftWall 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+State.RightWall 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+State.Floor 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+State.BottomLeftFL 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+State.BottomLeftSL 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+State.BottomRightFL 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+State.BottomRightSL 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+State.BottomWallFL 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+State.BottomWallSL 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.FinishedRoom 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.DrawTopDoor 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.DrawBottomDoor 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.DrawLeft1Door 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.DrawLeft2Door 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.DrawLeft3Door 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.DrawRight1Door 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.DrawRight2Door 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.DrawRight3Door 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.DrawTopDoor2 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.DrawBottomDoor2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
 State Machine - |lab8|DrawController:ISDU|State
-Name State.End State.Wait State.Stop2 State.DrawTitle State.DrawTransition State.DrawHud State.DrawEnemy5 State.DrawEnemy4 State.DrawEnemy3 State.DrawEnemy2 State.DrawEnemy1 State.DrawPlayer State.DrawRoom State.Stop1 
-State.Stop1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-State.DrawRoom 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
-State.DrawPlayer 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
-State.DrawEnemy1 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
-State.DrawEnemy2 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
-State.DrawEnemy3 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
-State.DrawEnemy4 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
-State.DrawEnemy5 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
-State.DrawHud 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
-State.DrawTransition 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
-State.DrawTitle 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
-State.Stop2 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
-State.Wait 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
-State.End 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Name State.Lose State.End State.Wait State.Stop2 State.DrawTitle State.DrawTransition State.DrawHud State.DrawEnemy5 State.DrawEnemy4 State.DrawEnemy3 State.DrawEnemy2 State.DrawEnemy1 State.DrawPlayer State.DrawRoom State.Stop1 
+State.Stop1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+State.DrawRoom 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+State.DrawPlayer 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+State.DrawEnemy1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+State.DrawEnemy2 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+State.DrawEnemy3 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+State.DrawEnemy4 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+State.DrawEnemy5 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+State.DrawHud 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+State.DrawTransition 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+State.DrawTitle 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+State.Stop2 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+State.Wait 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+State.End 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+State.Lose 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
 State Machine - |lab8|lab7_soc:nios_system|lab7_soc_sdram:sdram|m_next
 Name m_next.010000000 m_next.000010000 m_next.000001000 m_next.000000001 

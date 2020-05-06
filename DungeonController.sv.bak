@@ -1,0 +1,78 @@
+module DungeonController(
+		input Clk, RESET,
+		input [7:0] RoomData, playerX, playerY,
+		input [2:0] EnemyHealth,
+		output logic [4:0] RoomAddr,
+		output logic [3:0] doors,
+		output logic transition
+)
+
+assign doors = RoomData[3:0];
+assign RoomAddr = Y*5+X;
+
+
+logic [2:0] X,Y;
+
+
+always_ff @ (posedge Clk)
+begin
+	if (RESET)
+	begin
+		X <= 3'd2;
+		Y <= 3'd2;
+	end
+	else
+	begin
+		X <= X_in;
+		Y <= Y_in;
+	end
+end
+
+always_comb
+begin
+	transition = 1'b0;
+	X_in = X;
+	Y_in = Y;
+
+	if(EnemyHealth == 3'b0)
+	begin
+		//Top Door
+		if((playerX>8'd75 && playerX<8'd92)&&(playerY<8'd18))
+		begin
+			if(doors&4b'1000)
+			begin
+				transition = 1'b1;
+				Y_in = Y - 3'd1;
+			end
+		end
+		//Bottom Door
+		if((playerX>8'd75 && playerX<8'd92)&&(playerY>8'd77))
+		begin
+			if(doors&4b'0100)
+			begin
+				transition = 1'b1;
+				Y_in = Y + 3'd1;
+			end
+		end
+		//Left Door
+		if((playerY>8'd44 && playerY<8'd53)&&(playerX<8'd12))
+		begin
+			if(doors&4b'0010)
+			begin
+				transition = 1'b1;
+				X_in = X - 3'd1;
+			end
+		end
+		//Right Door
+		if((playerY>8'd44 && playerY<8'd53)&&(playerX>8'd150))
+		begin
+			if(doors&4b'0001)
+			begin
+				transition = 1'b1;
+				X_in = X + 3'd1;
+			end
+		end
+	end
+end
+
+endmodule

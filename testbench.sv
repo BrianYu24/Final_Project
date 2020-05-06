@@ -6,7 +6,7 @@ timeprecision 1ns;
 
  logic        CLOCK_50;
  logic [3:0]  KEY;
- logic [6:0]  HEX0, HEX1, HEX2, HEX3;
+ logic [6:0]  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
 
  logic [7:0]  VGA_R, VGA_G, VGA_B;        
  logic        VGA_CLK,   VGA_SYNC_N,   VGA_BLANK_N,  VGA_VS,   VGA_HS;      

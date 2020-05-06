@@ -1,6 +1,6 @@
 module Health (
 		input EnemyAttack, PlayerAttack, Reset, Start,
-		input Clk,frame_clk, NewRoom,
+		input Clk,frame_clk, transition, thisRoomIsDead,
 		input [7:0] EnemyX, EnemyY, PlayerX, PlayerY,
 		
 		output logic [2:0] PlayerHealth, EnemyHealth
@@ -23,12 +23,19 @@ module Health (
 	
 	always_ff @ (posedge frame_clk_rising_edge)
 	begin
-		if(Reset | NewRoom |Start)
+		if(Reset | transition |Start)
 		begin
 			PlayerHealth <= 3'd6;
-			EnemyHealth <= 3'd6;
+			EnemyHealth <= 3'd3;
 			EnemyAttackCD <= 6'd60;
 			PlayerAttackCD <= 6'd60;
+		end
+		else if(thisRoomIsDead)
+		begin
+			PlayerHealth <= PlayerHealth_in;
+			EnemyHealth <= 6'b0;
+			EnemyAttackCD <= EnemyAttackCD_in;
+			PlayerAttackCD <= PlayerAttackCD_in;
 		end
 		
 		else
