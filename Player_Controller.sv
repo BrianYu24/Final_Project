@@ -3,7 +3,7 @@ module  Player_Controller ( input         Clk, Start, transition,              /
                              frame_clk,          // The clock indicating a new frame (~60Hz)
 					input [7:0]   keycode, keycode2,
 					output logic [7:0] PlayerX,PlayerY,
-					output [1:0] behavior,period,
+					output logic [1:0] behavior,period,
 					output logic isLeft
               );
 				  

@@ -15,7 +15,7 @@
 
 module lab8( input               CLOCK_50,
              input        [3:0]  KEY,          //bit 0 is set up as Reset
-             output logic [6:0]  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5,
+             output logic [6:0]  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5,HEX6,
              // VGA Interface 
              output logic [7:0]  VGA_R,        //VGA Red
                                  VGA_G,        //VGA Green
@@ -82,6 +82,16 @@ module lab8( input               CLOCK_50,
 	 logic [7:0] totalEnemies;
 	 logic thisRoomIsDead;
 	 
+	 logic EnemyAttack, PlayerAttack;
+	 logic [2:0] PlayerHealth, EnemyHealth;
+	 
+	 logic [4:0] RoomAddr;
+	 logic [7:0] RoomData;
+	 logic [3:0] Doors;
+	 logic [7:0] Room_Out, Room_Number;
+	 logic [7:0] Room_Set [25];
+	 assign RoomData = Room_Set[RoomAddr];
+	 
 	 
 
 	 
@@ -109,15 +119,11 @@ module lab8( input               CLOCK_50,
                             .OTG_RST_N(OTG_RST_N)
     );
      
-	  logic [4:0] RoomAddr;
-	  logic [7:0] RoomData;
-	  logic [3:0] Doors;
-	  logic [7:0] Room_Out, Room_Number;
-	  logic [7:0] Room_Set [25];
-	  assign RoomData = Room_Set[RoomAddr];
 	  
-	 HexDriver hex_inst_4 (Room_Number[3:0], HEX4);
-    HexDriver hex_inst_5 (Room_Number[7:4], HEX5);
+	  
+	 HexDriver hex_inst_4 (totalEnemies[3:0], HEX4);
+    HexDriver hex_inst_5 (totalEnemies[7:4], HEX5);
+	 HexDriver hex_inst_6 (thisRoomIsDead, HEX6);
      // You need to make sure that the port names here match the ports in Qsys-generated codes.
      lab7_soc nios_system(
                              .clk_clk(Clk),         
@@ -170,7 +176,7 @@ module lab8( input               CLOCK_50,
 									  .room7_export(Room_Set[7]),      
 									  .room8_export(Room_Set[8]),      
 									  .room9_export(Room_Set[9]),      
-									  .roomnumber_export(Room_Number), 
+									  .roomnumber_export(Room_Number) 
     );
     
     // Use PLL to generate the 25MHZ VGA_CLK.
@@ -243,7 +249,9 @@ module lab8( input               CLOCK_50,
 			   NewSpriteX = EnemySpriteX;
 			   NewSpriteY = EnemySpriteY;
 				is_8 = Enemyis_8;
-				if ((EnemyHealth != 3'b0) | (~thisRoomIsDead))
+//				if(thisRoomIsDead)
+//					Draw_EN = 1'b0;
+				if ((EnemyHealth != 3'b0))
 					Draw_EN = 1'b1;
 				else
 					Draw_EN = 1'b0;
@@ -312,8 +320,7 @@ module lab8( input               CLOCK_50,
 	);
 	
 	
-	logic EnemyAttack, PlayerAttack;
-	logic [2:0] PlayerHealth, EnemyHealth;
+
 	always_comb
 	begin
 		if (Enemy_behavior == 2'd2)

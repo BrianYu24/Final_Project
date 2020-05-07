@@ -4,7 +4,7 @@ module  Enemy_Controller ( input         Clk, Start,                // 50 MHz cl
 					input [2:0] EnemyHealth,
 					input [7:0] PlayerX, PlayerY,
 					output logic [7:0] EnemyX,EnemyY,
-					output [1:0] behavior,period,
+					output logic [1:0] behavior,period,
 					output logic isLeft
               );
 				  

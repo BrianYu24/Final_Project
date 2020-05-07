@@ -597,7 +597,6 @@ set_global_assignment -name EDA_TEST_BENCH_FILE testbench.sv -section_id testben
 set_global_assignment -name EDA_TEST_BENCH_FILE testbench2.sv -section_id testbench2
 set_global_assignment -name QIP_FILE lab7_soc/synthesis/lab7_soc.qip
 set_global_assignment -name SYSTEMVERILOG_FILE My_DrawRoom.sv
-set_global_assignment -name SYSTEMVERILOG_FILE testbench.sv
 set_global_assignment -name SYSTEMVERILOG_FILE My_ram.sv
 set_global_assignment -name SYSTEMVERILOG_FILE My_frame_buffer.sv
 set_global_assignment -name SYSTEMVERILOG_FILE My_DrawPlayer.sv

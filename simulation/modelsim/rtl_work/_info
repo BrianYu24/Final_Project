@@ -10,7 +10,7 @@ cModel Technology
 Z0 dE:/Quartus/Project/Final/Final/simulation/modelsim
 vcolor_mapper
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1587935088
+Z2 !s110 1588803170
 !i10b 1
 !s100 ml;[F<ajkLIKbVE9mS`gf3
 I>c2KRPXNY;[OLlhLhkQU13
@@ -26,7 +26,7 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1587935088.000000
+Z5 !s108 1588803170.000000
 !s107 E:/Quartus/Project/Final/Final/Color_Mapper.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/Color_Mapper.sv|
 !i113 1
@@ -35,15 +35,15 @@ Z7 !s92 -sv -work work +incdir+E:/Quartus/Project/Final/Final
 Z8 tCvgOpt 0
 vDraw_Frame_Buffer
 R1
-Z9 !s110 1587935095
+Z9 !s110 1588803171
 !i10b 1
-!s100 IT=b;knVhF4mROL77SSQ]1
-I?d<BOi9JZPHe3LaTSg2bh3
+!s100 1Fh36nHgY88e`5366PmO71
+IAa9f9Fj^@2[ATzfLhoC@b2
 R3
 !s105 My_Draw_FB_sv_unit
 S1
 R0
-w1587931144
+w1588482207
 8E:/Quartus/Project/Final/Final/My_Draw_FB.sv
 FE:/Quartus/Project/Final/Final/My_Draw_FB.sv
 L0 1
@@ -51,7 +51,7 @@ R4
 r1
 !s85 0
 31
-Z10 !s108 1587935095.000000
+Z10 !s108 1588803171.000000
 !s107 E:/Quartus/Project/Final/Final/My_Draw_FB.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/My_Draw_FB.sv|
 !i113 1
@@ -59,17 +59,121 @@ R6
 R7
 R8
 n@draw_@frame_@buffer
+vDrawController
+R1
+R2
+!i10b 1
+!s100 [VIAfV53BVE20f>j3UR7F1
+IiUjh6GA4S>JS0C1[[Xgeh2
+R3
+!s105 My_DrawController_sv_unit
+S1
+R0
+w1588731548
+8E:/Quartus/Project/Final/Final/My_DrawController.sv
+FE:/Quartus/Project/Final/Final/My_DrawController.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/Quartus/Project/Final/Final/My_DrawController.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/My_DrawController.sv|
+!i113 1
+R6
+R7
+R8
+n@draw@controller
+vDrawEnemy
+R1
+R2
+!i10b 1
+!s100 zePT12hCVQ[JfOXkX]obL3
+I7e9dGb074V>X_48_dzkWc1
+R3
+!s105 My_DrawEnemy_sv_unit
+S1
+R0
+w1588573254
+8E:/Quartus/Project/Final/Final/My_DrawEnemy.sv
+FE:/Quartus/Project/Final/Final/My_DrawEnemy.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/Quartus/Project/Final/Final/My_DrawEnemy.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/My_DrawEnemy.sv|
+!i113 1
+R6
+R7
+R8
+n@draw@enemy
+vDrawHud
+R1
+R9
+!i10b 1
+!s100 nbbRWOA=QVS9WCQ@CDSE81
+I@Rhe?AHWjf?e6h=m<IK1m2
+R3
+!s105 DrawHud_sv_unit
+S1
+R0
+w1588565354
+8E:/Quartus/Project/Final/Final/DrawHud.sv
+FE:/Quartus/Project/Final/Final/DrawHud.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R10
+!s107 E:/Quartus/Project/Final/Final/DrawHud.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/DrawHud.sv|
+!i113 1
+R6
+R7
+R8
+n@draw@hud
+vDrawPlayer
+R1
+R2
+!i10b 1
+!s100 m1eFZBCYh`dW;9SSY?oSo0
+IHjQgUM1bkYjFN<N>1Wgzc0
+R3
+!s105 My_DrawPlayer_sv_unit
+S1
+R0
+w1588466802
+8E:/Quartus/Project/Final/Final/My_DrawPlayer.sv
+FE:/Quartus/Project/Final/Final/My_DrawPlayer.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/Quartus/Project/Final/Final/My_DrawPlayer.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/My_DrawPlayer.sv|
+!i113 1
+R6
+R7
+R8
+n@draw@player
 vDrawRoom
 R1
-!s110 1587935087
+Z11 !s110 1588803169
 !i10b 1
-!s100 D2JZXmV1mFe_GPSnMmYP@1
-IT:;bgf0QZB>?4d9U2mom02
+!s100 6ozhYACob6DnzZ_4`Z;Hb3
+I1Y5JcoP`eVnO;kiglfZK03
 R3
 !s105 My_DrawRoom_sv_unit
 S1
 R0
-w1587934836
+w1588662144
 8E:/Quartus/Project/Final/Final/My_DrawRoom.sv
 FE:/Quartus/Project/Final/Final/My_DrawRoom.sv
 L0 1
@@ -77,7 +181,7 @@ R4
 r1
 !s85 0
 31
-Z11 !s108 1587935087.000000
+Z12 !s108 1588803169.000000
 !s107 E:/Quartus/Project/Final/Final/My_DrawRoom.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/My_DrawRoom.sv|
 !i113 1
@@ -85,17 +189,69 @@ R6
 R7
 R8
 n@draw@room
+vDungeonController
+R1
+R9
+!i10b 1
+!s100 b4b1A@CAda8NY[RFZSVFi2
+IKA?@9Za9F4hUzAa6A_QO@2
+R3
+!s105 DungeonController_sv_unit
+S1
+R0
+w1588800482
+8E:/Quartus/Project/Final/Final/DungeonController.sv
+FE:/Quartus/Project/Final/Final/DungeonController.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R10
+!s107 E:/Quartus/Project/Final/Final/DungeonController.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/DungeonController.sv|
+!i113 1
+R6
+R7
+R8
+n@dungeon@controller
+vEnemy_Controller
+R1
+R9
+!i10b 1
+!s100 oO1SdEndX^YHzdkBKijih1
+I5a`HPcW@0@D1mV?JgZe2Y0
+R3
+!s105 My_EnemyController_sv_unit
+S1
+R0
+w1588800311
+8E:/Quartus/Project/Final/Final/My_EnemyController.sv
+FE:/Quartus/Project/Final/Final/My_EnemyController.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R10
+!s107 E:/Quartus/Project/Final/Final/My_EnemyController.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/My_EnemyController.sv|
+!i113 1
+R6
+R7
+R8
+n@enemy_@controller
 vFrameBuffer
 R1
-!s110 1587935089
+R2
 !i10b 1
-!s100 o0m_Ri23n5eic9mUTN00o1
-IoO>L:QTSgOTegd757STSd2
+!s100 A@;W?K]_16V>?NIamJQho3
+IK3[9J9lXTEdR<4FbcOB^m3
 R3
 !s105 My_frame_buffer_sv_unit
 S1
 R0
-w1587848278
+w1588734908
 8E:/Quartus/Project/Final/Final/My_frame_buffer.sv
 FE:/Quartus/Project/Final/Final/My_frame_buffer.sv
 L0 7
@@ -103,7 +259,7 @@ R4
 r1
 !s85 0
 31
-R5
+R12
 !s107 E:/Quartus/Project/Final/Final/My_frame_buffer.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/My_frame_buffer.sv|
 !i113 1
@@ -111,6 +267,32 @@ R6
 R7
 R8
 n@frame@buffer
+vHealth
+R1
+R9
+!i10b 1
+!s100 Z[dOlP0@KH<G]6G8N=<2<2
+IKE02mzehWP2o9Id^=9?5?1
+R3
+!s105 Health_sv_unit
+S1
+R0
+w1588732411
+8E:/Quartus/Project/Final/Final/Health.sv
+FE:/Quartus/Project/Final/Final/Health.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R10
+!s107 E:/Quartus/Project/Final/Final/Health.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/Health.sv|
+!i113 1
+R6
+R7
+R8
+n@health
 vHexDriver
 R1
 R2
@@ -137,17 +319,42 @@ R6
 R7
 R8
 n@hex@driver
+vhpi_io_intf
+R1
+R2
+!i10b 1
+!s100 o[Z?mIm>VA3P;Pd3TMI=n1
+IOhW?Qn9DLb?@cF_iZnDV71
+R3
+!s105 hpi_io_intf_sv_unit
+S1
+R0
+w1588799994
+8E:/Quartus/Project/Final/Final/hpi_io_intf.sv
+FE:/Quartus/Project/Final/Final/hpi_io_intf.sv
+L0 2
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/Quartus/Project/Final/Final/hpi_io_intf.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/hpi_io_intf.sv|
+!i113 1
+R6
+R7
+R8
 vlab8
 R1
 R9
 !i10b 1
-!s100 L4DP0McB0RS>QHX7:fBg92
-I7llVa23SZfb_bR`g]B2;33
+!s100 =7`V;_SIkhjSoA56zQT@31
+IJG6[gAXYLe^;Sf^]Zf;RC3
 R3
 !s105 lab8_sv_unit
 S1
 R0
-w1587932369
+w1588800685
 8E:/Quartus/Project/Final/Final/lab8.sv
 FE:/Quartus/Project/Final/Final/lab8.sv
 L0 16
@@ -164,7 +371,7 @@ R7
 R8
 vPalette
 R1
-R2
+R9
 !i10b 1
 !s100 BR?A[LJG7S]BjP]zTYISk3
 I3a[P2Z=1?_JO_g[AHML6k2
@@ -188,9 +395,35 @@ R6
 R7
 R8
 n@palette
+vPlayer_Controller
+R1
+R9
+!i10b 1
+!s100 VScF4<Ho3T^eLIR_]>AZa0
+Ih3i[5P2n3UKFSzlkHNc>M0
+R3
+!s105 Player_Controller_sv_unit
+S1
+R0
+w1588800153
+8E:/Quartus/Project/Final/Final/Player_Controller.sv
+FE:/Quartus/Project/Final/Final/Player_Controller.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R10
+!s107 E:/Quartus/Project/Final/Final/Player_Controller.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/Player_Controller.sv|
+!i113 1
+R6
+R7
+R8
+n@player_@controller
 vSpriteSheet
 R1
-R2
+R11
 !i10b 1
 !s100 kEfR@jU5AOkHC;@dcG>Cl2
 I3UWF4=LlLcINa::6QV=QW1
@@ -206,7 +439,7 @@ R4
 r1
 !s85 0
 31
-R5
+R12
 !s107 E:/Quartus/Project/Final/Final/My_ram.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/My_ram.sv|
 !i113 1
@@ -216,15 +449,15 @@ R8
 n@sprite@sheet
 vtestbench2
 R1
-R9
+!s110 1588803172
 !i10b 1
-!s100 NW9ooC][_ZT[h^J]:36Xd3
-I]5B?ZQ0@UH@QZl_T;Gc:03
+!s100 hj6BO;oHOGPaz241Al[4>1
+IeK3d_Q?Gz@KPWgN:Rzg>=3
 R3
 !s105 testbench2_sv_unit
 S1
 R0
-w1587933149
+w1588803077
 8E:/Quartus/Project/Final/Final/testbench2.sv
 FE:/Quartus/Project/Final/Final/testbench2.sv
 L0 1
@@ -232,7 +465,7 @@ R4
 r1
 !s85 0
 31
-R10
+!s108 1588803172.000000
 !s107 E:/Quartus/Project/Final/Final/testbench2.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/testbench2.sv|
 !i113 1
@@ -240,7 +473,7 @@ R6
 R7
 R8
 vvga_clk
-!s110 1587935080
+!s110 1588803163
 !i10b 1
 !s100 OGlLO8;N^^k^>BA7[_bgn1
 IkL5l7]DQ3I8fR^BOk<hE=1
@@ -254,15 +487,15 @@ R4
 r1
 !s85 0
 31
-!s108 1587935080.000000
+Z13 !s108 1588803163.000000
 !s107 E:/Quartus/Project/Final/Final/vga_clk.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/vga_clk.v|
 !i113 1
-Z12 o-vlog01compat -work work
+Z14 o-vlog01compat -work work
 !s92 -vlog01compat -work work +incdir+E:/Quartus/Project/Final/Final
 R8
 vvga_clk_altpll
-!s110 1587935081
+!s110 1588803164
 !i10b 1
 !s100 M:z4m=8?iG0fP6=5PXSTl1
 I:8BNUK_?:79Omj]DmJMhg1
@@ -276,11 +509,11 @@ R4
 r1
 !s85 0
 31
-!s108 1587935081.000000
+R13
 !s107 E:/Quartus/Project/Final/Final/db/vga_clk_altpll.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/Quartus/Project/Final/Final/db|E:/Quartus/Project/Final/Final/db/vga_clk_altpll.v|
 !i113 1
-R12
+R14
 !s92 -vlog01compat -work work +incdir+E:/Quartus/Project/Final/Final/db
 R8
 vVGA_controller
@@ -301,7 +534,7 @@ R4
 r1
 !s85 0
 31
-R11
+R5
 !s107 E:/Quartus/Project/Final/Final/VGA_controller.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+E:/Quartus/Project/Final/Final|E:/Quartus/Project/Final/Final/VGA_controller.sv|
 !i113 1

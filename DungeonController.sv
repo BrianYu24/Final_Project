@@ -12,7 +12,7 @@ module DungeonController(
 
 assign Doors = RoomData[3:0];
 //assign Doors = 4'b1111;
-assign RoomAddr = Y*5+X;
+
 
 
 logic [2:0] X,Y, X_in, Y_in;
@@ -23,6 +23,7 @@ logic [7:0] totalEnemies_in;
 logic isDead[25];
 logic isDead_in[25];
 
+assign RoomAddr = Y*5+X;
 assign thisRoomIsDead = isDead[RoomAddr];
 
 
@@ -35,6 +36,8 @@ begin
 		transition <= 1'b0;
 		count <= 4'b0;
 		totalEnemies <= Room_Number;
+		for(int i = 0; i < 25; i++)
+			isDead[i] <= 0;
 	end
 	else
 	begin
@@ -43,22 +46,24 @@ begin
 		transition <= transition_in;
 		count <= count_in;
 		totalEnemies <= totalEnemies_in;
-	end
-end
-
-always_ff @ (posedge Clk)
-begin
-	if(RESET | Start)
-	begin
-		for(int i = 0; i < 25; i++)
-			isDead[i] <= 0;
-	end
-	else
-	begin
 		for(int i = 0; i <25; i++)
 			isDead[i] <= isDead_in[i];
 	end
 end
+
+//always_ff @ (posedge Clk)
+//begin
+//	if(RESET | Start)
+//	begin
+//		for(int i = 0; i < 25; i++)
+//			isDead[i] <= 0;
+//	end
+//	else
+//	begin
+//		for(int i = 0; i <25; i++)
+//			isDead[i] <= isDead_in[i];
+//	end
+//end
 
 always_comb
 begin

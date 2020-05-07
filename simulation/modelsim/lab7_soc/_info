@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 dE:/Quartus/Project/Final/Final/simulation/modelsim
 valtera_avalon_sc_fifo
-Z1 !s110 1587935082
+Z1 !s110 1588803160
 !i10b 1
 !s100 4mK@em][G=j]om3zJIhOc0
 IYWInFUh<7;TdgDDV_5De`0
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z3 w1585261749
+Z3 w1588722313
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_avalon_sc_fifo.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_avalon_sc_fifo.v
 Z4 L0 21
@@ -23,7 +23,7 @@ Z5 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z6 !s108 1587935082.000000
+Z6 !s108 1588803159.000000
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_avalon_sc_fifo.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_avalon_sc_fifo.v|
 !i113 1
@@ -31,13 +31,13 @@ Z7 o-vlog01compat -work lab7_soc
 Z8 !s92 -vlog01compat -work lab7_soc +incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules
 Z9 tCvgOpt 0
 valtera_avalon_st_clock_crosser
-Z10 !s110 1587935089
+Z10 !s110 1588803165
 !i10b 1
 !s100 YbU`iK^TYJ_9Hz`CZekjQ3
 IfBbVW=?5l8<zgIb5Y@2dD3
 R2
 R0
-R3
+Z11 w1588722314
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_avalon_st_clock_crosser.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_avalon_st_clock_crosser.v
 L0 22
@@ -45,7 +45,7 @@ R5
 r1
 !s85 0
 31
-Z11 !s108 1587935089.000000
+Z12 !s108 1588803165.000000
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_avalon_st_clock_crosser.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_avalon_st_clock_crosser.v|
 !i113 1
@@ -53,21 +53,21 @@ R7
 R8
 R9
 valtera_avalon_st_handshake_clock_crosser
-R10
+Z13 !s110 1588803164
 !i10b 1
 !s100 3f<J9K;e[9FU@JKn0^PK?0
 I647H[KLKCW6W_E:ahD1AU2
 R2
 R0
-R3
+R11
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_avalon_st_handshake_clock_crosser.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_avalon_st_handshake_clock_crosser.v
-Z12 L0 24
+Z14 L0 24
 R5
 r1
 !s85 0
 31
-R11
+Z15 !s108 1588803164.000000
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_avalon_st_handshake_clock_crosser.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_avalon_st_handshake_clock_crosser.v|
 !i113 1
@@ -75,58 +75,108 @@ R7
 R8
 R9
 valtera_merlin_arb_adder
-Z13 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z14 !s110 1587935090
+Z16 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z17 !s110 1588803166
 !i10b 1
 !s100 1Jn[a;@5nZmTN?DFKQNzj2
 Ij^CCF8DoLIDXlo_XKbLOZ0
 R2
-Z15 !s105 altera_merlin_arbitrator_sv_unit
+Z18 !s105 altera_merlin_arbitrator_sv_unit
 S1
 R0
-R3
-Z16 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_arbitrator.sv
-Z17 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_arbitrator.sv
+R11
+Z19 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_arbitrator.sv
+Z20 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_arbitrator.sv
 L0 228
 R5
 r1
 !s85 0
 31
-Z18 !s108 1587935090.000000
-Z19 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_arbitrator.sv|
-Z20 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_arbitrator.sv|
+Z21 !s108 1588803166.000000
+Z22 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_arbitrator.sv|
+Z23 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_arbitrator.sv|
 !i113 1
-Z21 o-sv -work lab7_soc
-Z22 !s92 -sv -work lab7_soc +incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules
+Z24 o-sv -work lab7_soc
+Z25 !s92 -sv -work lab7_soc +incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules
 R9
 valtera_merlin_arbitrator
-R13
-R14
+R16
+R17
 !i10b 1
 !s100 NQTehjm2fNQROUMUzShGa1
 Ih2E0?7l`dFLB=z@<a^CS[0
 R2
-R15
+R18
 S1
 R0
-R3
-R16
-R17
+R11
+R19
+R20
 L0 103
 R5
 r1
 !s85 0
 31
-R18
-R19
-R20
-!i113 1
 R21
 R22
+R23
+!i113 1
+R24
+R25
+R9
+valtera_merlin_burst_adapter
+R16
+Z26 !s110 1588803167
+!i10b 1
+!s100 OCc70X^k:B?GW6i71n`L_3
+I4b1RQPk@jcdE57FUB^afi1
+R2
+!s105 altera_merlin_burst_adapter_sv_unit
+S1
+R0
+R11
+8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_burst_adapter.sv
+FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_burst_adapter.sv
+R4
+R5
+r1
+!s85 0
+31
+Z27 !s108 1588803167.000000
+!s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_burst_adapter.sv|
+!s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_burst_adapter.sv|
+!i113 1
+R24
+R25
+R9
+valtera_merlin_burst_adapter_uncompressed_only
+R16
+R26
+!i10b 1
+!s100 STH]BdUM[JDMJZNJGXCd>0
+IVjKfg6N;TGDCjAM=iYg@n0
+R2
+!s105 altera_merlin_burst_adapter_uncmpr_sv_unit
+S1
+R0
+R11
+8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_burst_adapter_uncmpr.sv
+FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_burst_adapter_uncmpr.sv
+L0 39
+R5
+r1
+!s85 0
+31
+R27
+!s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_burst_adapter_uncmpr.sv|
+!s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_burst_adapter_uncmpr.sv|
+!i113 1
+R24
+R25
 R9
 valtera_merlin_burst_uncompressor
-R13
-Z23 !s110 1587935093
+R16
+R10
 !i10b 1
 !s100 f1?Rb<=9U?R9LJoHl;7>T3
 IIe0SAeCW=?0OIN6amnjHn3
@@ -142,16 +192,16 @@ R5
 r1
 !s85 0
 31
-Z24 !s108 1587935093.000000
+R12
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_burst_uncompressor.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_burst_uncompressor.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 valtera_merlin_master_agent
-R13
-R23
+R16
+Z28 !s110 1588803169
 !i10b 1
 !s100 _CJm:YX=>U2LQKH;8=@cb0
 IJ@]bD8@`2i]TKzXWFIglo0
@@ -167,16 +217,16 @@ R5
 r1
 !s85 0
 31
-R24
+Z29 !s108 1588803169.000000
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_master_agent.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_master_agent.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 valtera_merlin_master_translator
-R13
-Z25 !s110 1587935094
+R16
+R28
 !i10b 1
 !s100 NdRk@]3fC2C@V7Rm;dQM31
 IPCDbFP2ZMm_?Xg6LTez[93
@@ -192,16 +242,16 @@ R5
 r1
 !s85 0
 31
-Z26 !s108 1587935094.000000
+R29
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_master_translator.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_master_translator.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 valtera_merlin_slave_agent
-R13
-R23
+R16
+Z30 !s110 1588803168
 !i10b 1
 !s100 ePZN1d?B062J`OBb?blff3
 IAUz01IGFmg0jlHG;83K9=2
@@ -212,21 +262,21 @@ R0
 R3
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_slave_agent.sv
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_slave_agent.sv
-Z27 L0 34
+Z31 L0 34
 R5
 r1
 !s85 0
 31
-R24
+Z32 !s108 1588803168.000000
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_slave_agent.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_slave_agent.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 valtera_merlin_slave_translator
-R13
-R25
+R16
+R28
 !i10b 1
 !s100 k`9[YAn_dLTkg;GE`mOb61
 I]GzTl7WBjIg?;F:JcE_c;2
@@ -242,21 +292,46 @@ R5
 r1
 !s85 0
 31
-R26
+R29
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_slave_translator.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_slave_translator.sv|
 !i113 1
-R21
-R22
+R24
+R25
+R9
+valtera_merlin_width_adapter
+R16
+R10
+!i10b 1
+!s100 QzdA5DP6CReOTH<9QzODa3
+Izf<hOfNXh_=^4<IBnzWL^0
+R2
+!s105 altera_merlin_width_adapter_sv_unit
+S1
+R0
+R11
+8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_width_adapter.sv
+FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_width_adapter.sv
+L0 25
+R5
+r1
+!s85 0
+31
+R12
+!s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_width_adapter.sv|
+!s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_merlin_width_adapter.sv|
+!i113 1
+R24
+R25
 R9
 valtera_reset_controller
-Z28 !s110 1587935081
+!s110 1588803158
 !i10b 1
 !s100 z[H_hRO9gO=:^2E3_jWH03
 IOAA4H7l`z^00IQE2>>dQi0
 R2
 R0
-Z29 w1585261742
+Z33 w1588722307
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_reset_controller.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_reset_controller.v
 L0 42
@@ -264,7 +339,7 @@ R5
 r1
 !s85 0
 31
-Z30 !s108 1587935081.000000
+!s108 1588803158.000000
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_reset_controller.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_reset_controller.v|
 !i113 1
@@ -272,16 +347,16 @@ R7
 R8
 R9
 valtera_reset_synchronizer
-R1
+Z34 !s110 1588803159
 !i10b 1
 !s100 oWLYmSO[EOX[G0PgQhZ2=0
 Io_4RUnoGzgRN@:k?`1N4A2
 R2
 R0
-R29
+R33
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_reset_synchronizer.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_reset_synchronizer.v
-R12
+R14
 R5
 r1
 !s85 0
@@ -294,13 +369,13 @@ R7
 R8
 R9
 valtera_std_synchronizer_nocut
-R14
+R10
 !i10b 1
 !s100 b8zV2<79GgkNg0GC<P[GJ2
 Ie;6S27kUjkfN=ZQT1e1jX2
 R2
 R0
-R3
+R11
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_std_synchronizer_nocut.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_std_synchronizer_nocut.v
 L0 44
@@ -308,7 +383,7 @@ R5
 r1
 !s85 0
 31
-R18
+R12
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_std_synchronizer_nocut.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/altera_std_synchronizer_nocut.v|
 !i113 1
@@ -316,13 +391,13 @@ R7
 R8
 R9
 vlab7_soc
-R28
+R13
 !i10b 1
-!s100 CVG2a]FCE?kKJW_EzNTW>0
-IiL[gAVm5R1izoP<4h7EN`1
+!s100 B?fdDDiBO`X4Fa;XR1TQ40
+I>4zK4gc6Kj0[4nlTb76NC3
 R2
 R0
-w1585261718
+w1588722986
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/lab7_soc.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/lab7_soc.v
 L0 6
@@ -330,7 +405,7 @@ R5
 r1
 !s85 0
 31
-R30
+R15
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/lab7_soc.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/lab7_soc.v|
 !i113 1
@@ -338,16 +413,16 @@ R7
 !s92 -vlog01compat -work lab7_soc +incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis
 R9
 vlab7_soc_irq_mapper
+R16
 R13
-R10
 !i10b 1
-!s100 <5_^Y2ZQ>7Ok7mETBJbMY0
-IL[;R9hk0ZNA28zV1P6]L[3
+!s100 <]ffbC?Da;TV@2^@0KFcc0
+IoQMb?BC73:UZ_oncFg>_D1
 R2
 !s105 lab7_soc_irq_mapper_sv_unit
 S1
 R0
-R29
+R33
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_irq_mapper.sv
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_irq_mapper.sv
 L0 31
@@ -355,131 +430,131 @@ R5
 r1
 !s85 0
 31
-R11
+R15
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_irq_mapper.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_irq_mapper.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_jtag_uart_0
-Z31 !s110 1587935087
+Z35 !s110 1588803162
 !i10b 1
 !s100 ?I:_Xh2mnoXZmH>jk88;O0
 Ijdc9AY:hO@i4[?idYg82a1
 R2
 R0
-Z32 w1585261720
-Z33 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_jtag_uart_0.v
-Z34 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_jtag_uart_0.v
+Z36 w1588722242
+Z37 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_jtag_uart_0.v
+Z38 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_jtag_uart_0.v
 L0 331
 R5
 r1
 !s85 0
 31
-Z35 !s108 1587935087.000000
-Z36 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_jtag_uart_0.v|
-Z37 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_jtag_uart_0.v|
+Z39 !s108 1588803162.000000
+Z40 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_jtag_uart_0.v|
+Z41 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_jtag_uart_0.v|
 !i113 1
 R7
 R8
 R9
 vlab7_soc_jtag_uart_0_scfifo_r
-R31
+R35
 !i10b 1
 !s100 ZcDJV=Y6jMB>k6bSzfN`O3
 IJIG>i;@El>6<`7QoAKzSP3
 R2
 R0
-R32
-R33
-R34
+R36
+R37
+R38
 L0 243
 R5
 r1
 !s85 0
 31
-R35
-R36
-R37
+R39
+R40
+R41
 !i113 1
 R7
 R8
 R9
 vlab7_soc_jtag_uart_0_scfifo_w
-R31
+R35
 !i10b 1
 !s100 kA0JQBaM;KbbOW_1``0<=1
 Ibn>OfcLXKIT?R1cl66g>H0
 R2
 R0
-R32
-R33
-R34
+R36
+R37
+R38
 L0 78
 R5
 r1
 !s85 0
 31
-R35
-R36
-R37
+R39
+R40
+R41
 !i113 1
 R7
 R8
 R9
 vlab7_soc_jtag_uart_0_sim_scfifo_r
-R31
+R35
 !i10b 1
 !s100 6kh:=nonflh2dhKfIgFoh3
 I:zEA@MXG`18H_JFzlOWOm3
 R2
 R0
-R32
-R33
-R34
+R36
+R37
+R38
 L0 164
 R5
 r1
 !s85 0
 31
-R35
-R36
-R37
+R39
+R40
+R41
 !i113 1
 R7
 R8
 R9
 vlab7_soc_jtag_uart_0_sim_scfifo_w
-R31
+R35
 !i10b 1
 !s100 G5Z7m@Bdia:7fUGaPb7B61
 IS3oB9Pm6Az]kBBo5XEWWC1
 R2
 R0
-R32
-R33
-R34
+R36
+R37
+R38
 R4
 R5
 r1
 !s85 0
 31
-R35
-R36
-R37
+R39
+R40
+R41
 !i113 1
 R7
 R8
 R9
 vlab7_soc_keycode
-R31
+!s110 1587935087
 !i10b 1
 !s100 BSNQ0X;F4=9aT4808lz@I0
 Idc?I9dIg:@M@IB[T_nQ7P2
 R2
 R0
-R32
+w1585261720
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_keycode.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_keycode.v
 R4
@@ -487,7 +562,7 @@ R5
 r1
 !s85 0
 31
-R35
+!s108 1587935087.000000
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_keycode.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_keycode.v|
 !i113 1
@@ -495,13 +570,13 @@ R7
 R8
 R9
 vlab7_soc_mm_interconnect_0
-R1
+R34
 !i10b 1
-!s100 ^<bSzE_zzPe7^EZMj6ekN2
-IDce8IhOCJm241cKah32mD0
+!s100 RhGAK2;J;WAPbm2d5ROKC2
+I_=C@ddWDf3iS0z^:kG@<B0
 R2
 R0
-R29
+R33
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0.v
 L0 9
@@ -517,13 +592,13 @@ R7
 R8
 R9
 vlab7_soc_mm_interconnect_0_avalon_st_adapter
-R1
+R34
 !i10b 1
-!s100 8zBozcDFYN;EiZ0ooSZ?B0
-II0?1=a[ZH[U_4DI6fCMTz2
+!s100 T7nOiD<R0cUMk[e7TfBTP3
+Ik41ga2RA3EJ>k^JoDLoDT2
 R2
 R0
-Z38 w1585261750
+Z42 w1588722315
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter.v
 L0 9
@@ -538,109 +613,156 @@ R6
 R7
 R8
 R9
-vlab7_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0
-R13
-R10
+vlab7_soc_mm_interconnect_0_avalon_st_adapter_001
+R34
 !i10b 1
-!s100 `ifJe[GCPgZhSQIz6_Leg3
-I3OWY?f[mb:TH6mC2I5=_>3
+!s100 [Ka`;O2bohdSNeA>zfPod2
+Il@JUlz8SL=ZAf=P>h_O7b2
+R2
+R0
+R42
+8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter_001.v
+FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter_001.v
+L0 9
+R5
+r1
+!s85 0
+31
+R6
+!s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter_001.v|
+!s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter_001.v|
+!i113 1
+R7
+R8
+R9
+vlab7_soc_mm_interconnect_0_avalon_st_adapter_001_error_adapter_0
+R16
+R13
+!i10b 1
+!s100 ]61V5GVJW7A73TGb1mkbN1
+IEl@4_9HXg7[PIWmLzh=V71
+R2
+!s105 lab7_soc_mm_interconnect_0_avalon_st_adapter_001_error_adapter_0_sv_unit
+S1
+R0
+R42
+8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter_001_error_adapter_0.sv
+FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter_001_error_adapter_0.sv
+Z43 L0 66
+R5
+r1
+!s85 0
+31
+R15
+!s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter_001_error_adapter_0.sv|
+!s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter_001_error_adapter_0.sv|
+!i113 1
+R24
+R25
+R9
+vlab7_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0
+R16
+R13
+!i10b 1
+!s100 Ym2B=@dYf@LPHeAQ<3zMB3
+I0JKjT6`hceK4eM<K7V[;X0
 R2
 !s105 lab7_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0_sv_unit
 S1
 R0
-R38
+R42
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv
-L0 66
+R43
 R5
 r1
 !s85 0
 31
-R11
+R15
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_cmd_demux
-R13
-Z39 !s110 1587935092
+R16
+R26
 !i10b 1
-!s100 ``]WFI`oHbF5LA>aO=m=k2
-INFjK=Y:8mfk:99HQZzLF`1
+!s100 MSI3UWnUaNE3l:V_gA[kS0
+IQIOL^NOkfjkgV?NNKoC4?1
 R2
 !s105 lab7_soc_mm_interconnect_0_cmd_demux_sv_unit
 S1
 R0
-R3
+R11
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_demux.sv
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_demux.sv
-Z40 L0 43
+Z44 L0 43
 R5
 r1
 !s85 0
 31
-Z41 !s108 1587935091.000000
+R27
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_demux.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_demux.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_cmd_demux_001
-R13
-Z42 !s110 1587935091
+R16
+R26
 !i10b 1
-!s100 :4;X_M;fUW``i6Tk[=XXj1
-IFAnF]8J34WRe70X:eJL:W0
+!s100 `nknHfYInAa5FRDR<Z@]S0
+InV5EaZgU<C_UZRBo]d1?h1
 R2
 !s105 lab7_soc_mm_interconnect_0_cmd_demux_001_sv_unit
 S1
 R0
-R3
+R11
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_demux_001.sv
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_demux_001.sv
-R40
+R44
 R5
 r1
 !s85 0
 31
-R41
+R27
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_demux_001.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_demux_001.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_cmd_mux
-R13
-R42
+R16
+R26
 !i10b 1
-!s100 6NGF]3na`B2O[6:Yz@87A1
-I[;DB6HOg;>jT;YV=HDJL61
+!s100 >G`n?M9z>eU1lWQPIVodU0
+Ig9PhIJSd^2b@MzggTlEjJ0
 R2
 !s105 lab7_soc_mm_interconnect_0_cmd_mux_sv_unit
 S1
 R0
-R3
+R11
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_mux.sv
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_mux.sv
-Z43 L0 51
+Z45 L0 51
 R5
 r1
 !s85 0
 31
-R41
+R27
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_mux.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_mux.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_cmd_mux_001
-R13
-R42
+R16
+!s110 1587935091
 !i10b 1
 !s100 G[`@c>c@k^TWJ;?J4:1d90
 IU@?[IBJ;X]z:fi7P0V8PN0
@@ -648,249 +770,324 @@ R2
 !s105 lab7_soc_mm_interconnect_0_cmd_mux_001_sv_unit
 S1
 R0
-R3
+Z46 w1585261749
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_mux_001.sv
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_mux_001.sv
-R43
+R45
 R5
 r1
 !s85 0
 31
-R41
+!s108 1587935091.000000
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_mux_001.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_mux_001.sv|
 !i113 1
-R21
-R22
+R24
+R25
+R9
+vlab7_soc_mm_interconnect_0_cmd_mux_002
+R16
+R26
+!i10b 1
+!s100 ]6ihRemG0?[Bo1h<K:zmm2
+I;GQbdDHa6GYVn>k^ZK5=Q2
+R2
+!s105 lab7_soc_mm_interconnect_0_cmd_mux_002_sv_unit
+S1
+R0
+R11
+8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_mux_002.sv
+FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_mux_002.sv
+R45
+R5
+r1
+!s85 0
+31
+R27
+!s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_mux_002.sv|
+!s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_cmd_mux_002.sv|
+!i113 1
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_router
-R13
-R39
+R16
+R30
 !i10b 1
-!s100 92bZOhgY>V2Af9PVGm8il3
-IS8S@]@I^4[QKL<VULSA2X2
+!s100 YYSCS0W_EPjaQLFbX5:6o0
+I1j`Y9``[RS_]ZX=dkKSkP3
 R2
-Z44 !s105 lab7_soc_mm_interconnect_0_router_sv_unit
+Z47 !s105 lab7_soc_mm_interconnect_0_router_sv_unit
 S1
 R0
 R3
-Z45 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router.sv
-Z46 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router.sv
-Z47 L0 84
+Z48 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router.sv
+Z49 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router.sv
+Z50 L0 84
 R5
 r1
 !s85 0
 31
-Z48 !s108 1587935092.000000
-Z49 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router.sv|
-Z50 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router.sv|
+R32
+Z51 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router.sv|
+Z52 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_router_001
-R13
-R39
+R16
+R30
 !i10b 1
-!s100 5_T57F@gYI_@e6LjUnbX62
-IRJz46n?GXmi0k58Qa7ADT2
+!s100 YLMUbk?^6LGNW2ARF2ed91
+If>f=ZR1<[mViIo;KzefdC3
 R2
-Z51 !s105 lab7_soc_mm_interconnect_0_router_001_sv_unit
+Z53 !s105 lab7_soc_mm_interconnect_0_router_001_sv_unit
 S1
 R0
-R3
-Z52 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_001.sv
-Z53 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_001.sv
-R47
+R11
+Z54 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_001.sv
+Z55 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_001.sv
+R50
 R5
 r1
 !s85 0
 31
-R48
-Z54 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_001.sv|
-Z55 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_001.sv|
+R32
+Z56 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_001.sv|
+Z57 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_001.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_router_001_default_decode
-R13
-R39
+R16
+R30
 !i10b 1
-!s100 goMRJISaE2H4Q2`0VC5Kh3
-IZ<o6:P<KMjel]Mi<[DeZe0
+!s100 HjQYgeWCDOGYozTOedBmG0
+IdN?H^8So0T5S?h;7A8d?n0
 R2
-R51
+R53
 S1
 R0
-R3
-R52
-R53
-Z56 L0 45
-R5
-r1
-!s85 0
-31
-R48
+R11
 R54
 R55
+Z58 L0 45
+R5
+r1
+!s85 0
+31
+R32
+R56
+R57
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_router_002
-R13
-R39
+R16
+R30
 !i10b 1
-!s100 jcif`oc@iWD5GE3a]f;dk3
-I02?VUdYeoUUaJ<Dcn<S5V3
+!s100 AD3UF[TiPI;b@gB9?AoBJ2
+IbLEeFO7XVi0]F=2WHIm_92
 R2
-Z57 !s105 lab7_soc_mm_interconnect_0_router_002_sv_unit
+Z59 !s105 lab7_soc_mm_interconnect_0_router_002_sv_unit
 S1
 R0
-R3
-Z58 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_002.sv
-Z59 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_002.sv
-R47
+R11
+Z60 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_002.sv
+Z61 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_002.sv
+R50
 R5
 r1
 !s85 0
 31
-R48
-Z60 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_002.sv|
-Z61 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_002.sv|
+R32
+Z62 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_002.sv|
+Z63 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_002.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_router_002_default_decode
-R13
-R39
+R16
+R30
 !i10b 1
-!s100 <BTX4FOh<Ynd;YO[GZ1Ef1
-I^48Zb6]>eICH:FeWXS[z[3
+!s100 ZniI3]Bz6e18Y3FkI81?z2
+IM2o0bZA^^j=QhT6gQOo[L3
 R2
-R57
+R59
 S1
 R0
-R3
-R58
-R59
-R56
-R5
-r1
-!s85 0
-31
-R48
+R11
 R60
 R61
+R58
+R5
+r1
+!s85 0
+31
+R32
+R62
+R63
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_router_003
-R13
-R39
+R16
+R30
 !i10b 1
-!s100 [6NJL:AeFg_NiEk?miEUj1
-ImZ153H^JRWeV7YFomQAk60
+!s100 JMHMU39=iPZznReHWKKSg1
+IP_Jbo6Cl8Z56N3GH2>3Db0
 R2
-Z62 !s105 lab7_soc_mm_interconnect_0_router_003_sv_unit
+Z64 !s105 lab7_soc_mm_interconnect_0_router_003_sv_unit
 S1
 R0
-R3
-Z63 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_003.sv
-Z64 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_003.sv
-R47
+R11
+Z65 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_003.sv
+Z66 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_003.sv
+R50
 R5
 r1
 !s85 0
 31
-R48
-Z65 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_003.sv|
-Z66 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_003.sv|
+R32
+Z67 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_003.sv|
+Z68 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_003.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_router_003_default_decode
-R13
-R39
+R16
+R30
 !i10b 1
-!s100 bID5QFDEQ7i5PNN0WNg=R1
-IZCjQS;SW:S1VO_6=ZBa@91
+!s100 >Q;Cj27Jb<KPo3R:LnFO33
+I1zKmc1B9[Xh@i40CP6dJ<2
 R2
-R62
+R64
 S1
 R0
-R3
-R63
-R64
-R56
-R5
-r1
-!s85 0
-31
-R48
+R11
 R65
 R66
-!i113 1
-R21
-R22
-R9
-vlab7_soc_mm_interconnect_0_router_default_decode
-R13
-R39
-!i10b 1
-!s100 =Mhc030STDXDZ;5=dE[j21
-IkfOVjS1BP3fCMblA28?7<2
-R2
-R44
-S1
-R0
-R3
-R45
-R46
-R56
+R58
 R5
 r1
 !s85 0
 31
+R32
+R67
+R68
+!i113 1
+R24
+R25
+R9
+vlab7_soc_mm_interconnect_0_router_004
+R16
+R26
+!i10b 1
+!s100 lP3eD[X`I@36@SY_z2Fj80
+I2j[3zZK6Ml9W@<H>0z]aC0
+R2
+Z69 !s105 lab7_soc_mm_interconnect_0_router_004_sv_unit
+S1
+R0
+R11
+Z70 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_004.sv
+Z71 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_004.sv
+R50
+R5
+r1
+!s85 0
+31
+R27
+Z72 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_004.sv|
+Z73 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_router_004.sv|
+!i113 1
+R24
+R25
+R9
+vlab7_soc_mm_interconnect_0_router_004_default_decode
+R16
+R26
+!i10b 1
+!s100 U_Fh4HJ;8b1L1U@9I^];b3
+Iz5f=aY=6V6Li^>8oC^26I3
+R2
+R69
+S1
+R0
+R11
+R70
+R71
+R58
+R5
+r1
+!s85 0
+31
+R27
+R72
+R73
+!i113 1
+R24
+R25
+R9
+vlab7_soc_mm_interconnect_0_router_default_decode
+R16
+R30
+!i10b 1
+!s100 QXT43VoHQO;^9l>XCUSG]2
+IR`@9egnIe:@`7Qj=D:6cQ0
+R2
+R47
+S1
+R0
+R3
 R48
 R49
-R50
+R58
+R5
+r1
+!s85 0
+31
+R32
+R51
+R52
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_rsp_demux
-R13
-R42
+R16
+R17
 !i10b 1
-!s100 LF38?zmMX3Z7KJloz8MNh0
-IoHnWIhj^C_7C7I^I<N3=52
+!s100 BLPeQJ3nOL2^]R4fAjCbb0
+I>H_8>dBE_aQ5CO1fHQ6T?2
 R2
 !s105 lab7_soc_mm_interconnect_0_rsp_demux_sv_unit
 S1
 R0
-R3
+R11
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_demux.sv
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_demux.sv
-R40
+R44
 R5
 r1
 !s85 0
 31
-R41
+R21
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_demux.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_demux.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_rsp_demux_001
-R13
-R14
+R16
+!s110 1587935090
 !i10b 1
 !s100 `80T]G:3`BNYQFalCXhK[3
 IUK?f_c@chV[Yo9ajA0DoH2
@@ -898,79 +1095,104 @@ R2
 !s105 lab7_soc_mm_interconnect_0_rsp_demux_001_sv_unit
 S1
 R0
-R3
+R46
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_demux_001.sv
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_demux_001.sv
-R40
+R44
 R5
 r1
 !s85 0
 31
-R18
+!s108 1587935090.000000
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_demux_001.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_demux_001.sv|
 !i113 1
+R24
+R25
+R9
+vlab7_soc_mm_interconnect_0_rsp_demux_002
+R16
+R17
+!i10b 1
+!s100 1kmKK90KA;B2DnLj_;4N<3
+I2_gTMN5c^Qb1Ejd3]FU`n1
+R2
+!s105 lab7_soc_mm_interconnect_0_rsp_demux_002_sv_unit
+S1
+R0
+R11
+8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_demux_002.sv
+FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_demux_002.sv
+R44
+R5
+r1
+!s85 0
+31
 R21
-R22
+!s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_demux_002.sv|
+!s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_demux_002.sv|
+!i113 1
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_rsp_mux
-R13
-R14
+R16
+R17
 !i10b 1
-!s100 K25@=Y[RU`7imZ5^n4zzM0
-IVBS78oXlG<ZfjVc70@?M[2
+!s100 ZOd7h2A44ag^:k;9BBkec3
+IjGz[0_aoMXNRXJ@<_4;S73
 R2
 !s105 lab7_soc_mm_interconnect_0_rsp_mux_sv_unit
 S1
 R0
-R3
+R11
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_mux.sv
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_mux.sv
-R43
+R45
 R5
 r1
 !s85 0
 31
-R18
+R21
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_mux.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_mux.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_mm_interconnect_0_rsp_mux_001
-R13
-R14
+R16
+R10
 !i10b 1
-!s100 d1hi6hB=8a4TAg_ji3zeR3
-I5Sn3;XEE69Z]KK1^5=BkS3
+!s100 26a1k>@D;VMfWEiZlMI=`0
+I6JP6GI9<iK7H9KnI7LHa=1
 R2
 !s105 lab7_soc_mm_interconnect_0_rsp_mux_001_sv_unit
 S1
 R0
-R3
+R11
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_mux_001.sv
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_mux_001.sv
-R43
+R45
 R5
 r1
 !s85 0
 31
-R18
+R12
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_mux_001.sv|
 !s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_mm_interconnect_0_rsp_mux_001.sv|
 !i113 1
-R21
-R22
+R24
+R25
 R9
 vlab7_soc_nios2_gen2_0
-Z67 !s110 1587935085
+Z74 !s110 1588803161
 !i10b 1
 !s100 V]:3?BYD9YcjZk73cL0:_1
 I8^2FlJ?V8MJYQV]LKJHR21
 R2
 R0
-Z68 w1585261721
+Z75 w1588722243
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0.v
 L0 9
@@ -978,7 +1200,7 @@ R5
 r1
 !s85 0
 31
-Z69 !s108 1587935085.000000
+Z76 !s108 1588803161.000000
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0.v|
 !i113 1
@@ -986,29 +1208,29 @@ R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu
-R67
+R74
 !i10b 1
-!s100 [H2X=FEM=AKznP]:UYadC0
-Ig9f=jY8CRXS_[CYVh[]@a0
+!s100 1cTCj>D]JGOfDV^2fc3m83
+I8BaanUIWb6NSAT;OR@OKJ2
 R2
 R0
 R3
-Z70 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu.v
-Z71 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu.v
+Z77 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu.v
+Z78 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu.v
 L0 2834
 R5
 r1
 !s85 0
 31
-R69
-Z72 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu.v|
-Z73 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu.v|
+R76
+Z79 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu.v|
+Z80 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu.v|
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_debug_slave_sysclk
-R67
+R74
 !i10b 1
 !s100 gLM[8eh7lC2OP4bhUMJ7?1
 IE?iQ]8S8`:ae@3:G4UYRP2
@@ -1022,7 +1244,7 @@ R5
 r1
 !s85 0
 31
-R69
+R76
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu_debug_slave_sysclk.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu_debug_slave_sysclk.v|
 !i113 1
@@ -1030,7 +1252,7 @@ R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_debug_slave_tck
-Z74 !s110 1587935086
+R74
 !i10b 1
 !s100 iBomD1hBFLAaVgFnR7X=30
 I@9F6GX`Wg4k211Baf]H;S0
@@ -1044,7 +1266,7 @@ R5
 r1
 !s85 0
 31
-Z75 !s108 1587935086.000000
+R76
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu_debug_slave_tck.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu_debug_slave_tck.v|
 !i113 1
@@ -1066,7 +1288,7 @@ R5
 r1
 !s85 0
 31
-R75
+R76
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu_debug_slave_wrapper.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu_debug_slave_wrapper.v|
 !i113 1
@@ -1074,447 +1296,447 @@ R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_avalon_reg
-R67
+R74
 !i10b 1
-!s100 ]]XJ<nX=`z85`[jlnneSb3
-Ic>^0QPTmBLFkY2RM8U_Yd2
+!s100 d8ieEIkE5VgimehThm^bU1
+IS927SMPKgFJ2doD9CNiBe3
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 2023
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci
-R67
+R74
 !i10b 1
 !s100 :@k2bK[>T2WTd[hWoWW:Q1
 IhV@K1]YZHT79hn0E<RnRB2
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 2362
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_break
-R67
+R74
 !i10b 1
 !s100 KAdRBli83G83@I_2z:e;61
 I`h8cBQYogH:3nJXGf;85J2
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 295
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_compute_input_tm_cnt
-R67
+R74
 !i10b 1
 !s100 Qa:]BC_GKN3TcOK76TG=S0
 IW3Jd=:]1F?CTmQYl`O]T03
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 1265
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_dbrk
-R67
+R74
 !i10b 1
 !s100 OY1n?`dfnlj;<=DHM@91U3
 I:6;]Rg7OSZI1oHCnNCYjo2
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 795
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_debug
-R67
+R74
 !i10b 1
 !s100 9Y4OJQ7OO[0@N6>S0FUao1
 IT]PXQPGZI^]FN?;6VMC1W0
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 153
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_dtrace
-R67
+R74
 !i10b 1
 !s100 SfG8BNV0>I]M=YbL?c<ZJ2
 Iki3_I;fn5cH7IGG]=ka_03
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 1183
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_fifo
-R67
+R74
 !i10b 1
 !s100 0IJc:f8CMmEC3z?k]bR>n3
 I=TeikV]D2^Kf`0oJzfU><2
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 1427
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_fifo_cnt_inc
-R67
+R74
 !i10b 1
 !s100 i=LdeS^mfK>c1R`CMg2?L0
 I3EVdHR:Hmc`o<MYAzN6bI1
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 1380
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_fifo_wrptr_inc
-R67
+R74
 !i10b 1
 !s100 9;6jjoHW_NzG@2H_Doc]N2
 IZVB1I;m5JJ_F<A7C`27:H0
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 1337
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_im
-R67
+R74
 !i10b 1
 !s100 Yl6RNB<4gnU?V?CRZeHCD3
 IM6M=PSiL][4X_M^LPO_RM0
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 1936
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_itrace
-R67
+R74
 !i10b 1
 !s100 ?AFTa4OM9^ASdzXc<@TeN2
 IchM`j3L8kPa`a_PP?_;Bf1
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 982
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_pib
-R67
+R74
 !i10b 1
 !s100 =icdY70h2m>?6ZAkL5iVB1
 I=TWK[Iahi_0;>1E?[iol02
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 1913
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_td_mode
-R67
+R74
 !i10b 1
 !s100 :dzinn^DD1jFfV[TgzY`b0
 I46gjcbnSK@jQ_>Ed2X>Hk1
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 1115
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_oci_xbrk
-R67
+R74
 !i10b 1
 !s100 DOG[@C<jdlM;_iKQjIBz40
 Igg9bMmWa8PK89M>:FmjHZ2
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 588
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_ocimem
-R67
+R74
 !i10b 1
 !s100 ]jO_bXG=mClXOAXOPES^T3
 IBeESiHiUhR9]V2^Z9i;LD3
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 2181
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_nios2_performance_monitors
-R67
+R74
 !i10b 1
 !s100 86V5K:VC<aE@klYcfLYC31
 IbUI<S^d5LJf0ACkNikV<D2
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 2006
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_ociram_sp_ram_module
-R67
+R74
 !i10b 1
 !s100 :Ma7mJ_EMlDX1WT7>3a:I1
 I:fP=m?jd1gO>XgzkEKV2[0
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 2116
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_register_bank_a_module
-R67
+R74
 !i10b 1
 !s100 zdY=6DB`;ecPTLETz45Ca2
 I:VM5GeKoVUND5`mSBQ4`l3
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 R4
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_register_bank_b_module
-R67
+R74
 !i10b 1
 !s100 >=DSGH8eMSgT8CckGW5O20
 IKNaYKG;B7Nm<8DJ=VVOz83
 R2
 R0
 R3
-R70
-R71
+R77
+R78
 L0 87
 R5
 r1
 !s85 0
 31
-R69
-R72
-R73
+R76
+R79
+R80
 !i113 1
 R7
 R8
 R9
 vlab7_soc_nios2_gen2_0_cpu_test_bench
-R74
+R35
 !i10b 1
 !s100 ZOKmG_9Qg;0aKY@bof[O=2
 I0:7b<SU159H]2j80cXOHe3
@@ -1528,7 +1750,7 @@ R5
 r1
 !s85 0
 31
-R75
+R39
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu_test_bench.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_nios2_gen2_0_cpu_test_bench.v|
 !i113 1
@@ -1536,13 +1758,13 @@ R7
 R8
 R9
 vlab7_soc_onchip_memory2_0
-Z76 !s110 1587935084
+R74
 !i10b 1
 !s100 BBCU6oN5ocePVm5eSmQc@2
 In2llUHDbi74V7LQ[nLJ<]0
 R2
 R0
-R68
+R75
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_onchip_memory2_0.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_onchip_memory2_0.v
 R4
@@ -1550,7 +1772,7 @@ R5
 r1
 !s85 0
 31
-Z77 !s108 1587935084.000000
+Z81 !s108 1588803160.000000
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_onchip_memory2_0.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_onchip_memory2_0.v|
 !i113 1
@@ -1558,13 +1780,13 @@ R7
 R8
 R9
 vlab7_soc_otg_hpi_address
-R76
+R1
 !i10b 1
 !s100 GP4B>i2QPWia0i09aOf_R3
 ILKPBQX1TANoiDe?NjPn?<1
 R2
 R0
-Z78 w1585261722
+Z82 w1588722244
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_otg_hpi_address.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_otg_hpi_address.v
 R4
@@ -1572,7 +1794,7 @@ R5
 r1
 !s85 0
 31
-R77
+R81
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_otg_hpi_address.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_otg_hpi_address.v|
 !i113 1
@@ -1580,13 +1802,13 @@ R7
 R8
 R9
 vlab7_soc_otg_hpi_cs
-R76
+R1
 !i10b 1
 !s100 0BBQ6EdCcN3cPYH=1_IWA0
 I1LJg@n2TF_CDk@[=JMfic1
 R2
 R0
-R78
+R82
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_otg_hpi_cs.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_otg_hpi_cs.v
 R4
@@ -1594,7 +1816,7 @@ R5
 r1
 !s85 0
 31
-R77
+R81
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_otg_hpi_cs.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_otg_hpi_cs.v|
 !i113 1
@@ -1602,13 +1824,13 @@ R7
 R8
 R9
 vlab7_soc_otg_hpi_data
-R76
+R1
 !i10b 1
 !s100 DA7N2T^FHO@aE@VSizFdc2
 IPk^AF`ek1FeHDQ]35jD;32
 R2
 R0
-w1585261723
+Z83 w1588722245
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_otg_hpi_data.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_otg_hpi_data.v
 R4
@@ -1616,7 +1838,7 @@ R5
 r1
 !s85 0
 31
-R77
+R81
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_otg_hpi_data.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_otg_hpi_data.v|
 !i113 1
@@ -1624,13 +1846,13 @@ R7
 R8
 R9
 vlab7_soc_Reset_s
-R31
+Z84 !s110 1588803163
 !i10b 1
 !s100 hFH?4S0Xf]@gMlT?8QdZV0
 Iocdf<ndLBko<iVJVn4emI3
 R2
 R0
-w1585261719
+Z85 w1588722241
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_Reset_s.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_Reset_s.v
 R4
@@ -1638,7 +1860,7 @@ R5
 r1
 !s85 0
 31
-R35
+Z86 !s108 1588803163.000000
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_Reset_s.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_Reset_s.v|
 !i113 1
@@ -1646,157 +1868,229 @@ R7
 R8
 R9
 nlab7_soc_@reset_s
-vlab7_soc_sdram
-Z79 !s110 1587935083
+vlab7_soc_Room0
+R84
 !i10b 1
-!s100 QGYV=2MaBOUff<6Pd4A3@0
-IJ`[X60=7YFQg9b7DeEkJY0
+!s100 VUWbPC7K@dCU^V1I>VWRo1
+I<Kb1][PHd48kfd;X:j2i02
 R2
 R0
-Z80 w1585261724
-Z81 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram.v
-Z82 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram.v
-L0 159
-R5
-r1
-!s85 0
-31
-Z83 !s108 1587935083.000000
-Z84 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram.v|
-Z85 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram.v|
-!i113 1
-R7
-R8
-R9
-vlab7_soc_sdram_input_efifo_module
-R79
-!i10b 1
-!s100 Q36LmMEB_hQ5j8K?>R7ij3
-IcczFg@b_JJ__2Rl@E`B6g3
-R2
-R0
-R80
-R81
-R82
+R85
+8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_Room0.v
+FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_Room0.v
 R4
 R5
 r1
 !s85 0
 31
+R86
+!s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_Room0.v|
+!s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_Room0.v|
+!i113 1
+R7
+R8
+R9
+nlab7_soc_@room0
+vlab7_soc_sdram
+R1
+!i10b 1
+!s100 QGYV=2MaBOUff<6Pd4A3@0
+IJ`[X60=7YFQg9b7DeEkJY0
+R2
+R0
 R83
-R84
-R85
+Z87 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram.v
+Z88 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram.v
+L0 159
+R5
+r1
+!s85 0
+31
+R81
+Z89 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram.v|
+Z90 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram.v|
+!i113 1
+R7
+R8
+R9
+vlab7_soc_sdram_input_efifo_module
+R1
+!i10b 1
+!s100 Q36LmMEB_hQ5j8K?>R7ij3
+IcczFg@b_JJ__2Rl@E`B6g3
+R2
+R0
+R83
+R87
+R88
+R4
+R5
+r1
+!s85 0
+31
+R81
+R89
+R90
 !i113 1
 R7
 R8
 R9
 vlab7_soc_sdram_pll
-R79
+R1
 !i10b 1
 !s100 1]Qf?PO:=g8i5O_@jFA=S0
 I;BRWmMSS5l2;=?2Bz9j^j2
 R2
 R0
-Z86 w1585261726
-Z87 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram_pll.v
-Z88 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram_pll.v
+Z91 w1588722247
+Z92 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram_pll.v
+Z93 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram_pll.v
 L0 217
 R5
 r1
 !s85 0
 31
-R83
-Z89 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram_pll.v|
-Z90 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram_pll.v|
+R81
+Z94 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram_pll.v|
+Z95 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sdram_pll.v|
 !i113 1
 R7
 R8
 R9
 vlab7_soc_sdram_pll_altpll_lqa2
-R79
+R1
 !i10b 1
 !s100 Q3ASJX;;S`c9YzNCX@GRz0
 I?R@MAAL[=]ib[68jJb>XS0
 R2
 R0
-R86
-R87
-R88
+R91
+R92
+R93
 L0 130
 R5
 r1
 !s85 0
 31
-R83
-R89
-R90
+R81
+R94
+R95
 !i113 1
 R7
 R8
 R9
 vlab7_soc_sdram_pll_dffpipe_l2c
-R79
+R1
 !i10b 1
 !s100 6BWihgjUk;B9]>iIY?:dm3
 IUkM1F>8]iY:eagQg>PlfZ0
 R2
 R0
-R86
-R87
-R88
+R91
+R92
+R93
 L0 37
 R5
 r1
 !s85 0
 31
-R83
-R89
-R90
+R81
+R94
+R95
 !i113 1
 R7
 R8
 R9
 vlab7_soc_sdram_pll_stdsync_sv6
-R79
+R1
 !i10b 1
 !s100 6bP9LYg1SPSIl>9o7eiV13
 IX^kddlbhkbkW]Zc<8:czf3
 R2
 R0
-R86
-R87
-R88
+R91
+R92
+R93
 L0 98
 R5
 r1
 !s85 0
 31
-R83
-R89
-R90
+R81
+R94
+R95
 !i113 1
 R7
 R8
 R9
 vlab7_soc_sysid_qsys_0
-R79
+R1
 !i10b 1
-!s100 7?WKH7Ii0BKAbIAPYWeGb2
-I[41DaDfWNOBzV^[Nc;S8E0
+!s100 2YFRG`V9BZoAih2OG90;l1
+I]^2N<;Wi54`HVifng5Ydh2
 R2
 R0
-R86
+R91
 8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sysid_qsys_0.v
 FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sysid_qsys_0.v
-R27
+R31
 R5
 r1
 !s85 0
 31
-R83
+R81
 !s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sysid_qsys_0.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_sysid_qsys_0.v|
 !i113 1
 R7
 R8
 R9
+vlab7_soc_TIMER
+R84
+!i10b 1
+!s100 7JhL_m<IYg]XAa]LEQ9bR2
+IaGVHV:cJjD@U7YX;Q=Q^@1
+R2
+R0
+R36
+8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_TIMER.v
+FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_TIMER.v
+R4
+R5
+r1
+!s85 0
+31
+R86
+!s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_TIMER.v|
+!s90 -reportprogress|300|-vlog01compat|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/lab7_soc_TIMER.v|
+!i113 1
+R7
+R8
+R9
+nlab7_soc_@t@i@m@e@r
+vRooms
+R16
+R28
+!i10b 1
+!s100 TkM:6I_SW:Z<mlWQK[4Bf3
+I4Q]LWXe7QaWnJm5o?<H?Y3
+R2
+!s105 Rooms_sv_unit
+S1
+R0
+w1588723404
+8E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/Rooms.sv
+FE:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/Rooms.sv
+R4
+R5
+r1
+!s85 0
+31
+R29
+!s107 E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/Rooms.sv|
+!s90 -reportprogress|300|-sv|-work|lab7_soc|+incdir+E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules|E:/Quartus/Project/Final/Final/lab7_soc/synthesis/submodules/Rooms.sv|
+!i113 1
+R24
+R25
+R9
+n@rooms
